@@ -587,6 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dae85f8264479bac19d85418d92392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 3951702117947426123}
   _poolContainer: {fileID: 178513672}
   _worldContainer: {fileID: 1683128698}
   _enemyPrefab: {fileID: 559606060570185700, guid: 87fe189881a524806800482ac8eaaa83,
@@ -760,6 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55e0c0d37f64d1f835fe367d4939922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 3951702117947426123}
 --- !u!1 &1263513269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5377a5d4caa94482972174d0a74ac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 3951702117947426123}
   _startPositionY: 19
   _endPositionY: -38
   _scrollSpeedY: 5

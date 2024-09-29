@@ -4,7 +4,7 @@ using Utils;
 
 namespace ShootEmUp
 {
-    public class EnemyAI : MonoBehaviour
+    public class EnemyAI : MonoBehaviour, IGameUpdateListener, IGamePauseListener, IGameResumeListener
     {
         public event Action<EnemyAI> OnDeath;
 
@@ -25,6 +25,25 @@ namespace ShootEmUp
         {
             _enemyHpComponent.OnDeath += OnDeathHandler;
             _moveAgent.OnDestinationReached += OnDestinationReached;
+            _moveAgent.StartMovementToDestination(_attackPosition);
+        }
+
+        public void OnGameUpdate(float deltaTime) => _moveAgent.OnGameUpdate(deltaTime);
+
+        public void OnGamePause()
+        {
+            _moveAgent.StopMovement();
+            _attackAgent.StopAttackingTarget();
+        }
+
+        public void OnGameResume()
+        {
+            if (_moveAgent.IsDestinationReached)
+            {
+                _attackAgent.StartAttackingTarget(_attackTarget);
+                return;
+            }
+
             _moveAgent.StartMovementToDestination(_attackPosition);
         }
 

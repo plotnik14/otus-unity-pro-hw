@@ -5,15 +5,19 @@ using Utils;
 
 namespace ShootEmUp
 {
-    public class InputSystem : MonoBehaviour
+    public class InputSystem : MonoBehaviour, IGameUpdateListener
     {
+        [SerializeField] private GameManager _gameManager;
+
         public event Action OnFire;
         public event Action OnMoveLeft;
         public event Action OnMoveRight;
         public event Action OnStopMovement;
 
         [UsedImplicitly]
-        private void Update()
+        private void Awake() => _gameManager.RegisterListener(this);
+
+        public void OnGameUpdate(float _)
         {
             ProcessMovementInput();
             ProcessFireInput();

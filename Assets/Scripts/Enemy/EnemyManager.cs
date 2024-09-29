@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyManager : MonoBehaviour
+    public class EnemyManager : MonoBehaviour, IGameStartListener, IGamePauseListener, IGameResumeListener, IGameUpdateListener
     {
+        [SerializeField] private GameManager _gameManager;
+
         [Header("Spawn")]
         [SerializeField] private Transform _poolContainer;
         [SerializeField] private Transform _worldContainer;
@@ -19,8 +21,9 @@ namespace ShootEmUp
         [SerializeField] private GameObject _attackTarget;
         [SerializeField] private PositionsGroup _attackPositions;
 
-        private readonly List<GameObject> _activeEnemies = new();
+        private readonly List<EnemyAI> _activeEnemies = new();
         private GameObjectPool _pool;
+        private Coroutine _spawnEnemiesByCooldownCoroutine;
 
         private bool CanSpawnEnemy => _activeEnemies.Count < _maxActiveEnemiesCount;
 
@@ -28,11 +31,38 @@ namespace ShootEmUp
         private void Awake()
         {
             _pool = new GameObjectPool(_enemyPrefab.gameObject, _poolContainer, _maxActiveEnemiesCount);
+            _gameManager.RegisterListener(this);
         }
 
-        [UsedImplicitly]
-        private void Start() => StartCoroutine(SpawnEnemiesByCooldown());
+        public void OnGameStart() => _spawnEnemiesByCooldownCoroutine = StartCoroutine(SpawnEnemiesByCooldown());
 
+        public void OnGamePause()
+        {
+            StopCoroutine(_spawnEnemiesByCooldownCoroutine);
+
+            for (var index = 0; index < _activeEnemies.Count; index++)
+            {
+                _activeEnemies[index].OnGamePause();
+            }
+        }
+
+        public void OnGameResume()
+        {
+            _spawnEnemiesByCooldownCoroutine = StartCoroutine(SpawnEnemiesByCooldown());
+
+            for (var index = 0; index < _activeEnemies.Count; index++)
+            {
+                _activeEnemies[index].OnGameResume();
+            }
+        }
+
+        public void OnGameUpdate(float deltaTime)
+        {
+            for (var index = 0; index < _activeEnemies.Count; index++)
+            {
+                _activeEnemies[index].OnGameUpdate(deltaTime);;
+            }
+        }
 
         private IEnumerator SpawnEnemiesByCooldown()
         {
@@ -54,7 +84,6 @@ namespace ShootEmUp
             enemyObject.transform.SetParent(_worldContainer);
             enemyObject.transform.position = _spawnPositions.GetRandom();
             enemyObject.SetActive(true);
-            _activeEnemies.Add(enemyObject);
             return enemyObject;
         }
 
@@ -65,14 +94,14 @@ namespace ShootEmUp
             enemyAI.OnDeath += OnEnemyDeath;
             enemyAI.Initialize(attackPosition, _attackTarget);
             enemyAI.Activate();
+            _activeEnemies.Add(enemyAI);
         }
 
         private void OnEnemyDeath(EnemyAI enemyAI)
         {
             enemyAI.OnDeath -= OnEnemyDeath;
-            GameObject enemyObject = enemyAI.gameObject;
-            _activeEnemies.Remove(enemyObject);
-            _pool.Release(enemyObject);
+            _activeEnemies.Remove(enemyAI);
+            _pool.Release(enemyAI.gameObject);
         }
     }
 }

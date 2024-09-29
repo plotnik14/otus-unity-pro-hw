@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackgroundScroller : MonoBehaviour
+    public class LevelBackgroundScroller : MonoBehaviour, IGameUpdateListener
     {
+        [SerializeField] private GameManager _gameManager;
         [SerializeField] private float _startPositionY;
         [SerializeField] private float _endPositionY;
         [SerializeField] private float _scrollSpeedY;
@@ -20,10 +21,10 @@ namespace ShootEmUp
             Vector3 position = transform.position;
             positionX = position.x;
             positionZ = position.z;
+            _gameManager.RegisterListener(this);
         }
 
-        [UsedImplicitly]
-        private void Update() => ScrollBackground(Time.deltaTime);
+        public void OnGameUpdate(float deltaTime) => ScrollBackground(deltaTime);
 
         private void ScrollBackground(float deltaTime)
         {

@@ -3,15 +3,22 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class MoveComponent : MonoBehaviour
+    public class MoveComponent : MonoBehaviour, IGameFixedUpdateListener
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed = 5.0f;
 
+        private GameManager _gameManager;
         private Vector2 _direction;
 
         [UsedImplicitly]
-        private void FixedUpdate() => ProcessMovement(Time.fixedDeltaTime);
+        private void Awake()
+        {
+            _gameManager = FindObjectOfType<GameManager>();
+            _gameManager.RegisterListener(this);
+        }
+
+        public void OnGameFixedUpdate(float deltaTime) => ProcessMovement(deltaTime);
 
         public void SetDirection(Vector2 direction) => _direction = direction;
 

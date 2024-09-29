@@ -1,11 +1,10 @@
 using System;
-using JetBrains.Annotations;
 using UnityEngine;
 using Utils;
 
 namespace ShootEmUp
 {
-    public class EnemyMoveAgent : MonoBehaviour
+    public class EnemyMoveAgent : MonoBehaviour, IGameUpdateListener
     {
         public Action<EnemyMoveAgent> OnDestinationReached;
 
@@ -16,8 +15,7 @@ namespace ShootEmUp
 
         public bool IsDestinationReached { get; private set; }
 
-        [UsedImplicitly]
-        private void Update()
+        public void OnGameUpdate(float _)
         {
             if (IsDestinationReached)
             {
