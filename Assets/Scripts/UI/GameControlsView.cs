@@ -9,13 +9,13 @@ namespace UI
 {
     public class GameControlsView : MonoBehaviour
     {
-        public event Action OnStartResumeButtonClicked;
+        public event Action OnPlayButtonClicked;
         public event Action OnPauseButtonClicked;
 
         [SerializeField] private TMP_Text _countdownText;
 
-        [SerializeField] private Button _startResumeButton;
-        [SerializeField] private TMP_Text _startResumeButtonText;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private TMP_Text _playButtonText;
 
         [SerializeField] private Button _pauseButton;
         [SerializeField] private TMP_Text _pauseButtonText;
@@ -24,17 +24,17 @@ namespace UI
         private void Awake()
         {
             HideCountdown();
-            HideStartResumeButton();
+            HidePlayButton();
             HidePauseButton();
 
-            _startResumeButton.onClick.AddListener(OnStartResumeClick);
+            _playButton.onClick.AddListener(OnPlayClick);
             _pauseButton.onClick.AddListener(OnPauseClick);
         }
 
         [UsedImplicitly]
         private void OnDestroy()
         {
-            _startResumeButton.onClick.RemoveListener(OnStartResumeClick);
+            _playButton.onClick.RemoveListener(OnPlayClick);
             _pauseButton.onClick.RemoveListener(OnPauseClick);
         }
 
@@ -44,13 +44,13 @@ namespace UI
 
         public void SetCountdownValue(string text) => _countdownText.SetText(text);
 
-        public void ShowStartResumeButton(string buttonText)
+        public void ShowPlayButton(string buttonText)
         {
-            _startResumeButtonText.text = buttonText;
-            _startResumeButton.gameObject.SetActive(true);
+            _playButtonText.text = buttonText;
+            _playButton.gameObject.SetActive(true);
         }
 
-        public void HideStartResumeButton() => _startResumeButton.gameObject.SetActive(false);
+        public void HidePlayButton() => _playButton.gameObject.SetActive(false);
 
         public void ShowPauseButton(string buttonText)
         {
@@ -60,7 +60,7 @@ namespace UI
 
         public void HidePauseButton() => _pauseButton.gameObject.SetActive(false);
 
-        private void OnStartResumeClick() => OnStartResumeButtonClicked.SafeInvoke();
+        private void OnPlayClick() => OnPlayButtonClicked.SafeInvoke();
 
         private void OnPauseClick() => OnPauseButtonClicked.SafeInvoke();
     }

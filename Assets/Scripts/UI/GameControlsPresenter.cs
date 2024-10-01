@@ -22,36 +22,31 @@ namespace UI
         [UsedImplicitly]
         private void Awake()
         {
-            _controlsView.OnStartResumeButtonClicked += OnStartResumeButtonClicked;
+            _controlsView.OnPlayButtonClicked += OnPlayButtonClicked;
             _controlsView.OnPauseButtonClicked += OnPauseButtonClicked;
         }
 
         [UsedImplicitly]
-        private void Start() =>  _controlsView.ShowStartResumeButton(START_BUTTON_NAME);
+        private void Start() => _controlsView.ShowPlayButton(START_BUTTON_NAME);
 
         [UsedImplicitly]
         private void OnDestroy()
         {
-            _controlsView.OnStartResumeButtonClicked -= OnStartResumeButtonClicked;
+            _controlsView.OnPlayButtonClicked -= OnPlayButtonClicked;
             _controlsView.OnPauseButtonClicked -= OnPauseButtonClicked;
         }
 
-        private void OnStartResumeButtonClicked()
+        private void OnPlayButtonClicked()
         {
-            _controlsView.HideStartResumeButton();
-
-            Action onFinished = _gameManager.IsNotStarted
-                ? _gameManager.StartGame
-                : _gameManager.ResumeGame;
-
-            StartCoroutine(CountdownCoroutine(onFinished));
+            _controlsView.HidePlayButton();
+            StartCoroutine(CountdownCoroutine(OnCountdownFinished));
         }
 
         private void OnPauseButtonClicked()
         {
             _gameManager.PauseGame();
             _controlsView.HidePauseButton();
-            _controlsView.ShowStartResumeButton(RESUME_BUTTON_NAME);
+            _controlsView.ShowPlayButton(RESUME_BUTTON_NAME);
         }
 
         private IEnumerator CountdownCoroutine(Action onFinished)
@@ -65,8 +60,20 @@ namespace UI
             }
 
             _controlsView.HideCountdown();
-            _controlsView.ShowPauseButton(PAUSE_BUTTON_NAME);
             onFinished.SafeInvoke();
+        }
+
+        private void OnCountdownFinished()
+        {
+            _controlsView.ShowPauseButton(PAUSE_BUTTON_NAME);
+
+            if (_gameManager.IsNotStarted)
+            {
+                _gameManager.StartGame();
+                return;
+            }
+
+            _gameManager.ResumeGame();
         }
     }
 }

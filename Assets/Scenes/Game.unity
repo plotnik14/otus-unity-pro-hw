@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 51782013}
   - component: {fileID: 51782012}
   m_Layer: 5
-  m_Name: StartResumeButtonText
+  m_Name: PlayButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 457278013}
   - component: {fileID: 457278012}
   m_Layer: 5
-  m_Name: StartResumeButton
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1225,8 +1225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countdownText: {fileID: 2126903774}
-  _startResumeButton: {fileID: 457278012}
-  _startResumeButtonText: {fileID: 51782012}
+  _playButton: {fileID: 457278012}
+  _playButtonText: {fileID: 51782012}
   _pauseButton: {fileID: 1600765153}
   _pauseButtonText: {fileID: 1364630282}
 --- !u!1 &1344867550
