@@ -6,7 +6,7 @@ namespace ShootEmUp
 {
     public class GameManager : MonoBehaviour
     {
-        private bool _isGameInProgress;
+        private EGameState _state = EGameState.NotStarted;
 
         private readonly List<IGameStartListener> _startListeners = new();
         private readonly List<IGameFinishListener> _finishListeners = new();
@@ -15,10 +15,15 @@ namespace ShootEmUp
         private readonly List<IGameUpdateListener> _updateListeners = new();
         private readonly List<IGameFixedUpdateListener> _fixedUpdateListeners = new();
 
+        public bool IsNotStarted => _state == EGameState.NotStarted;
+        public bool IsInProgress => _state == EGameState.InProgress;
+        public bool IsPaused => _state == EGameState.Paused;
+        public bool IsFinished => _state == EGameState.Finished;
+
         [UsedImplicitly]
         private void Update()
         {
-            if (!_isGameInProgress)
+            if (!IsInProgress)
                 return;
 
             float deltaTime = Time.deltaTime;
@@ -32,7 +37,7 @@ namespace ShootEmUp
         [UsedImplicitly]
         private void FixedUpdate()
         {
-            if (!_isGameInProgress)
+            if (!IsInProgress)
                 return;
 
             float deltaTime = Time.fixedDeltaTime;
@@ -67,7 +72,7 @@ namespace ShootEmUp
         [ContextMenu("Start Game")]
         public void StartGame()
         {
-            _isGameInProgress = true;
+            _state = EGameState.InProgress;
 
             foreach (IGameStartListener listener in _startListeners)
             {
@@ -78,7 +83,7 @@ namespace ShootEmUp
         [ContextMenu("Finish Game")]
         public void FinishGame()
         {
-            _isGameInProgress = false;
+            _state = EGameState.Finished;
 
             foreach (IGameFinishListener listener in _finishListeners)
             {
@@ -92,7 +97,7 @@ namespace ShootEmUp
         [ContextMenu("Pause Game")]
         public void PauseGame()
         {
-            _isGameInProgress = false;
+            _state = EGameState.Paused;
 
             foreach (IGamePauseListener listener in _pauseListeners)
             {
@@ -103,7 +108,7 @@ namespace ShootEmUp
         [ContextMenu("Resume Game")]
         public void ResumeGame()
         {
-            _isGameInProgress = true;
+            _state = EGameState.InProgress;
 
             foreach (IGameResumeListener listener in _resumeListeners)
             {
