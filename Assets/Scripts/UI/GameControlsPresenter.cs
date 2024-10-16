@@ -67,7 +67,7 @@ namespace UI
         {
             _controlsView.ShowPauseButton(PAUSE_BUTTON_NAME);
 
-            if (_gameManager.IsNotStarted)
+            if (_gameManager.State == EGameState.NotStarted)
             {
                 _gameManager.StartGame();
                 return;
