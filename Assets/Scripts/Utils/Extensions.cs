@@ -6,6 +6,11 @@ namespace Utils
 {
     public static class Extensions
     {
+        public static T As<T>(this object obj) where T : class
+        {
+            return obj as T;
+        }
+
         public static void SafeInvoke([CanBeNull] this Action action)
         {
             if (action == null)
