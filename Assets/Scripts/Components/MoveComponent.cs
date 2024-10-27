@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using VContainer;
 
 namespace ShootEmUp
 {
@@ -8,15 +9,17 @@ namespace ShootEmUp
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed = 5.0f;
 
-        private GameManager _gameManager;
+        private IGameManager _gameManager;
         private Vector2 _direction;
 
+        [Inject]
+        public void Construct(IGameManager gameManager) => _gameManager = gameManager;
+
         [UsedImplicitly]
-        private void Awake()
-        {
-            _gameManager = FindObjectOfType<GameManager>();
-            _gameManager.RegisterListener(this);
-        }
+        private void Awake() => _gameManager.RegisterListener(this);
+
+        [UsedImplicitly]
+        private void OnDestroy() => _gameManager.UnregisterListener(this);
 
         public void OnGameFixedUpdate(float deltaTime) => ProcessMovement(deltaTime);
 

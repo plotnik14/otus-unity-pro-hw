@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections;
-using JetBrains.Annotations;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using ShootEmUp;
-using UnityEngine;
 using Utils;
+using VContainer.Unity;
 
 namespace UI
 {
-    public class GameControlsPresenter : MonoBehaviour
+    public class GameControlsPresenter : IStartable, IDisposable, INonLazy
     {
         private const int COUNTDOWN_NUMBER = 3;
         private const int COUNTDOWN_DELAY_SEC = 1;
@@ -16,30 +16,39 @@ namespace UI
         private const string RESUME_BUTTON_NAME = "Resume";
         private const string PAUSE_BUTTON_NAME = "Pause";
 
-        [SerializeField] private GameControlsView _controlsView;
-        [SerializeField] private GameManager _gameManager;
+        private readonly IGameControlsView _controlsView;
+        private readonly IGameManager _gameManager;
+        private CancellationTokenSource _cts;
 
-        [UsedImplicitly]
-        private void Awake()
+        public GameControlsPresenter(
+            IGameControlsView controlsView,
+            IGameManager gameManager)
         {
+            _controlsView = controlsView;
+            _gameManager = gameManager;
+
             _controlsView.OnPlayButtonClicked += OnPlayButtonClicked;
             _controlsView.OnPauseButtonClicked += OnPauseButtonClicked;
         }
 
-        [UsedImplicitly]
-        private void Start() => _controlsView.ShowPlayButton(START_BUTTON_NAME);
+        public void Start() => _controlsView.ShowPlayButton(START_BUTTON_NAME);
 
-        [UsedImplicitly]
-        private void OnDestroy()
+        public void Dispose()
         {
             _controlsView.OnPlayButtonClicked -= OnPlayButtonClicked;
             _controlsView.OnPauseButtonClicked -= OnPauseButtonClicked;
+
+            _cts.CancelAndDispose();
+            _cts = null;
         }
 
         private void OnPlayButtonClicked()
         {
             _controlsView.HidePlayButton();
-            StartCoroutine(CountdownCoroutine(OnCountdownFinished));
+
+            _cts.CancelAndDispose();
+            _cts = new CancellationTokenSource();
+            CountdownCoroutineAsync(OnCountdownFinished, _cts.Token).Forget();
         }
 
         private void OnPauseButtonClicked()
@@ -49,14 +58,14 @@ namespace UI
             _controlsView.ShowPlayButton(RESUME_BUTTON_NAME);
         }
 
-        private IEnumerator CountdownCoroutine(Action onFinished)
+        private async UniTaskVoid CountdownCoroutineAsync(Action onFinished, CancellationToken cancellationToken)
         {
             _controlsView.ShowCountdown();
 
             for (int number = COUNTDOWN_NUMBER; number > 0; number--)
             {
                 _controlsView.SetCountdownValue(number.ToString());
-                yield return new WaitForSeconds(COUNTDOWN_DELAY_SEC);
+                await UniTask.WaitForSeconds(COUNTDOWN_DELAY_SEC, ignoreTimeScale: true, cancellationToken: cancellationToken);
             }
 
             _controlsView.HideCountdown();

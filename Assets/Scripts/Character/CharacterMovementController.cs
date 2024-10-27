@@ -1,18 +1,22 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class CharacterMovementController : MonoBehaviour
+    public class CharacterMovementController : IDisposable, INonLazy
     {
-        [SerializeField] private InputSystem _input;
-        [SerializeField] private MoveComponent _characterMovement;
+        private readonly IInputSystem _input;
+        private readonly MoveComponent _characterMovement;
 
-        [UsedImplicitly]
-        private void Start() => Subscribe();
+        public CharacterMovementController(IInputSystem input, MoveComponent characterMovement)
+        {
+            _input = input;
+            _characterMovement = characterMovement;
 
-        [UsedImplicitly]
-        private void OnDestroy() => Unsubscribe();
+            Subscribe();
+        }
+
+        public void Dispose() => Unsubscribe();
 
         private void Subscribe()
         {

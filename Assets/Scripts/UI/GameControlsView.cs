@@ -7,7 +7,7 @@ using Utils;
 
 namespace UI
 {
-    public class GameControlsView : MonoBehaviour
+    public class GameControlsView : MonoBehaviour, IGameControlsView
     {
         public event Action OnPlayButtonClicked;
         public event Action OnPauseButtonClicked;

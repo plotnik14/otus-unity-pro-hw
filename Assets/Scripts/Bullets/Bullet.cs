@@ -5,9 +5,9 @@ using Utils;
 
 namespace ShootEmUp
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IReusable<Bullet>
     {
-        public event Action<Bullet, Collision2D> OnCollisionEntered;
+        public event Action<Bullet> OnInstanceReleased;
 
         [SerializeField] private MoveComponent _moveComponent;
         [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -15,11 +15,7 @@ namespace ShootEmUp
         private int _damage;
 
         [UsedImplicitly]
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            ProcessCollision(collision);
-            OnCollisionEntered.SafeInvoke(this, collision);
-        }
+        private void OnCollisionEnter2D(Collision2D collision) => ProcessCollision(collision);
 
         public void Initialize(BulletConfig config)
         {
@@ -33,17 +29,18 @@ namespace ShootEmUp
         {
             transform.position = startPosition;
             _moveComponent.SetDirection(direction);
-
         }
 
         private void ProcessCollision(Collision2D collision2D)
         {
             GameObject collidedObject = collision2D.gameObject;
 
-            if (collidedObject.TryGetComponent(out HitPointsComponent hitPointsComponent))
+            if (collidedObject.TryGetComponent(out TakeDamageAction action))
             {
-                hitPointsComponent.TakeDamage(_damage);
+                action.TakeDamage(_damage);
             }
+
+            OnInstanceReleased.SafeInvoke(this);
         }
     }
 }

@@ -1,5 +1,5 @@
-using JetBrains.Annotations;
 using UnityEngine;
+using VContainer;
 
 namespace ShootEmUp
 {
@@ -8,18 +8,14 @@ namespace ShootEmUp
         [SerializeField] private BulletConfig _bulletConfig;
         [SerializeField] private Transform _bulletSpawnPoint;
 
-        private BulletManager _bulletManager;
+        private IBulletSpawner _bulletSpawner;
 
-        [UsedImplicitly]
-        private void Awake()
-        {
-            // TODO получение ссылки через DI
-            _bulletManager = FindObjectOfType<BulletManager>();
-        }
+        [Inject]
+        private void Construct(IBulletSpawner bulletSpawner) => _bulletSpawner = bulletSpawner;
 
         public void Fire(Vector2 direction)
         {
-            _bulletManager.InstantiateBullet(_bulletSpawnPoint.position, direction, _bulletConfig);
+            _bulletSpawner.SpawnBullet(_bulletSpawnPoint.position, direction, _bulletConfig);
         }
     }
 }

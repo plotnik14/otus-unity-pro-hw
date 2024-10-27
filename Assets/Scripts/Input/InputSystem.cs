@@ -1,21 +1,25 @@
 using System;
-using JetBrains.Annotations;
 using UnityEngine;
 using Utils;
 
 namespace ShootEmUp
 {
-    public class InputSystem : MonoBehaviour, IGameUpdateListener
+    public class InputSystem : IInputSystem, IGameUpdateListener, IDisposable, INonLazy
     {
-        [SerializeField] private GameManager _gameManager;
-
         public event Action OnFire;
         public event Action OnMoveLeft;
         public event Action OnMoveRight;
         public event Action OnStopMovement;
 
-        [UsedImplicitly]
-        private void Awake() => _gameManager.RegisterListener(this);
+        private readonly IGameManager _gameManager;
+
+        public InputSystem(IGameManager gameManager)
+        {
+            _gameManager = gameManager;
+            _gameManager.RegisterListener(this);
+        }
+
+        public void Dispose() => _gameManager.UnregisterListener(this);
 
         public void OnGameUpdate(float _)
         {

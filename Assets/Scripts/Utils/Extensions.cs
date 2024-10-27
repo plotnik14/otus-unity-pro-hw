@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -9,6 +10,21 @@ namespace Utils
         public static T As<T>(this object obj) where T : class
         {
             return obj as T;
+        }
+
+        public static void CancelAndDispose(this CancellationTokenSource cts)
+        {
+            if (cts == null)
+            {
+                return;
+            }
+
+            if (!cts.IsCancellationRequested)
+            {
+                cts.Cancel();
+            }
+
+            cts.Dispose();
         }
 
         public static void SafeInvoke([CanBeNull] this Action action)

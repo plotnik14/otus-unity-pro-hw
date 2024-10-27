@@ -1,20 +1,22 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 using Utils;
+using VContainer.Unity;
 
 namespace ShootEmUp
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : IGameManager, ITickable, IFixedTickable, INonLazy
     {
         private readonly List<IGameLifecycleListener> _lifecycleListeners = new();
         private readonly List<IGameUpdateListener> _updateListeners = new();
         private readonly List<IGameFixedUpdateListener> _fixedUpdateListeners = new();
+        private readonly ITimeScaleService _timeScaleService;
 
         public EGameState State { get; private set; }
 
-        [UsedImplicitly]
-        private void Update()
+        public GameManager(ITimeScaleService timeScaleService) => _timeScaleService = timeScaleService;
+
+        public void Tick()
         {
             if (State != EGameState.InProgress)
                 return;
@@ -27,8 +29,7 @@ namespace ShootEmUp
             }
         }
 
-        [UsedImplicitly]
-        private void FixedUpdate()
+        public void FixedTick()
         {
             if (State != EGameState.InProgress)
                 return;
@@ -52,9 +53,21 @@ namespace ShootEmUp
                 _fixedUpdateListeners.Add(fixedUpdateListener);
         }
 
+        public void UnregisterListener(IGameLifecycleListener listener)
+        {
+            _lifecycleListeners.Remove(listener);
+
+            if (listener is IGameUpdateListener updateListener)
+                _updateListeners.Remove(updateListener);
+
+            if (listener is IGameFixedUpdateListener fixedUpdateListener)
+                _fixedUpdateListeners.Remove(fixedUpdateListener);
+        }
+
         [ContextMenu("Start Game")]
         public void StartGame()
         {
+            _timeScaleService.ResumeTime();
             State = EGameState.InProgress;
 
             foreach (IGameLifecycleListener listener in _lifecycleListeners)
@@ -66,6 +79,7 @@ namespace ShootEmUp
         [ContextMenu("Finish Game")]
         public void FinishGame()
         {
+            _timeScaleService.PauseTime();
             State = EGameState.Finished;
 
             foreach (IGameLifecycleListener listener in _lifecycleListeners)
@@ -74,12 +88,12 @@ namespace ShootEmUp
             }
 
             Debug.Log("Game over!");
-            Time.timeScale = 0;
         }
 
         [ContextMenu("Pause Game")]
         public void PauseGame()
         {
+            _timeScaleService.PauseTime();
             State = EGameState.Paused;
 
             foreach (IGameLifecycleListener listener in _lifecycleListeners)
@@ -91,6 +105,7 @@ namespace ShootEmUp
         [ContextMenu("Resume Game")]
         public void ResumeGame()
         {
+            _timeScaleService.ResumeTime();
             State = EGameState.InProgress;
 
             foreach (IGameLifecycleListener listener in _lifecycleListeners)

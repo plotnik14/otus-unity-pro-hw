@@ -1,60 +1,31 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyManager : MonoBehaviour, IGameStartListener, IGamePauseListener, IGameResumeListener, IGameUpdateListener
+    public class EnemyManager : IGameStartListener, IGameUpdateListener, IDisposable, INonLazy
     {
-        [SerializeField] private GameManager _gameManager;
+        private readonly IGameManager _gameManager;
+        private readonly ICooldownEnemySpawner _enemySpawner;
+        private readonly IEnemyActivator _enemyActivator;
+        private readonly List<Enemy> _activeEnemies = new();
 
-        [Header("Spawn")]
-        [SerializeField] private Transform _poolContainer;
-        [SerializeField] private Transform _worldContainer;
-        [SerializeField] private GameObject _enemyPrefab;
-        [SerializeField] private PositionsGroup _spawnPositions;
-        [SerializeField] private int _maxActiveEnemiesCount = 7;
-        [SerializeField] private int _spawnEnemiesCooldown = 1;
-
-        [Header("Attack")]
-        [SerializeField] private GameObject _attackTarget;
-        [SerializeField] private PositionsGroup _attackPositions;
-
-        private readonly List<EnemyAI> _activeEnemies = new();
-        private GameObjectPool _pool;
-        private Coroutine _spawnEnemiesByCooldownCoroutine;
-
-        private bool CanSpawnEnemy => _activeEnemies.Count < _maxActiveEnemiesCount;
-
-        [UsedImplicitly]
-        private void Awake()
+        public EnemyManager(
+            IGameManager gameManager,
+            ICooldownEnemySpawner enemySpawner,
+            IEnemyActivator enemyActivator,
+            int maxActiveEnemiesCount)
         {
-            _pool = new GameObjectPool(_enemyPrefab.gameObject, _poolContainer, _maxActiveEnemiesCount);
+            _gameManager = gameManager;
+            _enemySpawner = enemySpawner;
+            _enemyActivator = enemyActivator;
+
             _gameManager.RegisterListener(this);
+            _enemySpawner.AddSpawnCondition(() => _activeEnemies.Count < maxActiveEnemiesCount);
+            _enemySpawner.OnEnemySpawned += OnEnemySpawned;
         }
 
-        public void OnGameStart() => _spawnEnemiesByCooldownCoroutine = StartCoroutine(SpawnEnemiesByCooldown());
-
-        public void OnGamePause()
-        {
-            StopCoroutine(_spawnEnemiesByCooldownCoroutine);
-
-            for (var index = 0; index < _activeEnemies.Count; index++)
-            {
-                _activeEnemies[index].OnGamePause();
-            }
-        }
-
-        public void OnGameResume()
-        {
-            _spawnEnemiesByCooldownCoroutine = StartCoroutine(SpawnEnemiesByCooldown());
-
-            for (var index = 0; index < _activeEnemies.Count; index++)
-            {
-                _activeEnemies[index].OnGameResume();
-            }
-        }
+        public void OnGameStart() => _enemySpawner.StartSpawnEnemies();
 
         public void OnGameUpdate(float deltaTime)
         {
@@ -64,44 +35,23 @@ namespace ShootEmUp
             }
         }
 
-        private IEnumerator SpawnEnemiesByCooldown()
+        private void OnEnemySpawned(Enemy enemy)
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(_spawnEnemiesCooldown);
-
-                if (CanSpawnEnemy)
-                {
-                    GameObject enemyObject = SpawnEnemyObject();
-                    ActivateEnemyAI(enemyObject);
-                }
-            }
+            _enemyActivator.Activate(enemy);
+            _activeEnemies.Add(enemy);
+            enemy.OnDeath += OnEnemyDeath;
         }
 
-        private GameObject SpawnEnemyObject()
+        private void OnEnemyDeath(Enemy enemy)
         {
-            GameObject enemyObject = _pool.Get();
-            enemyObject.transform.SetParent(_worldContainer);
-            enemyObject.transform.position = _spawnPositions.GetRandom();
-            enemyObject.SetActive(true);
-            return enemyObject;
+            enemy.OnDeath -= OnEnemyDeath;
+            _activeEnemies.Remove(enemy);
         }
 
-        private void ActivateEnemyAI(GameObject enemyObject)
+        public void Dispose()
         {
-            Vector2 attackPosition = _attackPositions.GetRandom();
-            EnemyAI enemyAI = enemyObject.GetComponent<EnemyAI>();
-            enemyAI.OnDeath += OnEnemyDeath;
-            enemyAI.Initialize(attackPosition, _attackTarget);
-            enemyAI.Activate();
-            _activeEnemies.Add(enemyAI);
-        }
-
-        private void OnEnemyDeath(EnemyAI enemyAI)
-        {
-            enemyAI.OnDeath -= OnEnemyDeath;
-            _activeEnemies.Remove(enemyAI);
-            _pool.Release(enemyAI.gameObject);
+            _gameManager.UnregisterListener(this);
+            _enemySpawner.OnEnemySpawned -= OnEnemySpawned;
         }
     }
 }

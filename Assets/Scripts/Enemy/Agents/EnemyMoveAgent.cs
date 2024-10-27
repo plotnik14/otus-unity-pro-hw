@@ -12,12 +12,11 @@ namespace ShootEmUp
         [SerializeField] private float _reachDestinationRadius = 0.25f;
 
         private Vector2 _destination;
-
-        public bool IsDestinationReached { get; private set; }
+        private bool _isDestinationReached;
 
         public void OnGameUpdate(float _)
         {
-            if (IsDestinationReached)
+            if (_isDestinationReached)
             {
                 return;
             }
@@ -26,7 +25,7 @@ namespace ShootEmUp
 
             if (distanceToDestination <= _reachDestinationRadius)
             {
-                IsDestinationReached = true;
+                _isDestinationReached = true;
                 OnDestinationReached.SafeInvoke(this);
             }
         }
@@ -34,7 +33,7 @@ namespace ShootEmUp
         public void StartMovementToDestination(Vector2 destination)
         {
             _destination = destination;
-            IsDestinationReached = false;
+            _isDestinationReached = false;
             Vector2 direction = (_destination - (Vector2)transform.position).normalized;
             _moveComponent.SetDirection(direction);
         }

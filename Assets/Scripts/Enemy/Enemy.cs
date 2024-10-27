@@ -4,9 +4,10 @@ using Utils;
 
 namespace ShootEmUp
 {
-    public class EnemyAI : MonoBehaviour, IGameUpdateListener, IGamePauseListener, IGameResumeListener
+    public class Enemy : MonoBehaviour, IGameUpdateListener, IReusable<Enemy>
     {
-        public event Action<EnemyAI> OnDeath;
+        public event Action<Enemy> OnDeath;
+        public event Action<Enemy> OnInstanceReleased;
 
         [SerializeField] private EnemyMoveAgent _moveAgent;
         [SerializeField] private EnemyAttackAgent _attackAgent;
@@ -30,23 +31,6 @@ namespace ShootEmUp
 
         public void OnGameUpdate(float deltaTime) => _moveAgent.OnGameUpdate(deltaTime);
 
-        public void OnGamePause()
-        {
-            _moveAgent.StopMovement();
-            _attackAgent.StopAttackingTarget();
-        }
-
-        public void OnGameResume()
-        {
-            if (_moveAgent.IsDestinationReached)
-            {
-                _attackAgent.StartAttackingTarget(_attackTarget);
-                return;
-            }
-
-            _moveAgent.StartMovementToDestination(_attackPosition);
-        }
-
         private void OnDestinationReached(EnemyMoveAgent _)
         {
             _moveAgent.OnDestinationReached -= OnDestinationReached;
@@ -56,10 +40,12 @@ namespace ShootEmUp
 
         private void OnDeathHandler(HitPointsComponent _)
         {
+            _moveAgent.StopMovement();
             _attackAgent.StopAttackingTarget();
             _enemyHpComponent.OnDeath -= OnDeathHandler;
             _moveAgent.OnDestinationReached -= OnDestinationReached;
             OnDeath.SafeInvoke(this);
+            OnInstanceReleased.SafeInvoke(this);
         }
     }
 }

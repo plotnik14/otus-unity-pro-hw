@@ -1,19 +1,28 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using VContainer;
 
 namespace ShootEmUp
 {
     public class LevelBackgroundScroller : MonoBehaviour, IGameUpdateListener
     {
-        [SerializeField] private GameManager _gameManager;
         [SerializeField] private float _startPositionY;
         [SerializeField] private float _endPositionY;
         [SerializeField] private float _scrollSpeedY;
+
+        private IGameManager _gameManager;
 
         private float positionX;
         private float positionZ;
 
         private bool NeedToResetPosition => transform.position.y <= _endPositionY;
+
+        [Inject]
+        private void Construct(IGameManager gameManager)
+        {
+            _gameManager = gameManager;
+            _gameManager.RegisterListener(this);
+        }
 
         [UsedImplicitly]
         private void Awake()
@@ -21,7 +30,6 @@ namespace ShootEmUp
             Vector3 position = transform.position;
             positionX = position.x;
             positionZ = position.z;
-            _gameManager.RegisterListener(this);
         }
 
         public void OnGameUpdate(float deltaTime) => ScrollBackground(deltaTime);

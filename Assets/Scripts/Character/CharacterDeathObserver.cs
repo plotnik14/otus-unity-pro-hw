@@ -1,18 +1,21 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using System;
 
 namespace ShootEmUp
 {
-    public class CharacterDeathObserver : MonoBehaviour
+    public class CharacterDeathObserver : IDisposable, INonLazy
     {
-        [SerializeField] private HitPointsComponent _characterHitPoints;
-        [SerializeField] private GameManager _gameManager;
+        private readonly IGameManager _gameManager;
+        private readonly HitPointsComponent _characterHitPoints;
 
-        [UsedImplicitly]
-        private void Start() => _characterHitPoints.OnDeath += OnDeath;
+        public CharacterDeathObserver(IGameManager gameManager, HitPointsComponent characterHitPoints)
+        {
+            _gameManager = gameManager;
+            _characterHitPoints = characterHitPoints;
 
-        [UsedImplicitly]
-        private void OnDestroy() => _characterHitPoints.OnDeath -= OnDeath;
+            _characterHitPoints.OnDeath += OnDeath;
+        }
+
+        public void Dispose() => _characterHitPoints.OnDeath -= OnDeath;
 
         private void OnDeath(HitPointsComponent _) => _gameManager.FinishGame();
     }

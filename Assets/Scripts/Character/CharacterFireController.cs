@@ -1,18 +1,22 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class CharacterFireController : MonoBehaviour
+    public class CharacterFireController : IDisposable, INonLazy
     {
-        [SerializeField] private InputSystem _input;
-        [SerializeField] private WeaponComponent _characterWeapon;
+        private readonly IInputSystem _input;
+        private readonly WeaponComponent _characterWeapon;
 
-        [UsedImplicitly]
-        private void Start() => _input.OnFire += OnFire;
+        public CharacterFireController(IInputSystem input, WeaponComponent characterWeapon)
+        {
+            _input = input;
+            _characterWeapon = characterWeapon;
 
-        [UsedImplicitly]
-        private void OnDestroy() => _input.OnFire -= OnFire;
+            _input.OnFire += OnFire;
+        }
+
+        public void Dispose() => _input.OnFire -= OnFire;
 
         private void OnFire() => _characterWeapon.Fire(Vector2.up);
     }
