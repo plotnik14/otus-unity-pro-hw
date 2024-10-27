@@ -28,8 +28,11 @@ namespace ShootEmUp
 
         public T Get()
         {
-            T instance = _pool.Pop();
-            instance ??= CreateInstance();
+            if (!_pool.TryPop(out T instance))
+            {
+                instance = CreateInstance();
+            }
+
             instance.OnInstanceReleased += OnInstanceReleased;
             instance.gameObject.SetActive(true);
             return instance;
