@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b764e6a8c124e6fa0e59a80ed653595, type: 3}
+  m_Name: PlayerLevelsConfiguration
+  m_EditorClassIdentifier: 
+  _levels:
+  - _level: 1
+    _stats:
+    - _name: Move Speed
+      _value: 10
+    - _name: Stamina
+      _value: 10
+    - _name: Dexterity
+      _value: 10
+    - _name: Intelligence
+      _value: 10
+    - _name: Damage
+      _value: 10
+    - _name: Regeneration
+      _value: 10
+  - _level: 2
+    _stats:
+    - _name: Move Speed
+      _value: 12
+    - _name: Stamina
+      _value: 13
+    - _name: Dexterity
+      _value: 12
+    - _name: Intelligence
+      _value: 12
+    - _name: Damage
+      _value: 14
+    - _name: Regeneration
+      _value: 12
+  - _level: 3
+    _stats:
+    - _name: Move Speed
+      _value: 15
+    - _name: Stamina
+      _value: 20
+    - _name: Dexterity
+      _value: 12
+    - _name: Intelligence
+      _value: 15
+    - _name: Damage
+      _value: 14
+    - _name: Regeneration
+      _value: 12
+  - _level: 4
+    _stats:
+    - _name: Move Speed
+      _value: 17
+    - _name: Stamina
+      _value: 20
+    - _name: Dexterity
+      _value: 17
+    - _name: Intelligence
+      _value: 15
+    - _name: Damage
+      _value: 18
+    - _name: Regeneration
+      _value: 14
+  - _level: 5
+    _stats:
+    - _name: Move Speed
+      _value: 19
+    - _name: Stamina
+      _value: 20
+    - _name: Dexterity
+      _value: 17
+    - _name: Intelligence
+      _value: 17
+    - _name: Damage
+      _value: 22
+    - _name: Regeneration
+      _value: 16
