@@ -16,7 +16,6 @@ namespace Player
         IReadOnlyList<Stat> StatsForCurrentLevel { get; }
         int RequiredExpForLevelUp { get; }
 
-        void AddExperience(int experience);
         void LevelUp();
     }
 }

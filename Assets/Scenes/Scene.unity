@@ -220,6 +220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df4316bad44fdd9b9e1a4ab220284e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _avatar1: {fileID: 21300000, guid: 954d79ad0f5124da59b33552ab47a641, type: 3}
+  _avatar2: {fileID: 21300000, guid: 7c0892898786946a98a1057c9873611a, type: 3}
+  _avatar3: {fileID: 21300000, guid: a564258f7260e47d58e9ee37e2a3abb7, type: 3}
 --- !u!4 &717727338
 Transform:
   m_ObjectHideFlags: 0
@@ -402,8 +405,8 @@ MonoBehaviour:
   _playerLevelsConfiguration: {fileID: 11400000, guid: 48f0eb278a1e3a748932640928abeb7e,
     type: 2}
   _playerPopupView: {fileID: 5212131376305376288}
-  _name: TestName
-  _description: My description
+  _name: UTHER274
+  _description: I'm the best warrior in the Light Kingdom!
   _icon: {fileID: 21300000, guid: 954d79ad0f5124da59b33552ab47a641, type: 3}
   _currentLevel: 1
   _currentExperience: 0

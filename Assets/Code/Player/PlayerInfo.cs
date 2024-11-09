@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public sealed class PlayerInfo : IPlayerInfo
+    public sealed class PlayerInfo : IPlayerInfo, IPlayerInfoChangeHelper
     {
         private readonly PlayerLevelsConfiguration _levelsConfiguration;
 
@@ -43,15 +43,6 @@ namespace Player
             _levelsConfiguration = levelsConfiguration;
         }
 
-        public void AddExperience(int experience)
-        {
-            int newExp = _currentExperience.Value + experience;
-            newExp = Mathf.Clamp(newExp, 0, RequiredExpForLevelUp);
-            _currentExperience.Value = newExp;
-            _canLevelUp.Value = _currentExperience.Value == RequiredExpForLevelUp
-                                && _currentLevel.Value < MaxAvailableLevel;
-        }
-
         public void LevelUp()
         {
             if (_canLevelUp.Value)
@@ -61,5 +52,20 @@ namespace Player
                 _canLevelUp.Value = false;
             }
         }
+
+        public void AddExperience(int experience)
+        {
+            int newExp = _currentExperience.Value + experience;
+            newExp = Mathf.Clamp(newExp, 0, RequiredExpForLevelUp);
+            _currentExperience.Value = newExp;
+            _canLevelUp.Value = _currentExperience.Value == RequiredExpForLevelUp
+                                && _currentLevel.Value < MaxAvailableLevel;
+        }
+
+        public void SetName(string name) => _name.Value = name;
+
+        public void SetDescription(string description) => _description.Value = description;
+
+        public void SetIcon(Sprite icon) => _icon.Value = icon;
     }
 }
