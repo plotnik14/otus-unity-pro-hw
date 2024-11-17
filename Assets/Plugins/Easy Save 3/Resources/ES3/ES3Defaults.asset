@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ES3Defaults
   m_EditorClassIdentifier: 
   settings:
-    _location: 1
-    path: ' MyLittleUniverse.es3'
+    _location: 0
+    path: OtusHw5Save.es3
     encryptionType: 1
     compressionType: 0
-    encryptionPassword: 12345
+    encryptionPassword: SuperSecurePassword
     directory: 0
     format: 0
     prettyPrint: 1
@@ -29,63 +29,23 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assets
+    - UniRx
+    - Zenject
     - UniTask
-    - Elementary
-    - ES3
-    - VContainer
-    - Tween
+    - SaveSystem
     - UniTask.Linq
-    - GOAP
     - Assembly-CSharp
-    - BehaviourTree
-    - Atomic
-    - Windows
-    - Products
-    - Cinemachine
-    - InventorySystem
-    - Iterators
+    - GameEngine
     - UniTask.DOTween
-    - Localization
-    - PathFinding
-    - Declarative
-    - Agents
-    - GameNodes
-    - AITasks
-    - CustomParticles
-    - GameSystem
-    - Entities
-    - AICommands
-    - Blackboards
-    - CustomAnimations
-    - Assembly-CSharp-firstpass
-    - Purchasing.Common
-    - Services
-    - SqliteModule
-    - BigNumber
-    - Asyncoroutine
-    - PathSystem
-    - NavMeshComponents
-    - Polygons
-    - GameResources
-    - Purchasing
-    - Waypoints
-    - UniTask.Addressables
-    - SystemTime
     - Sirenix.OdinInspector.CompatibilityLayer
+    - UniRx.Examples
     - UniTask.TextMeshPro
-    - Input
-    - PPv2URPConverters
-    - GOAP (EditMode)
+    - UniTask.Addressables
+    - ES3
+    - Assembly-CSharp-firstpass
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - UniTask.Editor
-    - VContainer.Editor
-    - NavMeshComponentsEditor
-    - LessonCraftingTest
     - Sirenix.OdinInspector.Modules.UnityMathematics
-    - InventorySystem (EditMode)
-    - SimpleFolderIcon
-    - Pathfinding (EditMode)
     showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
