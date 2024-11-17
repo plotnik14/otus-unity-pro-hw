@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace SaveSystem.Data
 {
@@ -9,7 +8,7 @@ namespace SaveSystem.Data
         public string ID;
         public string Type;
         public int HitPoints;
-        public Vector3 Position;
-        public Vector3 Rotation;
+        public Vector3Data Position;
+        public Vector3Data Rotation;
     }
 }

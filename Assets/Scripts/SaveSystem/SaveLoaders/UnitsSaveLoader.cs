@@ -22,8 +22,8 @@ namespace SaveSystem.SaveLoaders
                     ID = unit.ID,
                     Type = unit.Type,
                     HitPoints = unit.HitPoints,
-                    Position = unit.Position,
-                    Rotation = unit.Rotation,
+                    Position = Vector3Data.FromVector3(unit.Position),
+                    Rotation = Vector3Data.FromVector3(unit.Rotation),
                 };
                 unitsData.Add(unitData);
             }
@@ -61,8 +61,8 @@ namespace SaveSystem.SaveLoaders
 
             // Остальное сейчас ReadOnly. Нельзя восстановить без изменений в классе Unit
             // unit.Type = unitData.Type;
-            // unit.Position = unitData.Position;
-            // unit.Rotation = unitData.Rotation;
+            // unit.Position = Vector3Data.ToVector3(unitData.Position);
+            // unit.Rotation = Vector3Data.ToVector3(unitData.Rotation);
         }
     }
 }
