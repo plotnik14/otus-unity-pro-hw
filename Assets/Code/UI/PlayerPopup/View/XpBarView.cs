@@ -13,19 +13,19 @@ namespace UI.PlayerPopup.View
         [SerializeField] private Sprite _completedProgressImage;
         [SerializeField] private Sprite _notCompletedProgressImage;
 
+        private readonly CompositeDisposable _compositeDisposable = new();
         private IXpBarPresenter _xpBarPresenter;
-        private CompositeDisposable _compositeDisposable;
 
         public void Show(IXpBarPresenter xpBarPresenter)
         {
             _xpBarPresenter = xpBarPresenter;
-            _compositeDisposable = new CompositeDisposable();
+            _compositeDisposable.Clear();
             _xpBarPresenter.CurrentXpValue.Subscribe(OnXpInfoChanged).AddTo(_compositeDisposable);
         }
 
         public void Hide()
         {
-            _compositeDisposable.Dispose();
+            _compositeDisposable.Clear();
             _xpBarPresenter = null;
         }
 

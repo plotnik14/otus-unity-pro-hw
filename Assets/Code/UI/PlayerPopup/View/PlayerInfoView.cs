@@ -13,11 +13,11 @@ namespace UI.PlayerPopup.View
         [SerializeField] private TMP_Text _description;
         [SerializeField] private XpBarView _xpBarView;
 
-        private CompositeDisposable _compositeDisposable;
+        private readonly CompositeDisposable _compositeDisposable = new();
 
         public void Show(IPlayerInfoPresenter playerInfoPresenter)
         {
-            _compositeDisposable = new CompositeDisposable();
+            _compositeDisposable.Clear();
             playerInfoPresenter.Icon.Subscribe(OnIconChanged).AddTo(_compositeDisposable);
             playerInfoPresenter.Level.Subscribe(OnLevelChanged).AddTo(_compositeDisposable);
             playerInfoPresenter.Description.Subscribe(OnDescriptionChanged).AddTo(_compositeDisposable);
@@ -27,7 +27,7 @@ namespace UI.PlayerPopup.View
         public void Hide()
         {
             _xpBarView.Hide();
-            _compositeDisposable.Dispose();
+            _compositeDisposable.Clear();
         }
 
         private void OnIconChanged(Sprite icon) => _icon.sprite = icon;

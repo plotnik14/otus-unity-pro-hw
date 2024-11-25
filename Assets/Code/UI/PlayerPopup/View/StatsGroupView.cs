@@ -10,15 +10,15 @@ namespace UI.PlayerPopup.View
     {
         [SerializeField] private List<StatView> _statViewGroup;
 
-        private CompositeDisposable _compositeDisposable;
+        private readonly CompositeDisposable _compositeDisposable = new();
 
         public void Show(IStatsGroupPresenter statsGroupPresenter)
         {
-            _compositeDisposable = new CompositeDisposable();
+            _compositeDisposable.Clear();
             statsGroupPresenter.Stats.Subscribe(OnStatsChanged).AddTo(_compositeDisposable);
         }
 
-        public void Hide() => _compositeDisposable.Dispose();
+        public void Hide() => _compositeDisposable.Clear();
 
         private void OnStatsChanged(IReadOnlyList<Stat> stats)
         {

@@ -18,12 +18,12 @@ namespace UI.PlayerPopup.View
         [SerializeField] private Button _closeButton;
 
         private IPlayerPopupPresenter _popupPresenter;
-        private CompositeDisposable _compositeDisposable;
+        private readonly CompositeDisposable _compositeDisposable = new();
 
         public void Show(IPlayerPopupPresenter popupPresenter)
         {
             _popupPresenter = popupPresenter;
-            _compositeDisposable = new CompositeDisposable();
+            _compositeDisposable.Clear();
             _popupPresenter.Name.Subscribe(OnPlayerNameChanged).AddTo(_compositeDisposable);
             _playerInfoView.Show(_popupPresenter.PlayerInfoPresenter);
             _statsGroupView.Show(_popupPresenter.StatsGroupPresenter);
@@ -41,7 +41,7 @@ namespace UI.PlayerPopup.View
             _statsGroupView.Hide();
             _levelUpButton.onClick.RemoveListener(OnLevelUpClick);
             _closeButton.onClick.RemoveListener(OnCloseButtonClick);
-            _compositeDisposable.Dispose();
+            _compositeDisposable.Clear();
             _popupPresenter = null;
         }
 

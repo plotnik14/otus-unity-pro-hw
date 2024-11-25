@@ -8,14 +8,13 @@ namespace UI.PlayerPopup.Presenter
     public class StatsGroupPresenter : IStatsGroupPresenter
     {
         private readonly IPlayerInfo _playerInfo;
-        private readonly CompositeDisposable _compositeDisposable;
+        private readonly CompositeDisposable _compositeDisposable = new();
         private readonly ReactiveProperty<IReadOnlyList<Stat>> _stats = new();
 
         public IReadOnlyReactiveProperty<IReadOnlyList<Stat>> Stats => _stats;
 
         public StatsGroupPresenter(IPlayerInfo playerInfo)
         {
-            _compositeDisposable = new CompositeDisposable();
             _playerInfo = playerInfo;
             _playerInfo.CurrentLevel.Subscribe(OnLevelUp).AddTo(_compositeDisposable);
         }
