@@ -41,7 +41,7 @@ namespace UI.PlayerPopup.View
 
         private void UpdateBarText(int currentXpValue, int requiredXpValue)
         {
-            _progressValueText.text = $"XP: {currentXpValue} / {requiredXpValue}";
+            _progressValueText.text = $"{_xpBarPresenter.XpLabel}: {currentXpValue} / {requiredXpValue}";
         }
 
         private void UpdateBarImage(float progress)

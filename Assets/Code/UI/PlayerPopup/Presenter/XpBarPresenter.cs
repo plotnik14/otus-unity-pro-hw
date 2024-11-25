@@ -9,6 +9,7 @@ namespace UI.PlayerPopup.Presenter
 
         public IReadOnlyReactiveProperty<int> CurrentXpValue => _playerInfo.CurrentExperience;
         public int RequiredXpValue => _playerInfo.RequiredExpForLevelUp;
+        public string XpLabel => "XP"; // localized value
 
         public XpBarPresenter(IPlayerInfo playerInfo) => _playerInfo = playerInfo;
     }

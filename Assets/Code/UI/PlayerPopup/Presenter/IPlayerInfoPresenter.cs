@@ -9,5 +9,6 @@ namespace UI.PlayerPopup.Presenter
         IReadOnlyReactiveProperty<string> Description { get; }
         IReadOnlyReactiveProperty<int> Level { get; }
         IXpBarPresenter XpBarPresenter { get; }
+        string LevelLabel { get; }
     }
 }

@@ -9,6 +9,7 @@ namespace UI.PlayerPopup.Presenter
 
         public IReadOnlyReactiveProperty<string> Name => _playerInfo.Name;
         public IReadOnlyReactiveProperty<bool> CanLevelUp => _playerInfo.CanLevelUp;
+        public string LevelUpButtonLabel => "LEVEL UP"; // localized value
         public IPlayerInfoPresenter PlayerInfoPresenter { get; }
         public IStatsGroupPresenter StatsGroupPresenter { get; }
 

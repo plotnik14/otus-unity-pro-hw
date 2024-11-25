@@ -8,6 +8,7 @@ namespace UI.PlayerPopup.Presenter
         IReadOnlyReactiveProperty<bool> CanLevelUp { get; }
         IPlayerInfoPresenter PlayerInfoPresenter { get; }
         IStatsGroupPresenter StatsGroupPresenter { get; }
+        string LevelUpButtonLabel { get; }
         void LevelUp();
     }
 }

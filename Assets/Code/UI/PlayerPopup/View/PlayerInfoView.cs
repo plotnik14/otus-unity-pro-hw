@@ -14,25 +14,28 @@ namespace UI.PlayerPopup.View
         [SerializeField] private XpBarView _xpBarView;
 
         private readonly CompositeDisposable _compositeDisposable = new();
+        private IPlayerInfoPresenter _playerInfoPresenter;
 
         public void Show(IPlayerInfoPresenter playerInfoPresenter)
         {
             _compositeDisposable.Clear();
-            playerInfoPresenter.Icon.Subscribe(OnIconChanged).AddTo(_compositeDisposable);
-            playerInfoPresenter.Level.Subscribe(OnLevelChanged).AddTo(_compositeDisposable);
-            playerInfoPresenter.Description.Subscribe(OnDescriptionChanged).AddTo(_compositeDisposable);
-            _xpBarView.Show(playerInfoPresenter.XpBarPresenter);
+            _playerInfoPresenter = playerInfoPresenter;
+            _playerInfoPresenter.Icon.Subscribe(OnIconChanged).AddTo(_compositeDisposable);
+            _playerInfoPresenter.Level.Subscribe(OnLevelChanged).AddTo(_compositeDisposable);
+            _playerInfoPresenter.Description.Subscribe(OnDescriptionChanged).AddTo(_compositeDisposable);
+            _xpBarView.Show(_playerInfoPresenter.XpBarPresenter);
         }
 
         public void Hide()
         {
             _xpBarView.Hide();
             _compositeDisposable.Clear();
+            _playerInfoPresenter = null;
         }
 
         private void OnIconChanged(Sprite icon) => _icon.sprite = icon;
 
-        private void OnLevelChanged(int level) => _level.text = $"Level: {level}";
+        private void OnLevelChanged(int level) => _level.text = $"{_playerInfoPresenter.LevelLabel}: {level}";
 
         private void OnDescriptionChanged(string description) => _description.text = description;
     }

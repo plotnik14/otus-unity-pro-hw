@@ -6,5 +6,6 @@ namespace UI.PlayerPopup.Presenter
     {
         IReadOnlyReactiveProperty<int> CurrentXpValue { get; }
         int RequiredXpValue { get; }
+        string XpLabel { get; }
     }
 }

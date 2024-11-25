@@ -8,8 +8,6 @@ namespace UI.PlayerPopup.View
 {
     public class PlayerPopupView : MonoBehaviour
     {
-        private const string LEVEL_UP_LABEL = "LEVEL_UP";
-
         [SerializeField] private TMP_Text _playerName;
         [SerializeField] private PlayerInfoView _playerInfoView;
         [SerializeField] private StatsGroupView _statsGroupView;
@@ -27,7 +25,7 @@ namespace UI.PlayerPopup.View
             _popupPresenter.Name.Subscribe(OnPlayerNameChanged).AddTo(_compositeDisposable);
             _playerInfoView.Show(_popupPresenter.PlayerInfoPresenter);
             _statsGroupView.Show(_popupPresenter.StatsGroupPresenter);
-            _levelUpButtonLabel.text = LEVEL_UP_LABEL;
+            _levelUpButtonLabel.text = _popupPresenter.LevelUpButtonLabel;
             _levelUpButton.onClick.AddListener(OnLevelUpClick);
             _popupPresenter.CanLevelUp.Subscribe(OnCanLevelUpChanged).AddTo(_compositeDisposable);
             _closeButton.onClick.AddListener(OnCloseButtonClick);

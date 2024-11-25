@@ -12,6 +12,7 @@ namespace UI.PlayerPopup.Presenter
         public IReadOnlyReactiveProperty<string> Description => _playerInfo.Description;
         public IReadOnlyReactiveProperty<int> Level => _playerInfo.CurrentLevel;
         public IXpBarPresenter XpBarPresenter { get; }
+        public string LevelLabel => "Level"; // localized value
 
         public PlayerInfoPresenter(IPlayerInfo playerInfo, IXpBarPresenter xpBarPresenter)
         {
