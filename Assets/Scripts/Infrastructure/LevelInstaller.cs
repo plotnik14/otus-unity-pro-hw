@@ -24,14 +24,12 @@ namespace Infrastructure
         private void BindUnitManager()
         {
             UnitManager unitManager = new(_unitsContainer);
-            unitManager.SetupUnits(FindObjectsOfType<Unit>());
             Container.BindInstance(unitManager).AsSingle();
         }
 
         private void BindResourceService()
         {
             ResourceService resourceService = new();
-            resourceService.SetResources(FindObjectsOfType<Resource>());
             Container.BindInstance(resourceService).AsSingle();
         }
 
