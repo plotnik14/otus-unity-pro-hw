@@ -1,10 +1,8 @@
 ﻿namespace SaveSystem.GameRepositories
 {
-    public interface IGameRepository
+    public interface IGameStateRepository
     {
         bool TryGetData<T>(out T data);
         void SetData<T>(T data);
-        void SaveState();
-        void LoadState();
     }
 }

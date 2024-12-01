@@ -4,10 +4,10 @@ namespace SaveSystem.SaveLoaders
 {
     public abstract class SaveLoader<TData, TService> : ISaveLoader
     {
-        private readonly IGameRepository _repository;
+        private readonly IGameStateRepository _repository;
         private readonly TService _service;
 
-        protected SaveLoader(IGameRepository repository, TService service)
+        protected SaveLoader(IGameStateRepository repository, TService service)
         {
             _repository = repository;
             _service = service;

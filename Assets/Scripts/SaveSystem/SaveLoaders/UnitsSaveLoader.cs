@@ -9,7 +9,7 @@ namespace SaveSystem.SaveLoaders
 {
     public class UnitsSaveLoader : SaveLoader<IEnumerable<UnitData>, UnitManager>
     {
-        public UnitsSaveLoader(IGameRepository repository, UnitManager service) : base(repository, service) { }
+        public UnitsSaveLoader(IGameStateRepository repository, UnitManager service) : base(repository, service) { }
 
         protected override IEnumerable<UnitData> ConvertToData(UnitManager service)
         {

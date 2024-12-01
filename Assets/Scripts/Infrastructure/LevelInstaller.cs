@@ -36,8 +36,9 @@ namespace Infrastructure
 
         private void BindRepository()
         {
-            Container.BindInterfacesTo<FileRepository>().AsSingle();
-            // Container.BindInterfacesTo<PlayerPrefRepository>().AsSingle();
+            Container.BindInterfacesTo<GameStateRepository>().AsSingle();
+            Container.BindInterfacesTo<FileGameStateLoader>().AsSingle();
+            // Container.BindInterfacesTo<PlayerPrefsGameStateLoader>().AsSingle();
         }
 
         private void BindSaveLoaders()

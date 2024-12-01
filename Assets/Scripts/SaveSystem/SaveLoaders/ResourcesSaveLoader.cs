@@ -9,7 +9,7 @@ namespace SaveSystem.SaveLoaders
 {
     public class ResourcesSaveLoader : SaveLoader<IEnumerable<ResourceData>, ResourceService>
     {
-        public ResourcesSaveLoader(IGameRepository repository, ResourceService service) : base(repository, service) { }
+        public ResourcesSaveLoader(IGameStateRepository repository, ResourceService service) : base(repository, service) { }
 
         protected override IEnumerable<ResourceData> ConvertToData(ResourceService service)
         {
