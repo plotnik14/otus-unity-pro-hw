@@ -5,11 +5,6 @@ namespace GameEngine
     //Нельзя менять!
     public sealed class Unit : MonoBehaviour
     {
-        public string ID
-        {
-            get => id;
-        }
-
         public string Type
         {
             get => type;
@@ -30,9 +25,6 @@ namespace GameEngine
         {
             get => this.transform.eulerAngles;
         }
-
-        [SerializeField]
-        private string id; // Добавил поле, чтобы обеспечить хоть какой-то признак для сравнения объектов
 
         [SerializeField]
         private string type;

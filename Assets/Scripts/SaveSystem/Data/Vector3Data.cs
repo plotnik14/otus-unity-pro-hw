@@ -23,5 +23,11 @@ namespace SaveSystem.Data
         {
             return new Vector3(vectorData.X, vectorData.Y, vectorData.Z);
         }
+
+        public static Quaternion ToQuaternion(Vector3Data vectorData)
+        {
+            Vector3 eulerAngles = ToVector3(vectorData);
+            return  Quaternion.Euler(eulerAngles);
+        }
     }
 }

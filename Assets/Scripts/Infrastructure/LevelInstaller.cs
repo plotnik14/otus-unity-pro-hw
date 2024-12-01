@@ -11,9 +11,11 @@ namespace Infrastructure
     public class LevelInstaller : MonoInstaller
     {
         [SerializeField] private Transform _unitsContainer;
+        [SerializeField] private UnitPrefabsConfiguration _unitPrefabsConfiguration;
 
         public override void InstallBindings()
         {
+            Container.BindInstance(_unitPrefabsConfiguration);
             BindUnitManager();
             BindResourceService();
             BindRepository();

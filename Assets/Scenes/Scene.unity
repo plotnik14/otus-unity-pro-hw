@@ -1964,6 +1964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitsContainer: {fileID: 1263304700}
+  _unitPrefabsConfiguration: {fileID: 11400000, guid: c8a55240bf8aa1944945fd69a6e1fa7b,
+    type: 2}
 --- !u!114 &2113003069
 MonoBehaviour:
   m_ObjectHideFlags: 0

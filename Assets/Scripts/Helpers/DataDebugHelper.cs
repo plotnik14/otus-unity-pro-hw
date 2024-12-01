@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Helpers
 {
-    public class DataHelper : MonoBehaviour
+    public class DataDebugHelper : MonoBehaviour
     {
         [ShowInInspector]
         private UnitManager _unitManager;

@@ -29,20 +29,20 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - UniRx
     - Zenject
     - UniTask
+    - UniRx
+    - ES3
     - SaveSystem
     - UniTask.Linq
     - Assembly-CSharp
-    - GameEngine
     - UniTask.DOTween
     - Sirenix.OdinInspector.CompatibilityLayer
     - UniRx.Examples
+    - GameEngine
     - UniTask.TextMeshPro
-    - UniTask.Addressables
-    - ES3
     - Assembly-CSharp-firstpass
+    - UniTask.Addressables
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - UniTask.Editor
     - Sirenix.OdinInspector.Modules.UnityMathematics

@@ -3,13 +3,21 @@ using System.Linq;
 using GameEngine;
 using SaveSystem.Data;
 using SaveSystem.GameRepositories;
-using UnityEngine;
 
 namespace SaveSystem.SaveLoaders
 {
     public class UnitsSaveLoader : SaveLoader<IEnumerable<UnitData>, UnitManager>
     {
-        public UnitsSaveLoader(IGameStateRepository repository, UnitManager service) : base(repository, service) { }
+        private readonly UnitPrefabsConfiguration _unitPrefabsConfiguration;
+
+        public UnitsSaveLoader(
+            IGameStateRepository repository,
+            UnitManager service,
+            UnitPrefabsConfiguration unitPrefabsConfiguration)
+            : base(repository, service)
+        {
+            _unitPrefabsConfiguration = unitPrefabsConfiguration;
+        }
 
         protected override IEnumerable<UnitData> ConvertToData(UnitManager service)
         {
@@ -19,7 +27,6 @@ namespace SaveSystem.SaveLoaders
             {
                 var unitData = new UnitData
                 {
-                    ID = unit.ID,
                     Type = unit.Type,
                     HitPoints = unit.HitPoints,
                     Position = Vector3Data.FromVector3(unit.Position),
@@ -33,36 +40,36 @@ namespace SaveSystem.SaveLoaders
 
         protected override void SetupData(IEnumerable<UnitData> data, UnitManager service)
         {
-            foreach (Unit unit in service.GetAllUnits())
-            {
-                RestoreUnitStateByData(unit, data);
-            }
+            DestroyExistingUnits(service);
+            CreateUnitsByData(data, service);
         }
 
         protected override void SetupDefaultData(UnitManager service)
         {
+            DestroyExistingUnits(service);
             service.SetupUnits(new HashSet<Unit>());
         }
 
-        /// <summary>
-        /// Восстановление характеристик, для существующих на сцене юнитов. (сейчас только HitPoints)
-        /// </summary>
-        private static void RestoreUnitStateByData(Unit unit, IEnumerable<UnitData> data)
+        private static void DestroyExistingUnits(UnitManager service)
         {
-            UnitData unitData = data.FirstOrDefault(ud => ud.ID == unit.ID);
-
-            if (unitData == null)
+            foreach (Unit unit in service.GetAllUnits().ToList())
             {
-                Debug.LogError($"Failed to restore state of unit with id:{unit.ID}");
-                return;
+                service.DestroyUnit(unit);
             }
+        }
 
-            unit.HitPoints = unitData.HitPoints;
+        private void CreateUnitsByData(IEnumerable<UnitData> data, UnitManager service)
+        {
+            foreach (UnitData unitData in data)
+            {
+                Unit prefab = _unitPrefabsConfiguration.GetUnitPrefabByType(unitData.Type);
 
-            // Остальное сейчас ReadOnly. Нельзя восстановить без изменений в классе Unit
-            // unit.Type = unitData.Type;
-            // unit.Position = Vector3Data.ToVector3(unitData.Position);
-            // unit.Rotation = Vector3Data.ToVector3(unitData.Rotation);
+                Unit unit = service.SpawnUnit(prefab,
+                    Vector3Data.ToVector3(unitData.Position),
+                    Vector3Data.ToQuaternion(unitData.Rotation));
+
+                unit.HitPoints = unitData.HitPoints;
+            }
         }
     }
 }
