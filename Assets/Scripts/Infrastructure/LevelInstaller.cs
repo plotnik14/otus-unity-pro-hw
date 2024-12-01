@@ -1,6 +1,7 @@
 ﻿using GameEngine;
 using SaveSystem;
 using SaveSystem.GameRepositories;
+using SaveSystem.GameRepositories.StateLoadStrategies;
 using SaveSystem.SaveLoaders;
 using UnityEngine;
 using Zenject;
@@ -36,9 +37,9 @@ namespace Infrastructure
 
         private void BindRepository()
         {
-            Container.BindInterfacesTo<GameStateRepository>().AsSingle();
             Container.BindInterfacesTo<FileGameStateLoader>().AsSingle();
             // Container.BindInterfacesTo<PlayerPrefsGameStateLoader>().AsSingle();
+            Container.BindInterfacesTo<GameStateRepository>().AsSingle();
         }
 
         private void BindSaveLoaders()

@@ -6,12 +6,12 @@ namespace SaveSystem
 {
     public class SaveLoadManager
     {
-        private readonly IGameStateLoader _gameStateLoader;
+        private readonly IGameStateRepository _gameStateRepository;
         private readonly List<ISaveLoader> _saveLoaders;
 
-        public SaveLoadManager(IGameStateLoader gameStateLoader, List<ISaveLoader> saveLoaders)
+        public SaveLoadManager(IGameStateRepository gameStateRepository, List<ISaveLoader> saveLoaders)
         {
-            _gameStateLoader = gameStateLoader;
+            _gameStateRepository = gameStateRepository;
             _saveLoaders = saveLoaders;
         }
 
@@ -22,12 +22,12 @@ namespace SaveSystem
                 saveLoader.SaveGame();
             }
 
-            _gameStateLoader.WriteGameState();
+            _gameStateRepository.WriteState();
         }
 
         public void LoadGame()
         {
-            _gameStateLoader.ReadGameState();
+            _gameStateRepository.ReadState();
 
             foreach (ISaveLoader saveLoader in _saveLoaders)
             {
