@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WK_worker
       objectReference: {fileID: 0}
+    - target: {fileID: 179394, guid: cdbe91a91060b1e4eb4bd0b52d578091, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 411494, guid: cdbe91a91060b1e4eb4bd0b52d578091, type: 3}
       propertyPath: m_RootOrder
       value: 2
