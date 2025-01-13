@@ -1,0 +1,586 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8747902602508914825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8747902602508914833}
+  - component: {fileID: 8038164710550357222}
+  - component: {fileID: 8747902602508914834}
+  - component: {fileID: 8747902602508914835}
+  - component: {fileID: 8747902602508914836}
+  - component: {fileID: 8747902602508914837}
+  - component: {fileID: 8747902602508914838}
+  - component: {fileID: 8747902602508914839}
+  - component: {fileID: 8747902602508914847}
+  - component: {fileID: 8747902602508914832}
+  - component: {fileID: 8747902602508914844}
+  - component: {fileID: 8747902602508914845}
+  - component: {fileID: 8747902602508914846}
+  - component: {fileID: 8747902602508914918}
+  - component: {fileID: 8747902602508914919}
+  - component: {fileID: 8747902602508914840}
+  - component: {fileID: 8747902602508914841}
+  - component: {fileID: 8747902602508914842}
+  - component: {fileID: 8747902602508914843}
+  - component: {fileID: 4355224374422258111}
+  - component: {fileID: 9091813875317331608}
+  - component: {fileID: 88057238136657493}
+  m_Layer: 0
+  m_Name: WorkerBrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8747902602508914833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8038164710550357222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b78800d324e48079106d403fcc50ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _worker: {fileID: 0}
+  _reachTargetDistance: 0.1
+--- !u!114 &8747902602508914834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5f392bbea2fa2499665ed8b604ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoBehaviourTree: {fileID: 8747902602508914836}
+--- !u!114 &8747902602508914835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 8747902602508914839}
+  - {fileID: 8747902602508914847}
+  - {fileID: 8747902602508914832}
+  - {fileID: 4355224374422258111}
+  - {fileID: 9091813875317331608}
+  - {fileID: 88057238136657493}
+  masterBlackboard: {fileID: 0}
+--- !u!114 &8747902602508914836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEditorNode: {fileID: 8747902602508914919}
+  repeatOnFinish: 1
+  maxExecutionsPerTick: 1000
+  parent: {fileID: 0}
+--- !u!114 &8747902602508914837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538645f2f9090fd43bc6154b2e89e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Root
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 220
+    width: 160
+    height: 45
+  parent: {fileID: 0}
+  children:
+  - {fileID: 8747902602508914838}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &8747902602508914838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914837}
+  children:
+  - {fileID: 8747902602508914844}
+  - {fileID: 8747902602508914846}
+  - {fileID: 8747902602508914843}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &8747902602508914839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: BotObject
+  val: {fileID: 8747902602508914825}
+--- !u!114 &8747902602508914847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6860a83fe93e4bbd689336d96bdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: CollectedWood
+  val: 0
+--- !u!114 &8747902602508914832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: HasAvailableTree
+  val: 0
+--- !u!114 &8747902602508914844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b95a918be8d9a4f9085201010bdec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Has collected wood?
+  rect:
+    serializedVersion: 2
+    x: -100
+    y: 400
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914838}
+  children:
+  - {fileID: 8747902602508914845}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  type: 1
+  floatReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  intReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: CollectedWood
+    constantValue: 0
+  comparator: 1
+  floatReference2:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  intReference2:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &8747902602508914845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -100
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914844}
+  children:
+  - {fileID: 8747902602508914918}
+  - {fileID: 8747902602508914919}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &8747902602508914846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534e3ec7de6cd444e984c2e7f68e42e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Can see tree to chop?
+  rect:
+    serializedVersion: 2
+    x: 240
+    y: 460
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914838}
+  children:
+  - {fileID: 8747902602508914842}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  invert: 0
+  type: 0
+  boolReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: HasAvailableTree
+    constantValue: 0
+  objectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: {fileID: 0}
+  transformReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: {fileID: 0}
+--- !u!114 &8747902602508914918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b854b5f4e64acfa7907017da1544f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move To Converter
+  rect:
+    serializedVersion: 2
+    x: -200
+    y: 540
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914845}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  workerBrainObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: BotObject
+    constantValue: {fileID: 0}
+  workTableObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: WorkTableObject
+    constantValue: {fileID: 0}
+--- !u!114 &8747902602508914919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056dcd8ed5bb42bb8dd58aae619ac945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Put Wood To Converter
+  rect:
+    serializedVersion: 2
+    x: -20
+    y: 540
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914845}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  workerBrainObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: BotObject
+    constantValue: {fileID: 0}
+  workTableObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: WorkTableObject
+    constantValue: {fileID: 0}
+--- !u!114 &8747902602508914840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37de516e931d4abba33d612e06c22d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move To Nearest Tree
+  rect:
+    serializedVersion: 2
+    x: 140
+    y: 640
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914842}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  workerBrainObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: BotObject
+    constantValue: {fileID: 0}
+  treeGroupObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: TreeGroupObject
+    constantValue: {fileID: 0}
+--- !u!114 &8747902602508914841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aeae5158a844f3a922767995cd65f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Chop Tree
+  rect:
+    serializedVersion: 2
+    x: 320
+    y: 640
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914842}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  workerBrainObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: BotObject
+    constantValue: {fileID: 0}
+  treeGroupObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: TreeGroupObject
+    constantValue: {fileID: 0}
+--- !u!114 &8747902602508914842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 240
+    y: 560
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914846}
+  children:
+  - {fileID: 8747902602508914840}
+  - {fileID: 8747902602508914841}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &8747902602508914843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1baccf32f6431fa741c743bb957faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Patrol
+  rect:
+    serializedVersion: 2
+    x: 460
+    y: 400
+    width: 160
+    height: 45
+  parent: {fileID: 8747902602508914838}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  workerBrainObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: BotObject
+    constantValue: {fileID: 0}
+  patrolPointsObjectReference:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 8747902602508914835}
+    key: PatrolPointsObject
+    constantValue: {fileID: 0}
+--- !u!114 &4355224374422258111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PatrolPointsObject
+  val: {fileID: 0}
+--- !u!114 &9091813875317331608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: WorkTableObject
+  val: {fileID: 0}
+--- !u!114 &88057238136657493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747902602508914825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: TreeGroupObject
+  val: {fileID: 0}

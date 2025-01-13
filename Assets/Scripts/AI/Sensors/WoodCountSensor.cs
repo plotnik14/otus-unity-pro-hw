@@ -1,0 +1,29 @@
+﻿using JetBrains.Annotations;
+using MBT;
+using Units;
+using UnityEngine;
+
+namespace AI.Sensors
+{
+    public class WoodCountSensor : MonoBehaviour
+    {
+        [SerializeField] private Blackboard _blackboard;
+        [SerializeField] private Worker _worker;
+
+        private IntVariable _collectedWoodCount;
+
+        [UsedImplicitly]
+        private void Awake()
+        {
+            _collectedWoodCount = _blackboard.GetVariable<IntVariable>(BlackboardVariableNames.COLLECTED_WOOD);
+            _collectedWoodCount.Value = _worker.WoodCount;
+            _worker.OnWoodCountChanged += OnWoodCountChanged;
+        }
+
+        [UsedImplicitly]
+        private void OnDestroy() => _worker.OnWoodCountChanged -= OnWoodCountChanged;
+
+        private void OnWoodCountChanged(int currentWoodCount) => _collectedWoodCount.Value = currentWoodCount;
+    }
+
+}
