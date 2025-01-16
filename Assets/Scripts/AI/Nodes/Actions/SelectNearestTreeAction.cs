@@ -1,27 +1,29 @@
-﻿using AI.Brains;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using MBT;
 using Trees;
+using Units;
 using UnityEngine;
 using Tree = Trees.Tree;
 
 namespace AI.Nodes.Actions
 {
     [AddComponentMenu("")]
-    [MBTNode(name = "Actions/Move To Nearest Tree")]
-    public class MoveToNearestTreeAction : Leaf
+    [MBTNode(name = "Actions/Select Nearest Tree")]
+    public class SelectNearestTreeAction : Leaf
     {
-        public GameObjectReference workerBrainObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference workerObjectReference = new(VarRefMode.DisableConstant);
         public GameObjectReference treeGroupObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference selectedTreeObjectReference = new(VarRefMode.DisableConstant);
+        public TransformReference targetTransformReference = new(VarRefMode.DisableConstant);
 
-        private WorkerBrain _workerBrain;
+        private Worker _workerBrain;
         private TreeGroup _treeGroup;
         private Tree _nearestTree;
 
         [UsedImplicitly]
         private void Awake()
         {
-            _workerBrain = workerBrainObjectReference.Value.GetComponent<WorkerBrain>();
+            _workerBrain = workerObjectReference.Value.GetComponent<Worker>();
             _treeGroup = treeGroupObjectReference.Value.GetComponent<TreeGroup>();
             _treeGroup.OnTreesCountChanged += OnTreesCountChanged;
         }
@@ -37,7 +39,8 @@ namespace AI.Nodes.Actions
             if (_nearestTree is null)
                 return NodeResult.failure;
 
-            _workerBrain.MoveToPoint(_nearestTree.transform.position);
+            selectedTreeObjectReference.Value = _nearestTree.gameObject;
+            targetTransformReference.Value = _nearestTree.transform;
             return NodeResult.success;
         }
 

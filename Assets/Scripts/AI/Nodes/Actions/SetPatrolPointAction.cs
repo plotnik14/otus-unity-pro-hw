@@ -1,35 +1,36 @@
-﻿using AI.Brains;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using MBT;
+using Units;
 using UnityEngine;
 
 namespace AI.Nodes.Actions
 {
     [AddComponentMenu("")]
-    [MBTNode(name = "Actions/Patrol")]
-    public class PatrolAction : Leaf
+    [MBTNode(name = "Actions/Set Patrol Point")]
+    public class SetPatrolPointAction : Leaf
     {
-        public GameObjectReference workerBrainObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference workerObjectReference = new(VarRefMode.DisableConstant);
         public GameObjectReference patrolPointsObjectReference = new(VarRefMode.DisableConstant);
+        public Vector3Reference moveDestinationPointReference = new(VarRefMode.DisableConstant);
 
-        private WorkerBrain _workerBrain;
+        private Worker _worker;
         private PatrolPoints _patrolPoints;
 
         [UsedImplicitly]
         private void Awake()
         {
-            _workerBrain = workerBrainObjectReference.Value.GetComponent<WorkerBrain>();
+            _worker = workerObjectReference.Value.GetComponent<Worker>();
             _patrolPoints = patrolPointsObjectReference.Value.GetComponent<PatrolPoints>();
         }
 
         public override NodeResult Execute()
         {
-            if (_workerBrain.IsOnPoint(_patrolPoints.CurrentPoint))
+            if (!_worker.IsMoving)
             {
                 _patrolPoints.NextPoint();
+                moveDestinationPointReference.Value = _patrolPoints.CurrentPoint;
             }
 
-            _workerBrain.MoveToPoint(_patrolPoints.CurrentPoint);
             return NodeResult.success;
         }
     }

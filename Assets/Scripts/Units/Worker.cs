@@ -1,44 +1,48 @@
-﻿using System;
+﻿using Buildings;
 using JetBrains.Annotations;
 using UnityEngine;
-using Utils;
+using Tree = Trees.Tree;
 
 namespace Units
 {
     public class Worker : MonoBehaviour
     {
-        public event Action<int> OnWoodCountChanged;
+        [SerializeField] private MoveEngine _moveEngine;
+        [SerializeField] private Inventory _inventory;
+        [SerializeField] private float _interactionDistance;
 
-        [SerializeField] private float _speed;
+        private float _interactionDistanceSqr;
 
-        private Vector3 _direction;
-        private Transform _transformCached;
-        private int _woodCount;
-
-        public int WoodCount
-        {
-            get => _woodCount;
-            set
-            {
-                _woodCount = value;
-                OnWoodCountChanged.SafeInvoke(_woodCount);
-            }
-        }
+        public bool IsMoving => _moveEngine.IsMoving;
 
         [UsedImplicitly]
-        private void Awake() => _transformCached = transform;
+        private void Awake() => _interactionDistanceSqr = _interactionDistance * _interactionDistance;
 
         [UsedImplicitly]
-        private void Update()
-        {
-            if (_direction == Vector3.zero)
-                return;
+        private void OnValidate() => _interactionDistanceSqr = _interactionDistance * _interactionDistance;
 
-            Vector3 nextPosition = _transformCached.position + _direction * (_speed * Time.deltaTime);
-            _transformCached.LookAt(nextPosition);
-            _transformCached.position = nextPosition;
+        public void MoveTo(Vector3 destinationPoint) => _moveEngine.MoveTo(destinationPoint);
+
+        public bool TryChopTree(Tree tree)
+        {
+            if (!CanInteractWith(tree.transform))
+                return false;
+
+            tree.Chop();
+            _inventory.WoodCount += tree.WoodCount;
+            return true;
         }
 
-        public void SetDirection(Vector3 direction) => _direction = direction;
+        public bool TryPutWood(WorkTable workTable)
+        {
+            if (!CanInteractWith(workTable.transform))
+                return false;
+
+            workTable.AddWood(_inventory.WoodCount);
+            _inventory.WoodCount = 0;
+            return true;
+        }
+
+        private bool CanInteractWith(Transform target) => (target.position - transform.position).sqrMagnitude <= _interactionDistanceSqr;
     }
 }

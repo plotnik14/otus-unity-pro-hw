@@ -1,7 +1,6 @@
-﻿using AI.Brains;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using MBT;
-using Trees;
+using Units;
 using UnityEngine;
 using Tree = Trees.Tree;
 
@@ -11,42 +10,28 @@ namespace AI.Nodes.Actions
     [MBTNode(name = "Actions/Chop Tree")]
     public class ChopTreeAction : Leaf
     {
-        public GameObjectReference workerBrainObjectReference = new(VarRefMode.DisableConstant);
-        public GameObjectReference treeGroupObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference workerObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference selectedTreeObjectReference = new(VarRefMode.DisableConstant);
 
-        private WorkerBrain _workerBrain;
-        private TreeGroup _treeGroup;
-        private Tree _nearestTree;
+        private Worker _worker;
 
         [UsedImplicitly]
-        private void Awake()
-        {
-            _workerBrain = workerBrainObjectReference.Value.GetComponent<WorkerBrain>();
-            _treeGroup = treeGroupObjectReference.Value.GetComponent<TreeGroup>();
-            _treeGroup.OnTreesCountChanged += OnTreesCountChanged;
-        }
-
-        [UsedImplicitly]
-        private void OnDestroy() => _treeGroup.OnTreesCountChanged -= OnTreesCountChanged;
+        private void Awake() => _worker = workerObjectReference.Value.GetComponent<Worker>();
 
         public override NodeResult Execute()
         {
-            if (_nearestTree is null)
-                _nearestTree = _treeGroup.GetNearestTree(_workerBrain.transform.position);
-
-            if (_nearestTree is null)
+            if (selectedTreeObjectReference.Value is null)
                 return NodeResult.failure;
 
-            if (_workerBrain.TryChopTree(_nearestTree))
+            Tree selectedTree = selectedTreeObjectReference.Value.GetComponent<Tree>();
+
+            if (_worker.TryChopTree(selectedTree))
             {
-                // ToDo написать нормальную логику рубки дерева
-                _treeGroup.ChopTree(_nearestTree);
+                selectedTreeObjectReference.Value = null;
                 return NodeResult.success;
             }
 
             return NodeResult.running;
         }
-
-        private void OnTreesCountChanged(int _) => _nearestTree = null;
     }
 }

@@ -1,31 +1,31 @@
-﻿using AI.Brains;
-using Buildings;
+﻿using Buildings;
 using JetBrains.Annotations;
 using MBT;
+using Units;
 using UnityEngine;
 
 namespace AI.Nodes.Actions
 {
     [AddComponentMenu("")]
-    [MBTNode(name = "Actions/Put Wood To Converter")]
-    public class PutWoodToConverterAction : Leaf
+    [MBTNode(name = "Actions/Put Wood")]
+    public class PutWoodAction : Leaf
     {
-        public GameObjectReference workerBrainObjectReference = new(VarRefMode.DisableConstant);
+        public GameObjectReference workerObjectReference = new(VarRefMode.DisableConstant);
         public GameObjectReference workTableObjectReference = new(VarRefMode.DisableConstant);
 
-        private WorkerBrain _workerBrain;
+        private Worker _worker;
         private WorkTable _workTable;
 
         [UsedImplicitly]
         private void Awake()
         {
-            _workerBrain = workerBrainObjectReference.Value.GetComponent<WorkerBrain>();
+            _worker = workerObjectReference.Value.GetComponent<Worker>();
             _workTable = workTableObjectReference.Value.GetComponent<WorkTable>();
         }
 
         public override NodeResult Execute()
         {
-            return _workerBrain.TryPutWood(_workTable)
+            return _worker.TryPutWood(_workTable)
                 ? NodeResult.success
                 : NodeResult.running;
         }

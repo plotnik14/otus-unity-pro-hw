@@ -8,7 +8,7 @@ namespace AI.Sensors
     public class WoodCountSensor : MonoBehaviour
     {
         [SerializeField] private Blackboard _blackboard;
-        [SerializeField] private Worker _worker;
+        [SerializeField] private Inventory _inventory;
 
         private IntVariable _collectedWoodCount;
 
@@ -16,12 +16,12 @@ namespace AI.Sensors
         private void Awake()
         {
             _collectedWoodCount = _blackboard.GetVariable<IntVariable>(BlackboardVariableNames.COLLECTED_WOOD);
-            _collectedWoodCount.Value = _worker.WoodCount;
-            _worker.OnWoodCountChanged += OnWoodCountChanged;
+            _collectedWoodCount.Value = _inventory.WoodCount;
+            _inventory.OnWoodCountChanged += OnWoodCountChanged;
         }
 
         [UsedImplicitly]
-        private void OnDestroy() => _worker.OnWoodCountChanged -= OnWoodCountChanged;
+        private void OnDestroy() => _inventory.OnWoodCountChanged -= OnWoodCountChanged;
 
         private void OnWoodCountChanged(int currentWoodCount) => _collectedWoodCount.Value = currentWoodCount;
     }

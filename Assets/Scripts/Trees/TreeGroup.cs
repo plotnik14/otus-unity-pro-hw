@@ -23,24 +23,28 @@ namespace Trees
 
         public int CurrentTreesCount => _trees.Count;
 
+        private bool CanSpawnTree
+        {
+            get
+            {
+                if (_lastSpawnTime + _cooldown > Time.time)
+                    return false;
+
+                if (_trees.Count >= _spawnPoints.Count)
+                    return false;
+
+                return true;
+            }
+        }
+
         [UsedImplicitly]
         private void Update()
         {
-            if (_lastSpawnTime + _cooldown > Time.time)
-                return;
-
-            if (_trees.Count >= _spawnPoints.Count)
-                return;
-
-            SpawnTree();
-            _lastSpawnTime = Time.time;
-        }
-
-        public void ChopTree(Tree treeObject)
-        {
-            _trees.Remove(treeObject);
-            OnTreesCountChanged.SafeInvoke(_trees.Count);
-            Destroy(treeObject.gameObject);
+            if (CanSpawnTree)
+            {
+                SpawnTree();
+                _lastSpawnTime = Time.time;
+            }
         }
 
         [CanBeNull]
@@ -67,6 +71,7 @@ namespace Trees
         private void SpawnTree()
         {
             Tree spawnedTree = Instantiate(_treePrefab, CurrentSpawnPoint, Quaternion.identity, transform);
+            spawnedTree.OnChopped += OnTreeChopped;
             _trees.Add(spawnedTree);
             SetNextSpawnPoint();
             OnTreesCountChanged.SafeInvoke(_trees.Count);
@@ -81,6 +86,14 @@ namespace Trees
                 return;
 
             SpawnTree();
+        }
+
+        private void OnTreeChopped(Tree choppedTree)
+        {
+            choppedTree.OnChopped -= OnTreeChopped;
+            _trees.Remove(choppedTree);
+            OnTreesCountChanged.SafeInvoke(_trees.Count);
+            Destroy(choppedTree.gameObject);
         }
     }
 }
