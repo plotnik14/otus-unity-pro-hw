@@ -37,9 +37,9 @@ MonoBehaviour:
     - UniTask.Linq
     - Assembly-CSharp
     - UniTask.DOTween
+    - GameEngine
     - Sirenix.OdinInspector.CompatibilityLayer
     - UniRx.Examples
-    - GameEngine
     - UniTask.TextMeshPro
     - Assembly-CSharp-firstpass
     - UniTask.Addressables
