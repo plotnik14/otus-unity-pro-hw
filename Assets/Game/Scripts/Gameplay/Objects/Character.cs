@@ -4,17 +4,10 @@ namespace SampleGame
 {
     public sealed class Character : MonoBehaviour, ICharacter
     {
-        [SerializeField]
-        private float speed = 2.5f;
+        [SerializeField] private float _speed = 2.5f;
 
-        public void Move(Vector3 direction, float deltaTime)
-        {
-            this.transform.position += direction * (deltaTime * this.speed);
-        }
+        public Vector3 Position => transform.position;
 
-        public Vector3 GetPosition()
-        {
-            return this.transform.position;
-        }
+        public void Move(Vector3 direction, float deltaTime) => transform.position += direction * (deltaTime * _speed);
     }
 }
