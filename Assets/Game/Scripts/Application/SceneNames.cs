@@ -1,0 +1,8 @@
+﻿namespace SampleGame
+{
+    public static class SceneNames
+    {
+        public const string MENU = "Menu";
+        public const string GAME = "Game";
+    }
+}

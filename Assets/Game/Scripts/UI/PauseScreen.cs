@@ -11,11 +11,13 @@ namespace SampleGame
         [SerializeField] private Button _exitButton;
 
         private MenuLoader _menuLoader;
+        private GameLoader _gameLoader;
 
         [Inject]
         public void Construct(MenuLoader menuLoader, GameLoader gameLoader)
         {
             _menuLoader = menuLoader;
+            _gameLoader = gameLoader;
             gameObject.SetActive(false);
         }
 
@@ -23,14 +25,14 @@ namespace SampleGame
         private void OnEnable()
         {
             _resumeButton.onClick.AddListener(Hide);
-            _exitButton.onClick.AddListener(_menuLoader.LoadMenu);
+            _exitButton.onClick.AddListener(Exit);
         }
 
         [UsedImplicitly]
         private void OnDisable()
         {
             _resumeButton.onClick.RemoveListener(Hide);
-            _exitButton.onClick.RemoveListener(_menuLoader.LoadMenu);
+            _exitButton.onClick.RemoveListener(Exit);
         }
 
         public void Show()
@@ -39,10 +41,16 @@ namespace SampleGame
             gameObject.SetActive(true);
         }
 
-        public void Hide()
+        private void Hide()
         {
             Time.timeScale = 1; //KISS
             gameObject.SetActive(false);
+        }
+
+        private void Exit()
+        {
+            _menuLoader.LoadMenu();
+            _gameLoader.UnloadGame();
         }
     }
 }

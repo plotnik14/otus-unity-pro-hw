@@ -4,7 +4,7 @@ namespace SampleGame
 {
     public sealed class ApplicationExiter
     {
-        public static void ExitApp()
+        public void ExitApp()
         {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;

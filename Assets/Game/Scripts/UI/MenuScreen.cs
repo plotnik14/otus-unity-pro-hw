@@ -14,24 +14,28 @@ namespace SampleGame
         private GameLoader _gameLoader;
         
         [Inject]
-        public void Construct(ApplicationExiter applicationFinisher, GameLoader gameLoader)
+        public void Construct(ApplicationExiter applicationExiter, GameLoader gameLoader)
         {
+            _applicationExiter = applicationExiter;
             _gameLoader = gameLoader;
-            _applicationExiter = applicationFinisher;
         }
 
         [UsedImplicitly]
         private void OnEnable()
         {
-            _startButton.onClick.AddListener(_gameLoader.LoadGame);
-            _exitButton.onClick.AddListener(ApplicationExiter.ExitApp);
+            _startButton.onClick.AddListener(StartGame);
+            _exitButton.onClick.AddListener(CloseGame);
         }
 
         [UsedImplicitly]
         private void OnDisable()
         {
-            _startButton.onClick.RemoveListener(_gameLoader.LoadGame);
-            _exitButton.onClick.RemoveListener(ApplicationExiter.ExitApp);
+            _startButton.onClick.RemoveListener(StartGame);
+            _exitButton.onClick.RemoveListener(CloseGame);
         }
+
+        private void StartGame() => _gameLoader.LoadGame();
+
+        private void CloseGame() => _applicationExiter.ExitApp();
     }
 }
