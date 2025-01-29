@@ -20,11 +20,13 @@ MonoBehaviour:
   - m_GUID: 2e4558fee079a4560a88243884ada50e
     m_Address: MenuScreen
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - preload
   - m_GUID: 4d3b77ff19d204d1cb351de63cb12c50
     m_Address: PauseScreen
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5b095be71174be343a926c6600e25ba1, type: 2}
   m_SchemaSet:

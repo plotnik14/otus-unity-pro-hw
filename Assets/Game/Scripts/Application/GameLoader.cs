@@ -8,14 +8,8 @@ namespace SampleGame
     {
         private AsyncOperationHandle<SceneInstance> loadGameHandle;
 
-        public void UnloadGame()
-        {
-            Addressables.UnloadSceneAsync(loadGameHandle);
-        }
+        public void LoadGame() => loadGameHandle = Addressables.LoadSceneAsync(SceneNames.GAME);
 
-        public void LoadGame()
-        {
-            loadGameHandle = Addressables.LoadSceneAsync(SceneNames.GAME);
-        }
+        public void UnloadGame() => Addressables.UnloadSceneAsync(loadGameHandle);
     }
 }
