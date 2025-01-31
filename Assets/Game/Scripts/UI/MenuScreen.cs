@@ -11,13 +11,13 @@ namespace SampleGame
         [SerializeField] private Button _exitButton;
         
         private ApplicationExiter _applicationExiter;
-        private GameLoader _gameLoader;
+        private SceneLoader _sceneLoader;
         
         [Inject]
-        public void Construct(ApplicationExiter applicationExiter, GameLoader gameLoader)
+        public void Construct(ApplicationExiter applicationExiter, SceneLoader sceneLoader)
         {
             _applicationExiter = applicationExiter;
-            _gameLoader = gameLoader;
+            _sceneLoader = sceneLoader;
         }
 
         [UsedImplicitly]
@@ -34,7 +34,7 @@ namespace SampleGame
             _exitButton.onClick.RemoveListener(CloseGame);
         }
 
-        private void StartGame() => _gameLoader.LoadGame();
+        private void StartGame() => _sceneLoader.LoadSceneAsync(SceneNames.GAME);
 
         private void CloseGame() => _applicationExiter.ExitApp();
     }

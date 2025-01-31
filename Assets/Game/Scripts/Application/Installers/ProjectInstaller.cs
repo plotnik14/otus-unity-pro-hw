@@ -15,8 +15,7 @@ namespace SampleGame
             Container.BindInterfacesAndSelfTo<AssetsLoader>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ApplicationStarter>().AsSingle().NonLazy();
             Container.Bind<ApplicationExiter>().AsSingle().NonLazy();
-            Container.Bind<GameLoader>().AsSingle().NonLazy();
-            Container.Bind<MenuLoader>().AsSingle().NonLazy();
+            Container.Bind<SceneLoader>().AsSingle().NonLazy();
         }
     }
 }

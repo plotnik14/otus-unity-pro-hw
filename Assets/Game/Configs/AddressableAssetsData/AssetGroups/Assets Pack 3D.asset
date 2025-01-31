@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Assets Pack 3D
+  m_EditorClassIdentifier: 
+  m_GroupName: Assets Pack 3D
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 13db57efb5fdaaf49abe5cf60cbdacd4
+  m_SerializeEntries:
+  - m_GUID: 67cbe541ad91740769fd7f4c2c6429fb
+    m_Address: Assets/AssetPacks/3D/Tiles/Materials/Ground1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53275a137324d4611add21b88cfe25c4
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Stone.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dead8c93ab90049378214f1d8e06e785
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Tree.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2128980c08696495dad43435484c511f
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Cave.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ea80d7d636e046dca895e2c51c49737
+    m_Address: Assets/AssetPacks/3D/Tiles/Materials/Sand1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ea26ded6afbc4572a655809c6ab88a6
+    m_Address: Assets/AssetPacks/3D/Objects/Materials/Pallete.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3633b57e7af6142258f8f6716322d6fe
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Tile.v2.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 055c92b262ca74d6099d1687bf091807
+    m_Address: Assets/AssetPacks/3D/Tiles/Textures/Sand1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 536472c1c862a4a7cb8dbbbc7056e79d
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Skull1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6b353724b6784a84b82c22d77cb2b05
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Bridge.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dff72385f24ec420790973d1bd695d05
+    m_Address: Assets/AssetPacks/3D/Tiles/Materials/Sand2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 86ae8a08552d54654bbe2ccf0f572409
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Paling.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 75e5b34ce3a0544a6800c73765fa1c3c
+    m_Address: Assets/AssetPacks/3D/Tiles/Materials/Sand2 1.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 090fbd4d26bfb457497c602f01a6d514
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Bones/Bone_1.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 272f587d02b2d437796e1a318bb3b6ed
+    m_Address: Assets/AssetPacks/3D/Tiles/Materials/Ground2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: afe0e94a9e25d4455b0f87a6347cd9e3
+    m_Address: Assets/AssetPacks/3D/Tiles/Textures/Ground2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08e91cec80a484d3a9dfd5279f0a27b7
+    m_Address: Assets/AssetPacks/3D/Tiles/Textures/Sand2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49a9c321b0fb444fb8e446bc29f31c56
+    m_Address: Assets/AssetPacks/3D/Objects/Models/Totem.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d762d3487e63f4e1782b71a77ea78818
+    m_Address: Assets/AssetPacks/3D/Objects/Textures/Pallete.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54e2cafad5f1b44dd86b14b11af2d054
+    m_Address: Assets/AssetPacks/3D/Tiles/Textures/Ground1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5b095be71174be343a926c6600e25ba1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2e4ea7e486790454a8b49069455bef96, type: 2}
+    - {fileID: 11400000, guid: ec1740114984f814ca46924cfeb5ac09, type: 2}

@@ -10,14 +10,12 @@ namespace SampleGame
         [SerializeField] private Button _resumeButton;
         [SerializeField] private Button _exitButton;
 
-        private MenuLoader _menuLoader;
-        private GameLoader _gameLoader;
+        private SceneLoader _sceneLoader;
 
         [Inject]
-        public void Construct(MenuLoader menuLoader, GameLoader gameLoader)
+        public void Construct(SceneLoader sceneLoader)
         {
-            _menuLoader = menuLoader;
-            _gameLoader = gameLoader;
+            _sceneLoader = sceneLoader;
             gameObject.SetActive(false);
         }
 
@@ -47,10 +45,6 @@ namespace SampleGame
             gameObject.SetActive(false);
         }
 
-        private void Exit()
-        {
-            _menuLoader.LoadMenu();
-            _gameLoader.UnloadGame();
-        }
+        private void Exit() => _sceneLoader.LoadSceneAsync(SceneNames.MENU);
     }
 }
