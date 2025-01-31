@@ -1711,6 +1711,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1834595514824283091}
     m_Modifications:
+    - target: {fileID: 7621599114874693515, guid: aad2d00c3d5e544cd97c0781cc350824,
+        type: 3}
+      propertyPath: _locationName
+      value: Location2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621599114874693515, guid: aad2d00c3d5e544cd97c0781cc350824,
+        type: 3}
+      propertyPath: _locationAsset.m_AssetGUID
+      value: 2edcaecc54641104b9b2fffcb02631a2
+      objectReference: {fileID: 0}
     - target: {fileID: 8597228991537182764, guid: aad2d00c3d5e544cd97c0781cc350824,
         type: 3}
       propertyPath: m_Name

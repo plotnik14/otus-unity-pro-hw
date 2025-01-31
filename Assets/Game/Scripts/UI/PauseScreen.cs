@@ -11,11 +11,15 @@ namespace SampleGame
         [SerializeField] private Button _exitButton;
 
         private SceneLoader _sceneLoader;
+        private LocationLoader _locationLoader;
 
         [Inject]
-        public void Construct(SceneLoader sceneLoader)
+        public void Construct(SceneLoader sceneLoader
+            // , LocationLoader locationLoader
+            )
         {
             _sceneLoader = sceneLoader;
+            // _locationLoader = locationLoader;
             gameObject.SetActive(false);
         }
 
@@ -45,6 +49,10 @@ namespace SampleGame
             gameObject.SetActive(false);
         }
 
-        private void Exit() => _sceneLoader.LoadSceneAsync(SceneNames.MENU);
+        private void Exit()
+        {
+            // _locationLoader.UnloadAllLocations();
+            _sceneLoader.LoadSceneAsync(SceneNames.MENU);
+        }
     }
 }

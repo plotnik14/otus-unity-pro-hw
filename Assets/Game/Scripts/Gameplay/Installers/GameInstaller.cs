@@ -8,6 +8,7 @@ namespace SampleGame
         [SerializeField] private CameraConfig _cameraConfig;
         [SerializeField] private Camera _camera;
         [SerializeField] private InputConfig _inputConfig;
+        [SerializeField] private Transform _locationsContainer;
 
         public override void InstallBindings()
         {
@@ -37,6 +38,11 @@ namespace SampleGame
                 .AsCached()
                 .WithArguments(_cameraConfig.cameraOffset)
                 .NonLazy();
+
+            Container
+                .Bind<LocationLoader>()
+                .AsSingle()
+                .WithArguments(_locationsContainer);
         }
     }
 }
