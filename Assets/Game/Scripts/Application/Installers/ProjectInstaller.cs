@@ -11,7 +11,6 @@ namespace SampleGame
     {
         public override void InstallBindings()
         {
-            Container.Bind<ObjectsFactory>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<AssetsLoader>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ApplicationStarter>().AsSingle().NonLazy();
             Container.Bind<ApplicationExiter>().AsSingle().NonLazy();

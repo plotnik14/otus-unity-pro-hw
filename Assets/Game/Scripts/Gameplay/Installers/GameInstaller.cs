@@ -13,6 +13,11 @@ namespace SampleGame
         public override void InstallBindings()
         {
             Container
+                .Bind<ObjectsFactory>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
                 .Bind<Camera>()
                 .FromInstance(_camera);
 
