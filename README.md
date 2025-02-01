@@ -4,9 +4,9 @@
 * **hw2-game-lifecycle**
 * **hw3-di-vcontainer**
 * **hw4-mvp**
-* **hw5-data-loader** - _in progress_
+* **hw5-data-loader**
 * **hw6-?**
-* **hw7-?**
+* **hw7-ecs** - _in progress_
 * **hw8-?**
 * **hw9-?**
 * **hw10-?**
