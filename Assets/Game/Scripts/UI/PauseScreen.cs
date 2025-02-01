@@ -14,12 +14,10 @@ namespace SampleGame
         private LocationLoader _locationLoader;
 
         [Inject]
-        public void Construct(SceneLoader sceneLoader
-            // , LocationLoader locationLoader
-            )
+        public void Construct(SceneLoader sceneLoader, LocationLoader locationLoader)
         {
             _sceneLoader = sceneLoader;
-            // _locationLoader = locationLoader;
+            _locationLoader = locationLoader;
             gameObject.SetActive(false);
         }
 
@@ -51,7 +49,7 @@ namespace SampleGame
 
         private void Exit()
         {
-            // _locationLoader.UnloadAllLocations();
+            _locationLoader.UnloadAllLocations();
             _sceneLoader.LoadSceneAsync(SceneNames.MENU);
         }
     }
