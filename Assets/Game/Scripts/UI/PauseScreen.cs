@@ -49,6 +49,7 @@ namespace SampleGame
 
         private void Exit()
         {
+            Hide();
             _locationLoader.UnloadAllLocations();
             _sceneLoader.LoadSceneAsync(SceneNames.MENU);
         }
