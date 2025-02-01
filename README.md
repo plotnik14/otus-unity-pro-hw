@@ -12,7 +12,7 @@
 * **hw10-?**
 * **hw11-?**
 * **hw12-?**
-* **hw13-?**
-* **hw14-?**
+* **hw13-ai-behaviour-tree**
+* **hw14-addressables**
 * **hw15-?**
 * **project-?**
