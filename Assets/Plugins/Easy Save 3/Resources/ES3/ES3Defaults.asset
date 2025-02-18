@@ -34,9 +34,9 @@ MonoBehaviour:
     - UniRx
     - ES3
     - UniTask.Linq
-    - Assembly-CSharp
     - UniTask.DOTween
     - Sirenix.OdinInspector.CompatibilityLayer
+    - Assembly-CSharp
     - UniRx.Examples
     - UniTask.TextMeshPro
     - Assembly-CSharp-firstpass
