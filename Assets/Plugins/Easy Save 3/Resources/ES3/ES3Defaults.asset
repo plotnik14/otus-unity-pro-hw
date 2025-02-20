@@ -32,11 +32,11 @@ MonoBehaviour:
     - Zenject
     - UniTask
     - UniRx
+    - Assembly-CSharp
     - ES3
     - UniTask.Linq
     - UniTask.DOTween
     - Sirenix.OdinInspector.CompatibilityLayer
-    - Assembly-CSharp
     - UniRx.Examples
     - UniTask.TextMeshPro
     - Assembly-CSharp-firstpass
