@@ -9,27 +9,35 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int Direction = 1;
-    public const int EntityView = 2;
-    public const int MovementSpeed = 3;
-    public const int Position = 4;
-    public const int Rotation = 5;
-    public const int RotationSpeed = 6;
-    public const int Team = 7;
-    public const int PositionListener = 8;
-    public const int RotationListener = 9;
-    public const int TeamListener = 10;
+    public const int Attack = 1;
+    public const int Direction = 2;
+    public const int EntityView = 3;
+    public const int Health = 4;
+    public const int MovementSpeed = 5;
+    public const int Position = 6;
+    public const int RequestSetTarget = 7;
+    public const int Rotation = 8;
+    public const int RotationSpeed = 9;
+    public const int Target = 10;
+    public const int Team = 11;
+    public const int PositionListener = 12;
+    public const int RotationListener = 13;
+    public const int TeamListener = 14;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "Attack",
         "Direction",
         "EntityView",
+        "Health",
         "MovementSpeed",
         "Position",
+        "RequestSetTarget",
         "Rotation",
         "RotationSpeed",
+        "Target",
         "Team",
         "PositionListener",
         "RotationListener",
@@ -38,12 +46,16 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Core.Components.AssetComponent),
+        typeof(Core.Components.AttackComponent),
         typeof(Core.Components.DirectionComponent),
         typeof(Core.Components.EntityViewComponent),
+        typeof(Core.Components.HealthComponent),
         typeof(Core.Components.MovementSpeedComponent),
         typeof(Core.Components.PositionComponent),
+        typeof(Core.Components.Requests.RequestSetTarget),
         typeof(Core.Components.RotationComponent),
         typeof(Core.Components.RotationSpeedComponent),
+        typeof(Core.Components.TargetComponent),
         typeof(Core.Components.TeamComponent),
         typeof(PositionListenerComponent),
         typeof(RotationListenerComponent),

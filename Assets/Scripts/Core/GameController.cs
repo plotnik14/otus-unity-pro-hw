@@ -17,6 +17,9 @@ namespace Core
             _systems = new Feature("Systems")
                 .Add(new SpawnArmySystem(contexts.game))
                 .Add(new CreateViewSystem(contexts.game))
+
+                .Add(new FindTargetSystem(contexts.game))
+
                 .Add(new MovementSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
                 .Add(new RotationSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
                 .Add(new PositionEventSystem(contexts)) // ToDo вынести в конец пайплайна

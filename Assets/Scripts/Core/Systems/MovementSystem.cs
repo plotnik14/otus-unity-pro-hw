@@ -12,7 +12,9 @@ namespace Core.Systems
         public MovementSystem(GameContext gameContext, ITimeService timeService)
         {
             _movementGroup = gameContext.GetGroup(GameMatcher
-                .AllOf(GameMatcher.Position, GameMatcher.Direction, GameMatcher.MovementSpeed));
+                .AllOf(GameMatcher.Position, GameMatcher.Direction, GameMatcher.MovementSpeed)
+                .NoneOf(GameMatcher.Target) // ToDO отвязать перемещение от наличия цели. Флаг?
+            );
             _timeService = timeService;
         }
 
