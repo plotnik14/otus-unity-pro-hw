@@ -6,24 +6,27 @@ namespace Engine.View
 {
     public class UnityView : MonoBehaviour, IEntityView, IPositionListener, IRotationListener
     {
-        protected GameEntity LinkedEntity { get; private set; }
+        private GameEntity _linkedEntity;
 
         public void Link(IEntity entity)
         {
             gameObject.Link(entity);
-            LinkedEntity = (GameEntity)entity;
-            LinkedEntity.AddPositionListener(this);
-            LinkedEntity.AddRotationListener(this);
+            _linkedEntity = (GameEntity)entity;
+            _linkedEntity.AddPositionListener(this);
+            _linkedEntity.AddRotationListener(this);
+            OnLink(_linkedEntity);
         }
 
         public void OnPosition(GameEntity entity, Vector3 value) => gameObject.transform.position = value;
 
         public void OnRotation(GameEntity entity, Vector3 value) => gameObject.transform.forward = value;
 
+        protected virtual void OnLink(GameEntity linkedEntity) { }
+
         protected virtual void OnDestroy()
         {
             gameObject.Unlink();
-            LinkedEntity = null;
+            _linkedEntity = null;
         }
     }
 }

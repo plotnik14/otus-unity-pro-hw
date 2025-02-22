@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7315215145211169380}
-  - component: {fileID: 851483198294245251}
+  - component: {fileID: 4694683953747862441}
   m_Layer: 0
   m_Name: RangeUnit
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851483198294245251
+--- !u!114 &4694683953747862441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,9 +141,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7315215145211169381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a1dcaa8134b2ca242675b235b15a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8be63531b0cc4fa38dc621bdaf204dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blueMaterial: {fileID: 2100000, guid: 932e17e267436694e8573ec81095e6e5, type: 2}
+  _redMaterial: {fileID: 2100000, guid: eba50201f67e78f4d8973d6e00bc7595, type: 2}
+  _renderers:
+  - {fileID: 7315215146154731872}
+  - {fileID: 7315215145035334045}
 --- !u!1 &7315215145732250985
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +161,7 @@ GameObject:
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

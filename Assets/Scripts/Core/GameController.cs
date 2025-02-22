@@ -20,7 +20,8 @@ namespace Core
                 .Add(new MovementSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
                 .Add(new RotationSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
                 .Add(new PositionEventSystem(contexts)) // ToDo вынести в конец пайплайна
-                .Add(new RotationEventSystem(contexts)); // ToDo вынести в конец пайплайна
+                .Add(new RotationEventSystem(contexts))
+                .Add(new TeamEventSystem(contexts));
 
             _systems.Initialize();
         }
