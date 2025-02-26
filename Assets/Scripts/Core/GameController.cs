@@ -12,19 +12,29 @@ namespace Core
         [UsedImplicitly]
         private void Start()
         {
-            var contexts = Contexts.sharedInstance;
+            ITimeService timeService = new UnityTimeService(); // ToDO DI?
 
+            var contexts = Contexts.sharedInstance;
             _systems = new Feature("Systems")
                 .Add(new SpawnArmySystem(contexts.game))
-                .Add(new CreateViewSystem(contexts.game))
+
+
+                .Add(new MovementSystem(contexts.game, timeService))
+                .Add(new RotationSystem(contexts.game, timeService))
+
 
                 .Add(new FindTargetSystem(contexts.game))
+                .Add(new AttackCooldownSystem(contexts.game, timeService))
+                .Add(new AttackSystem(contexts.game))
 
-                .Add(new MovementSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
-                .Add(new RotationSystem(contexts.game, new UnityTimeService())) // ToDO доделать создание сервиса
-                .Add(new PositionEventSystem(contexts)) // ToDo вынести в конец пайплайна
+
+                .Add(new CreateViewSystem(contexts.game))
+
+
+                .Add(new PositionEventSystem(contexts))
                 .Add(new RotationEventSystem(contexts))
                 .Add(new TeamEventSystem(contexts));
+
 
             _systems.Initialize();
         }

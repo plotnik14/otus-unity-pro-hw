@@ -10,25 +10,27 @@ public static class GameComponentsLookup {
 
     public const int Asset = 0;
     public const int Attack = 1;
-    public const int Direction = 2;
-    public const int EntityView = 3;
-    public const int Health = 4;
-    public const int MovementSpeed = 5;
-    public const int Position = 6;
-    public const int RequestSetTarget = 7;
-    public const int Rotation = 8;
-    public const int RotationSpeed = 9;
-    public const int Target = 10;
-    public const int Team = 11;
-    public const int PositionListener = 12;
-    public const int RotationListener = 13;
-    public const int TeamListener = 14;
+    public const int AttackCooldown = 2;
+    public const int Direction = 3;
+    public const int EntityView = 4;
+    public const int Health = 5;
+    public const int MovementSpeed = 6;
+    public const int Position = 7;
+    public const int RequestSetTarget = 8;
+    public const int Rotation = 9;
+    public const int RotationSpeed = 10;
+    public const int Target = 11;
+    public const int Team = 12;
+    public const int PositionListener = 13;
+    public const int RotationListener = 14;
+    public const int TeamListener = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Asset",
         "Attack",
+        "AttackCooldown",
         "Direction",
         "EntityView",
         "Health",
@@ -47,6 +49,7 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(Core.Components.AssetComponent),
         typeof(Core.Components.AttackComponent),
+        typeof(Core.Components.AttackCooldownComponent),
         typeof(Core.Components.DirectionComponent),
         typeof(Core.Components.EntityViewComponent),
         typeof(Core.Components.HealthComponent),
