@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Engine.Services;
 using Engine.View;
 using Entitas;
 using UnityEngine;
@@ -7,11 +9,18 @@ namespace Core.Systems
 {
     public class CreateViewSystem : ReactiveSystem<GameEntity>
     {
+        private readonly IAssetLoader _assetLoader;
+        private readonly IGameObjectFactory _objectFactory;
         private readonly Transform _parent;
 
-        public CreateViewSystem(IContext<GameEntity> context) : base(context)
+        public CreateViewSystem(
+            IContext<GameEntity> context,
+            IAssetLoader assetLoader,
+            IGameObjectFactory objectFactory) : base(context)
         {
-            _parent = new GameObject("Views").transform; // ToDo вынести в конфигурацию?
+            _assetLoader = assetLoader;
+            _objectFactory = objectFactory;
+            _parent = new GameObject("Views").transform;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -36,10 +45,14 @@ namespace Core.Systems
 
         private IEntityView CreateView(GameEntity entity)
         {
-            GameObject prefab = Resources.Load<GameObject>(entity.asset.value); // ToDo вынести работу с ресурсами в отдельный сервис
-            GameObject gameObject = Object.Instantiate(prefab, _parent); // ToDO тоже в сервис?
-            var entityView = gameObject.GetComponent<IEntityView>();
-            return entityView;
+            string assetName = entity.asset.value;
+            GameObject prefab = _assetLoader.LoadAsset(assetName);
+            GameObject gameObject = _objectFactory.Instantiate(prefab, _parent);
+
+            if (gameObject.TryGetComponent(out IEntityView entityView))
+                return entityView;
+
+            throw new InvalidOperationException($"Instantiated object has no view component. Asset:{assetName}");
         }
     }
 }

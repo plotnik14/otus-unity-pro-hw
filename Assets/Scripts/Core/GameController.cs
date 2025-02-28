@@ -14,7 +14,8 @@ namespace Core
         {
             // ToDO DI?
             ITimeService timeService = new UnityTimeService();
-
+            IAssetLoader assetLoader = new AssetLoader();
+            IGameObjectFactory objectFactory = new GameObjectFactory();
 
             var contexts = Contexts.sharedInstance;
             _systems = new Feature("Systems")
@@ -31,7 +32,7 @@ namespace Core
                 .Add(new AttackSystem(contexts.game))
 
                 // View
-                .Add(new CreateViewSystem(contexts.game))
+                .Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory))
 
                 // Events (Generated)
                 .Add(new DestroyedEventSystem(contexts))
