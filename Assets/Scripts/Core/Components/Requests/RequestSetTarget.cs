@@ -3,5 +3,5 @@
 namespace Core.Components.Requests
 {
     [Game]
-    public class RequestSetTarget : IComponent { }
+    public class RequestSetTarget : IComponent { } // ToDo удалить?
 }

@@ -17,11 +17,11 @@ TagManager:
   - 
   - 
   - 
-  - Character
-  - Enemy
+  - Unit
+  - Projectile
   - 
-  - EnemyBullet
-  - PlayerBullet
+  - 
+  - 
   - 
   - 
   - 

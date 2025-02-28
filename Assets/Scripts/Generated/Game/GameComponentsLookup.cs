@@ -8,58 +8,79 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Asset = 0;
-    public const int Attack = 1;
-    public const int AttackCooldown = 2;
-    public const int Direction = 3;
-    public const int EntityView = 4;
-    public const int Health = 5;
-    public const int MovementSpeed = 6;
-    public const int Position = 7;
-    public const int RequestSetTarget = 8;
-    public const int Rotation = 9;
-    public const int RotationSpeed = 10;
-    public const int Target = 11;
-    public const int Team = 12;
-    public const int PositionListener = 13;
-    public const int RotationListener = 14;
-    public const int TeamListener = 15;
+    public const int CollisionsListener = 0;
+    public const int Asset = 1;
+    public const int Attack = 2;
+    public const int AttackCooldown = 3;
+    public const int Collisions = 4;
+    public const int Damage = 5;
+    public const int Destroyed = 6;
+    public const int Direction = 7;
+    public const int EntityView = 8;
+    public const int Health = 9;
+    public const int MovementSpeed = 10;
+    public const int Position = 11;
+    public const int Projectile = 12;
+    public const int RequestSetTarget = 13;
+    public const int Rotation = 14;
+    public const int RotationSpeed = 15;
+    public const int Target = 16;
+    public const int Team = 17;
+    public const int Unit = 18;
+    public const int DestroyedListener = 19;
+    public const int PositionListener = 20;
+    public const int RotationListener = 21;
+    public const int TeamListener = 22;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
+        "CollisionsListener",
         "Asset",
         "Attack",
         "AttackCooldown",
+        "Collisions",
+        "Damage",
+        "Destroyed",
         "Direction",
         "EntityView",
         "Health",
         "MovementSpeed",
         "Position",
+        "Projectile",
         "RequestSetTarget",
         "Rotation",
         "RotationSpeed",
         "Target",
         "Team",
+        "Unit",
+        "DestroyedListener",
         "PositionListener",
         "RotationListener",
         "TeamListener"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(CollisionsListenerComponent),
         typeof(Core.Components.AssetComponent),
         typeof(Core.Components.AttackComponent),
         typeof(Core.Components.AttackCooldownComponent),
+        typeof(Core.Components.CollisionsComponent),
+        typeof(Core.Components.DamageComponent),
+        typeof(Core.Components.DestroyedComponent),
         typeof(Core.Components.DirectionComponent),
         typeof(Core.Components.EntityViewComponent),
         typeof(Core.Components.HealthComponent),
         typeof(Core.Components.MovementSpeedComponent),
         typeof(Core.Components.PositionComponent),
+        typeof(Core.Components.ProjectileComponent),
         typeof(Core.Components.Requests.RequestSetTarget),
         typeof(Core.Components.RotationComponent),
         typeof(Core.Components.RotationSpeedComponent),
         typeof(Core.Components.TargetComponent),
         typeof(Core.Components.TeamComponent),
+        typeof(Core.Components.UnitComponent),
+        typeof(DestroyedListenerComponent),
         typeof(PositionListenerComponent),
         typeof(RotationListenerComponent),
         typeof(TeamListenerComponent)

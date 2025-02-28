@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Engine.View
 {
-    public class UnityView : MonoBehaviour, IEntityView, IPositionListener, IRotationListener
+    public class UnityView : MonoBehaviour, IEntityView,
+        IPositionListener, IRotationListener, IDestroyedListener
     {
         private GameEntity _linkedEntity;
 
@@ -14,6 +15,7 @@ namespace Engine.View
             _linkedEntity = (GameEntity)entity;
             _linkedEntity.AddPositionListener(this);
             _linkedEntity.AddRotationListener(this);
+            _linkedEntity.AddDestroyedListener(this);
             OnLink(_linkedEntity);
         }
 
@@ -21,12 +23,13 @@ namespace Engine.View
 
         public void OnRotation(GameEntity entity, Vector3 value) => gameObject.transform.forward = value;
 
-        protected virtual void OnLink(GameEntity linkedEntity) { }
-
-        protected virtual void OnDestroy()
+        public void OnDestroyed(GameEntity entity)
         {
             gameObject.Unlink();
+            Destroy(gameObject);
             _linkedEntity = null;
         }
+
+        protected virtual void OnLink(GameEntity linkedEntity) { }
     }
 }

@@ -1,18 +1,19 @@
 ﻿using Entitas;
 using UnityEngine;
+using UnityEngine.WSA;
 
 namespace Core.Systems
 {
     public class SpawnArmySystem : IInitializeSystem
     {
         // ToDo вынести в конфигурацию??
-        private const int BLUE_TEAM_COUNT = 3;
-        private const int RED_TEAM_COUNT = 3;
+        private const int BLUE_TEAM_COUNT = 20;
+        private const int RED_TEAM_COUNT = 20;
         private const int HEALTH = 3;
-        private const float SPAWN_OFFSET = 1.3f;
-        private const float MOVEMENT_SPEED = 0.7f;
+        private const float SPAWN_OFFSET = 1.7f;
+        private const float MOVEMENT_SPEED = 2.7f;
         private const float ROTATION_SPEED = 0.7f;
-        private const float ATTACK_DISTANCE = 3f;
+        private const float ATTACK_DISTANCE = 5f;
         private const string RANGE_UNIT_ASSET_NAME = "RangeUnit";
         private readonly Vector3 BLUE_TEAM_START_POSITION = new(10, 0, -10);
         private readonly Vector3 RED_TEAM_START_POSITION = new(10, 0, 10);
@@ -48,7 +49,13 @@ namespace Core.Systems
                 entity.AddRotationSpeed(ROTATION_SPEED);
                 entity.AddAttack(ATTACK_DISTANCE);
                 entity.AddHealth(HEALTH);
+                entity.isUnit = true;
                 nextSpawnPosition.x += SPAWN_OFFSET;
+
+                // ToDO доделать добавление рандома в расстановку юнитов?
+                Random.InitState(index);
+                nextSpawnPosition.x += Random.Range(-1, 1);
+                nextSpawnPosition.z += Random.Range(-1, 1);
             }
         }
     }
