@@ -47,7 +47,6 @@ namespace Core.Systems
             entity.AddAsset(_unitConfig.AssetName);
             entity.AddMovementSpeed(_unitConfig.MovementSpeed);
             entity.AddRotationSpeed(_unitConfig.RotationSpeed);
-            entity.AddAttack(_unitConfig.AttackDistance);
             entity.AddHealth(_unitConfig.Health);
             entity.isUnit = true;
         }

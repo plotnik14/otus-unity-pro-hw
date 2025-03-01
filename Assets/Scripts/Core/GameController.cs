@@ -32,7 +32,7 @@ namespace Core
                 .Add(new ProjectileCollisionSystem(contexts.game))
                 .Add(new DealDamageSystem(contexts.game))
                 .Add(new ReleaseTargetSystem(contexts.game))
-                .Add(new FindTargetSystem(contexts.game))
+                .Add(new FindTargetSystem(contexts.game, _unitConfig))
                 .Add(new AttackCooldownSystem(contexts.game, timeService))
                 .Add(new AttackSystem(contexts.game, _unitConfig, _projectileConfig))
 

@@ -1,22 +1,27 @@
-﻿using Entitas;
+﻿using Engine.Configs;
+using Entitas;
 using UnityEngine;
 
 namespace Core.Systems
 {
     public class FindTargetSystem : IExecuteSystem
     {
+        private readonly UnitConfig _unitConfig;
         private readonly IGroup<GameEntity> _lookingForTargetGroup;
         private readonly IGroup<GameEntity> _possibleTargetGroup;
 
-        public FindTargetSystem(GameContext gameContext)
+        public FindTargetSystem(GameContext gameContext, UnitConfig unitConfig)
         {
+            _unitConfig = unitConfig;
+
             _lookingForTargetGroup = gameContext.GetGroup(GameMatcher
-                .AllOf(GameMatcher.Attack, GameMatcher.Team, GameMatcher.Position)
-                .NoneOf(GameMatcher.Target)
+                .AllOf(GameMatcher.Unit, GameMatcher.Team, GameMatcher.Position)
+                .NoneOf(GameMatcher.Target, GameMatcher.Destroyed)
             );
 
             _possibleTargetGroup = gameContext.GetGroup(GameMatcher
-                .AllOf(GameMatcher.Health, GameMatcher.Team));
+                .AllOf(GameMatcher.Unit, GameMatcher.Health, GameMatcher.Team)
+                .NoneOf(GameMatcher.Destroyed));
         }
 
         public void Execute()
@@ -31,8 +36,6 @@ namespace Core.Systems
         {
             GameEntity closestEnemy = FindClosestEnemy(entity);
 
-            // ToDo через Request?
-
             if (closestEnemy != null)
                 entity.AddTarget(closestEnemy);
         }
@@ -40,9 +43,9 @@ namespace Core.Systems
         private GameEntity FindClosestEnemy(GameEntity attackingEntity)
         {
             ETeam ownTeam = attackingEntity.team.value;
-            float attackDistance = attackingEntity.attack.distance;
+            float attackDistanceSqr = _unitConfig.AttackDistance * _unitConfig.AttackDistance;
             Vector3 attackingEntityPosition = attackingEntity.position.value;
-            float minDistanceToEnemy = float.MaxValue;
+            float minDistanceToEnemySqr = float.MaxValue;
             GameEntity closestEnemy = null;
 
             foreach (GameEntity possibleEnemy in _possibleTargetGroup.GetEntities())
@@ -51,15 +54,15 @@ namespace Core.Systems
                     continue;
 
                 Vector3 enemyPosition = possibleEnemy.position.value;
-                float distanceToEnemy = (enemyPosition - attackingEntityPosition).magnitude; // ToDO optimize with Sqr?
+                float distanceToEnemySqr = (enemyPosition - attackingEntityPosition).sqrMagnitude;
 
-                if (distanceToEnemy > attackDistance)
+                if (distanceToEnemySqr > attackDistanceSqr)
                     continue;
 
-                if (distanceToEnemy > minDistanceToEnemy)
+                if (distanceToEnemySqr > minDistanceToEnemySqr)
                     continue;
 
-                minDistanceToEnemy = distanceToEnemy;
+                minDistanceToEnemySqr = distanceToEnemySqr;
                 closestEnemy = possibleEnemy;
             }
 
