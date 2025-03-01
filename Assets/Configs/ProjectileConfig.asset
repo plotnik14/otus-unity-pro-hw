@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb7b668c3aa4190b4fda2243e75f560, type: 3}
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 6
   _assetName: Projectile

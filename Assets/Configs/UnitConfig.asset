@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231f6c6378964f0d8cb50f4e537de2de, type: 3}
   m_Name: UnitConfig
   m_EditorClassIdentifier: 
-  _movementSpeed: 2.7
+  _movementSpeed: 5
   _rotationSpeed: 1
-  _attackDistance: 5
+  _attackDistance: 8
   _assetName: RangeUnit
   _health: 3
-  _attackCooldown: 3
+  _attackCooldown: 1.5
