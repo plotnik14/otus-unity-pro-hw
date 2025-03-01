@@ -17,15 +17,17 @@ namespace Core
         [UsedImplicitly]
         private void Start()
         {
-            // ToDO DI?
             ITimeService timeService = new UnityTimeService();
             IAssetLoader assetLoader = new AssetLoader();
             IGameObjectFactory objectFactory = new GameObjectFactory();
+            Contexts contexts = Contexts.sharedInstance;
 
-            var contexts = Contexts.sharedInstance;
             _systems = new Feature("Systems")
 
+                // Initialization
                 .Add(new SpawnArmySystem(contexts.game, _unitConfig, _spawnArmyConfig))
+
+                // Processing
                 .Add(new MovementSystem(contexts.game, timeService))
                 .Add(new RotationSystem(contexts.game))
                 .Add(new UnitCollisionSystem(contexts.game, _projectileConfig))
@@ -47,8 +49,6 @@ namespace Core
 
                 // CleanUp
                 .Add(new DestroyedCleanupSystem(contexts.game));
-
-
             _systems.Initialize();
         }
 
