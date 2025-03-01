@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using Engine.Configs;
 using Entitas;
 
 namespace Core.Systems
 {
     public class UnitCollisionSystem : ReactiveSystem<GameEntity>
     {
-        public UnitCollisionSystem(IContext<GameEntity> context) : base(context) { }
+        private readonly ProjectileConfig _projectileConfig;
+        public UnitCollisionSystem(IContext<GameEntity> context, ProjectileConfig projectileConfig) : base(context)
+        {
+            _projectileConfig = projectileConfig;
+        }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
@@ -40,8 +45,15 @@ namespace Core.Systems
 
         private void ProcessCollision(GameEntity entity, GameEntity collidedWith)
         {
-            // var damageValue = collidedWith.damage.value; // TODO Забирать из конфига
-            float damage = 1f;
+            if (!collidedWith.isProjectile)
+                return;
+
+            UpdateDamage(entity);
+        }
+
+        private void UpdateDamage(GameEntity entity)
+        {
+            float damage = _projectileConfig.Damage;
 
             if (entity.hasDamage)
             {

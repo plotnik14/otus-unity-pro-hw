@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: 
   _movementSpeed: 6
+  _damage: 1
   _assetName: Projectile
