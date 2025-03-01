@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Core;
+using Engine.Configs;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -8,10 +8,8 @@ namespace Engine.View
 {
     public class BattleView : UnityView, ITeamListener
     {
-        // ToDO более оптимальный механизм. В отдельный класс?
-        [SerializeField] private Material _blueMaterial;
-        [SerializeField] private Material _redMaterial;
         [SerializeField] private List<Renderer> _renderers;
+        [SerializeField] private TeamConfig _teamConfig;
 
         private GameEntity _linkedEntity;
 
@@ -43,17 +41,8 @@ namespace Engine.View
 
         public void OnTeam(GameEntity entity, ETeam value)
         {
-            switch (value)
-            {
-                case ETeam.BlueTeam:
-                    SetMaterial(_blueMaterial);
-                    break;
-                case ETeam.RedTeam:
-                    SetMaterial(_redMaterial);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
-            }
+            Material teamMaterial = _teamConfig.GetTeamMaterial(value);
+            SetMaterial(teamMaterial);
         }
 
         private void SetMaterial(Material material)

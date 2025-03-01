@@ -111,10 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be63531b0cc4fa38dc621bdaf204dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blueMaterial: {fileID: 2100000, guid: 932e17e267436694e8573ec81095e6e5, type: 2}
-  _redMaterial: {fileID: 2100000, guid: eba50201f67e78f4d8973d6e00bc7595, type: 2}
   _renderers:
   - {fileID: 3890287069596483300}
+  _teamConfig: {fileID: 11400000, guid: bc18c70b246a6324e8e9d9e3969c0e4c, type: 2}
 --- !u!54 &6022933530310831928
 Rigidbody:
   m_ObjectHideFlags: 0
