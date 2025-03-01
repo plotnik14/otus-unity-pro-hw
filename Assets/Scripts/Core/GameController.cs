@@ -27,7 +27,7 @@ namespace Core
 
                 .Add(new SpawnArmySystem(contexts.game, _unitConfig, _spawnArmyConfig))
                 .Add(new MovementSystem(contexts.game, timeService))
-                .Add(new RotationSystem(contexts.game, timeService))
+                .Add(new RotationSystem(contexts.game))
                 .Add(new UnitCollisionSystem(contexts.game, _projectileConfig))
                 .Add(new ProjectileCollisionSystem(contexts.game))
                 .Add(new DealDamageSystem(contexts.game))

@@ -54,7 +54,7 @@ namespace Core.Systems
         private Vector3 GetNextPosition(Vector3 position)
         {
             position.x += _spawnArmyConfig.SpawnOffset;
-            position.z += Random.Range(-4, 4);
+            position.z += Random.Range(-4, 4); // небольшое смещение для разнообразия симуляции
             return position;
         }
     }

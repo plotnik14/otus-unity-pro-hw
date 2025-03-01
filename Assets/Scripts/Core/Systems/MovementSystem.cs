@@ -13,7 +13,7 @@ namespace Core.Systems
         {
             _movementGroup = gameContext.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Position, GameMatcher.Direction, GameMatcher.MovementSpeed)
-                .NoneOf(GameMatcher.Target) // ToDO отвязать перемещение от наличия цели. Флаг?
+                .NoneOf(GameMatcher.Target)
             );
             _timeService = timeService;
         }
