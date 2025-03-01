@@ -1,36 +1,29 @@
-﻿using Entitas;
+﻿using Engine.Configs;
+using Entitas;
 using UnityEngine;
-using UnityEngine.WSA;
 
 namespace Core.Systems
 {
     public class SpawnArmySystem : IInitializeSystem
     {
-        // ToDo вынести в конфигурацию??
-        private const int BLUE_TEAM_COUNT = 20;
-        private const int RED_TEAM_COUNT = 20;
-        private const int HEALTH = 3;
-        private const float SPAWN_OFFSET = 1.7f;
-        private const float MOVEMENT_SPEED = 2.7f;
-        private const float ROTATION_SPEED = 0.7f;
-        private const float ATTACK_DISTANCE = 5f;
-        private const string RANGE_UNIT_ASSET_NAME = "RangeUnit";
-        private readonly Vector3 BLUE_TEAM_START_POSITION = new(10, 0, -10);
-        private readonly Vector3 RED_TEAM_START_POSITION = new(10, 0, 10);
-        private readonly Vector3 BLUE_TEAM_DIRECTION = Vector3.forward;
-        private readonly Vector3 RED_TEAM_DIRECTION = Vector3.back;
-
         private readonly GameContext _gameContext;
+        private readonly UnitConfig _unitConfig;
+        private readonly SpawnArmyConfig _spawnArmyConfig;
 
-        public SpawnArmySystem(GameContext gameContext)
+        public SpawnArmySystem(
+            GameContext gameContext,
+            UnitConfig unitConfig,
+            SpawnArmyConfig spawnArmyConfig)
         {
             _gameContext = gameContext;
+            _unitConfig = unitConfig;
+            _spawnArmyConfig = spawnArmyConfig;
         }
 
         public void Initialize()
         {
-            SpawnArmy(ETeam.BlueTeam, BLUE_TEAM_COUNT, BLUE_TEAM_START_POSITION, BLUE_TEAM_DIRECTION);
-            SpawnArmy(ETeam.RedTeam, RED_TEAM_COUNT, RED_TEAM_START_POSITION, RED_TEAM_DIRECTION);
+            SpawnArmy(ETeam.BlueTeam, _spawnArmyConfig.BlueTeamCount, _spawnArmyConfig.BlueTeamStartSpawnPosition, _spawnArmyConfig.BlueTeamStartDirection);
+            SpawnArmy(ETeam.RedTeam,  _spawnArmyConfig.RedTeamCount,  _spawnArmyConfig.RedTeamStartSpawnPosition,  _spawnArmyConfig.RedTeamStartDirection);
         }
 
         private void SpawnArmy(ETeam team, int count, Vector3 startPosition, Vector3 direction)
@@ -39,24 +32,32 @@ namespace Core.Systems
 
             for (int index = 0; index < count; index++)
             {
-                GameEntity entity = _gameContext.CreateEntity();
-                entity.AddTeam(team);
-                entity.AddPosition(nextSpawnPosition);
-                entity.AddDirection(direction);
-                entity.AddRotation(direction);
-                entity.AddAsset(RANGE_UNIT_ASSET_NAME);
-                entity.AddMovementSpeed(MOVEMENT_SPEED);
-                entity.AddRotationSpeed(ROTATION_SPEED);
-                entity.AddAttack(ATTACK_DISTANCE);
-                entity.AddHealth(HEALTH);
-                entity.isUnit = true;
-                nextSpawnPosition.x += SPAWN_OFFSET;
-
-                // ToDO доделать добавление рандома в расстановку юнитов?
-                Random.InitState(index);
-                nextSpawnPosition.x += Random.Range(-1, 1);
-                nextSpawnPosition.z += Random.Range(-1, 1);
+                CreateUnit(team, direction, nextSpawnPosition);
+                nextSpawnPosition = GetNextPosition(nextSpawnPosition);
             }
+        }
+
+        private void CreateUnit(ETeam team, Vector3 direction, Vector3 position)
+        {
+            GameEntity entity = _gameContext.CreateEntity();
+            entity.AddTeam(team);
+            entity.AddPosition(position);
+            entity.AddDirection(direction);
+            entity.AddRotation(direction);
+            entity.AddAsset(_unitConfig.AssetName);
+            entity.AddMovementSpeed(_unitConfig.MovementSpeed);
+            entity.AddRotationSpeed(_unitConfig.RotationSpeed);
+            entity.AddAttack(_unitConfig.AttackDistance);
+            entity.AddHealth(_unitConfig.Health);
+            entity.isUnit = true;
+        }
+
+        private Vector3 GetNextPosition(Vector3 position)
+        {
+            position.x += _spawnArmyConfig.SpawnOffset;
+            position.x += Random.Range(-1, 1);
+            position.z += Random.Range(-1, 1);
+            return position;
         }
     }
 }

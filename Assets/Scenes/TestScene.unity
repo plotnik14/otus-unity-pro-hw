@@ -246,6 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117fb836cc7a47b994fc8990a2c00937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitConfig: {fileID: 11400000, guid: 4c1b9f98b9a91634d91c9c37218715f0, type: 2}
+  _projectileConfig: {fileID: 11400000, guid: 860a4b94cb982ea4d96730426ebecd98, type: 2}
+  _spawnArmyConfig: {fileID: 11400000, guid: 17834aaddbe0b094f9b6f2a963d02f8d, type: 2}
 --- !u!4 &1700633413
 Transform:
   m_ObjectHideFlags: 0
@@ -337,14 +340,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752591507}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 7.46, z: -5.27}
+  m_LocalRotation: {x: 0.04942658, y: 0.8411834, z: -0.07803425, w: 0.5328022}
+  m_LocalPosition: {x: -41, y: 6, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.6, y: 115.3, z: 0}
 --- !u!1001 &8715453388706128829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,13 +367,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
         type: 3}

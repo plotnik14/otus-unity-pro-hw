@@ -1,19 +1,25 @@
-﻿using Entitas;
+﻿using Engine.Configs;
+using Entitas;
 using UnityEngine;
 
 namespace Core.Systems
 {
     public class AttackSystem : IExecuteSystem
     {
-        // ToDO вынести в конфиг?
-        private const float ATTACK_COOLDOWN = 3f;
-
         private readonly GameContext _gameContext;
+        private readonly UnitConfig _unitConfig;
+        private readonly ProjectileConfig _projectileConfig;
         private readonly IGroup<GameEntity> _attackGroup;
 
-        public AttackSystem(GameContext gameContext)
+        public AttackSystem(
+            GameContext gameContext,
+            UnitConfig unitConfig,
+            ProjectileConfig projectileConfig)
         {
             _gameContext = gameContext;
+            _unitConfig = unitConfig;
+            _projectileConfig = projectileConfig;
+
             _attackGroup = _gameContext.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Target)
                 .NoneOf(GameMatcher.AttackCooldown)
@@ -58,22 +64,18 @@ namespace Core.Systems
             Vector3 direction = (targetPosition - firePoint).normalized;
             SpawnProjectileEntity(firePoint, direction, team);
 
-            entity.AddAttackCooldown(ATTACK_COOLDOWN);
+            entity.AddAttackCooldown(_unitConfig.AttackCooldown);
         }
 
         private void SpawnProjectileEntity(Vector3 spawnPosition, Vector3 direction, ETeam team)
         {
             // ToDO Spawn в отдельную систему?
-
-            const string PROJECTILE_ASSET_NAME = "Projectile"; // ToDO В конфиг
-            const float PROJECTILE_SPEED = 5f; // ToDO В конфиг
-
             GameEntity projectileEntity = _gameContext.CreateEntity();
             projectileEntity.AddPosition(spawnPosition);
             projectileEntity.AddDirection(direction);
             projectileEntity.AddTeam(team);
-            projectileEntity.AddAsset(PROJECTILE_ASSET_NAME);
-            projectileEntity.AddMovementSpeed(PROJECTILE_SPEED);
+            projectileEntity.AddAsset(_projectileConfig.AssetName);
+            projectileEntity.AddMovementSpeed(_projectileConfig.MovementSpeed);
             projectileEntity.isProjectile = true;
         }
     }

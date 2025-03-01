@@ -1,0 +1,15 @@
+﻿using UnityEngine;
+
+namespace Engine.Configs
+{
+    [CreateAssetMenu(fileName = "ProjectileConfig", menuName = "Configs/ProjectileConfig")]
+    public class ProjectileConfig : ScriptableObject
+    {
+        [SerializeField] private float _movementSpeed;
+        [SerializeField] private string _assetName;
+
+        public float MovementSpeed => _movementSpeed;
+
+        public string AssetName => _assetName;
+    }
+}

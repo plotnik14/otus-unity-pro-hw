@@ -1,4 +1,5 @@
 ﻿using Core.Systems;
+using Engine.Configs;
 using Engine.Services;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -7,6 +8,10 @@ namespace Core
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField] private UnitConfig _unitConfig;
+        [SerializeField] private ProjectileConfig _projectileConfig;
+        [SerializeField] private SpawnArmyConfig _spawnArmyConfig;
+
         private Entitas.Systems _systems;
 
         [UsedImplicitly]
@@ -20,7 +25,7 @@ namespace Core
             var contexts = Contexts.sharedInstance;
             _systems = new Feature("Systems")
 
-                .Add(new SpawnArmySystem(contexts.game))
+                .Add(new SpawnArmySystem(contexts.game, _unitConfig, _spawnArmyConfig))
                 .Add(new MovementSystem(contexts.game, timeService))
                 .Add(new RotationSystem(contexts.game, timeService))
                 .Add(new UnitCollisionSystem(contexts.game))
@@ -29,7 +34,7 @@ namespace Core
                 .Add(new ReleaseTargetSystem(contexts.game))
                 .Add(new FindTargetSystem(contexts.game))
                 .Add(new AttackCooldownSystem(contexts.game, timeService))
-                .Add(new AttackSystem(contexts.game))
+                .Add(new AttackSystem(contexts.game, _unitConfig, _projectileConfig))
 
                 // View
                 .Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory))
