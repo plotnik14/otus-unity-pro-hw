@@ -11,7 +11,9 @@ namespace Core.Systems
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
             return context.CreateCollector(GameMatcher
-                .AllOf(GameMatcher.Damage, GameMatcher.Health));
+                .AllOf(GameMatcher.Damage, GameMatcher.Health)
+                .NoneOf(GameMatcher.Destroyed)
+            );
         }
 
         protected override bool Filter(GameEntity entity)
@@ -31,8 +33,8 @@ namespace Core.Systems
 
                 if (newHealth <= 0)
                 {
-                    // entity.RemoveHealth(); // ToDo нужно удалять?
-                    entity.isDestroyed = true;// TODO вынести в DieSystem ?
+                    entity.RemoveHealth();
+                    entity.isDestroyed = true;
                     return;
                 }
 
