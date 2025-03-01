@@ -23,11 +23,10 @@ namespace Core
             Contexts contexts = Contexts.sharedInstance;
 
             _systems = new Feature("Systems")
-
-                // Initialization
+                // Initialize
                 .Add(new SpawnArmySystem(contexts.game, _unitConfig, _spawnArmyConfig))
 
-                // Processing
+                // Execute
                 .Add(new MovementSystem(contexts.game, timeService))
                 .Add(new RotationSystem(contexts.game))
                 .Add(new UnitCollisionSystem(contexts.game, _projectileConfig))
@@ -36,7 +35,10 @@ namespace Core
                 .Add(new ReleaseTargetSystem(contexts.game))
                 .Add(new FindTargetSystem(contexts.game, _unitConfig))
                 .Add(new AttackCooldownSystem(contexts.game, timeService))
-                .Add(new AttackSystem(contexts.game, _unitConfig, _projectileConfig))
+                .Add(new AttackSystem(contexts.game))
+                .Add(new LookAtTargetSystem(contexts.game))
+                .Add(new SpawnProjectileSystem(contexts.game, _projectileConfig))
+                .Add(new AddAttackCooldownSystem(contexts.game, _unitConfig))
 
                 // View
                 .Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory))
@@ -47,8 +49,10 @@ namespace Core
                 .Add(new RotationEventSystem(contexts))
                 .Add(new TeamEventSystem(contexts))
 
-                // CleanUp
+                // Cleanup
+                .Add(new AttackRequestCleanup(contexts.game))
                 .Add(new DestroyedCleanupSystem(contexts.game));
+
             _systems.Initialize();
         }
 
