@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Engine.Services;
-using Engine.View;
 using Entitas;
+using Services;
 using UnityEngine;
+using View;
 
 namespace Core.Systems
 {

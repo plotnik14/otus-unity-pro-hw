@@ -1,4 +1,4 @@
-﻿using Engine.Configs;
+﻿using Configs;
 using Entitas;
 using UnityEngine;
 

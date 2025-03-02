@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Engine.Configs
+namespace Configs
 {
     [CreateAssetMenu(fileName = "TeamConfig", menuName = "Configs/TeamConfig")]
     public class TeamConfig : SerializedScriptableObject

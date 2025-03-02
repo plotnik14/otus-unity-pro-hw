@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Engine.Services
+namespace Services
 {
     public interface IGameObjectFactory
     {

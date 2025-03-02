@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using Configs;
+using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
 namespace Core.Components

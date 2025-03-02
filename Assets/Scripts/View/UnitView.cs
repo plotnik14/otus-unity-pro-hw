@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Engine.View
+namespace View
 {
     public class UnitView : BattleView
     {

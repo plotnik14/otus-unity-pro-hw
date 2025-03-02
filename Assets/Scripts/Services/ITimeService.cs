@@ -1,4 +1,4 @@
-﻿namespace Engine.Services
+﻿namespace Services
 {
     public interface ITimeService
     {

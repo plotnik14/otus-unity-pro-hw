@@ -6,19 +6,22 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Configs;
+
 public partial class GameEntity {
 
     public Core.Components.TeamComponent team { get { return (Core.Components.TeamComponent)GetComponent(GameComponentsLookup.Team); } }
     public bool hasTeam { get { return HasComponent(GameComponentsLookup.Team); } }
 
-    public void AddTeam(Core.ETeam newValue) {
+    public void AddTeam(ETeam newValue) {
         var index = GameComponentsLookup.Team;
         var component = (Core.Components.TeamComponent)CreateComponent(index, typeof(Core.Components.TeamComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTeam(Core.ETeam newValue) {
+    public void ReplaceTeam(ETeam newValue) {
         var index = GameComponentsLookup.Team;
         var component = (Core.Components.TeamComponent)CreateComponent(index, typeof(Core.Components.TeamComponent));
         component.value = newValue;

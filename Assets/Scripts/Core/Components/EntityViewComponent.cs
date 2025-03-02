@@ -1,5 +1,5 @@
-﻿using Engine.View;
-using Entitas;
+﻿using Entitas;
+using View;
 
 namespace Core.Components
 {

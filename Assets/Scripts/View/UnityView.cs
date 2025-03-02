@@ -4,7 +4,7 @@ using Entitas.Unity;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Engine.View
+namespace View
 {
     public class UnityView : MonoBehaviour, IEntityView, IPositionListener, IRotationListener, IDestroyedListener
     {

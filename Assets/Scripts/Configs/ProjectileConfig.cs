@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Engine.Configs
+namespace Configs
 {
     [CreateAssetMenu(fileName = "ProjectileConfig", menuName = "Configs/ProjectileConfig")]
     public class ProjectileConfig : ScriptableObject

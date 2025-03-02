@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Engine.Configs
+namespace Configs
 {
     [CreateAssetMenu(fileName = "UnitConfig", menuName = "Configs/UnitConfig")]
     public class UnitConfig : ScriptableObject

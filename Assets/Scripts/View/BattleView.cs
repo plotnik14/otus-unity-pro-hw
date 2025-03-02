@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Core;
-using Engine.Configs;
+using Configs;
 using UnityEngine;
 
-namespace Engine.View
+namespace View
 {
     public class BattleView : UnityView, ITeamListener
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Engine.Configs;
+using Configs;
 using Entitas;
 
 namespace Core.Systems

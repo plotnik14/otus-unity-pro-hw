@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Engine.Configs;
-using Engine.View;
+using Configs;
 using Entitas;
 using UnityEngine;
+using View;
 
 namespace Core.Systems
 {

@@ -1,6 +1,6 @@
 ﻿using Entitas;
 
-namespace Engine.View
+namespace View
 {
     public interface IEntityView
     {

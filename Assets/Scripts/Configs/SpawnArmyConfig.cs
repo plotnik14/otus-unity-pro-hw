@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Engine.Configs
+namespace Configs
 {
     [CreateAssetMenu(fileName = "SpawnArmyConfig", menuName = "Configs/SpawnArmyConfig")]
     public class SpawnArmyConfig : ScriptableObject
