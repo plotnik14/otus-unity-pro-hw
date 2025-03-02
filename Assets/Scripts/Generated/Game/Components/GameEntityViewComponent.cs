@@ -6,22 +6,19 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using View;
-
 public partial class GameEntity {
 
     public Core.Components.EntityViewComponent entityView { get { return (Core.Components.EntityViewComponent)GetComponent(GameComponentsLookup.EntityView); } }
     public bool hasEntityView { get { return HasComponent(GameComponentsLookup.EntityView); } }
 
-    public void AddEntityView(IEntityView newValue) {
+    public void AddEntityView(View.IEntityView newValue) {
         var index = GameComponentsLookup.EntityView;
         var component = (Core.Components.EntityViewComponent)CreateComponent(index, typeof(Core.Components.EntityViewComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceEntityView(IEntityView newValue) {
+    public void ReplaceEntityView(View.IEntityView newValue) {
         var index = GameComponentsLookup.EntityView;
         var component = (Core.Components.EntityViewComponent)CreateComponent(index, typeof(Core.Components.EntityViewComponent));
         component.value = newValue;

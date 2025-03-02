@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Core.Components.TeamComponent team { get { return (Core.Components.TeamComponent)GetComponent(GameComponentsLookup.Team); } }
-    public bool hasTeam { get { return HasComponent(GameComponentsLookup.Team); } }
+    public Core.Components.LifeTimeComponent lifeTime { get { return (Core.Components.LifeTimeComponent)GetComponent(GameComponentsLookup.LifeTime); } }
+    public bool hasLifeTime { get { return HasComponent(GameComponentsLookup.LifeTime); } }
 
-    public void AddTeam(Configs.ETeam newValue) {
-        var index = GameComponentsLookup.Team;
-        var component = (Core.Components.TeamComponent)CreateComponent(index, typeof(Core.Components.TeamComponent));
+    public void AddLifeTime(float newValue) {
+        var index = GameComponentsLookup.LifeTime;
+        var component = (Core.Components.LifeTimeComponent)CreateComponent(index, typeof(Core.Components.LifeTimeComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTeam(Configs.ETeam newValue) {
-        var index = GameComponentsLookup.Team;
-        var component = (Core.Components.TeamComponent)CreateComponent(index, typeof(Core.Components.TeamComponent));
+    public void ReplaceLifeTime(float newValue) {
+        var index = GameComponentsLookup.LifeTime;
+        var component = (Core.Components.LifeTimeComponent)CreateComponent(index, typeof(Core.Components.LifeTimeComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveTeam() {
-        RemoveComponent(GameComponentsLookup.Team);
+    public void RemoveLifeTime() {
+        RemoveComponent(GameComponentsLookup.LifeTime);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTeam;
+    static Entitas.IMatcher<GameEntity> _matcherLifeTime;
 
-    public static Entitas.IMatcher<GameEntity> Team {
+    public static Entitas.IMatcher<GameEntity> LifeTime {
         get {
-            if (_matcherTeam == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Team);
+            if (_matcherLifeTime == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.LifeTime);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTeam = matcher;
+                _matcherLifeTime = matcher;
             }
 
-            return _matcherTeam;
+            return _matcherLifeTime;
         }
     }
 }

@@ -62,6 +62,7 @@ namespace Core.Systems
             projectileEntity.AddTeam(team);
             projectileEntity.AddAsset(_projectileConfig.AssetName);
             projectileEntity.AddMovementSpeed(_projectileConfig.MovementSpeed);
+            projectileEntity.AddLifeTime(_projectileConfig.LifeTime);
             projectileEntity.isProjectile = true;
         }
     }

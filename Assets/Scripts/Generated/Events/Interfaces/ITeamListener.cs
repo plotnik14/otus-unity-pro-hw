@@ -6,9 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using Configs;
-
 public interface ITeamListener {
-    void OnTeam(GameEntity entity, ETeam value);
+    void OnTeam(GameEntity entity, Configs.ETeam value);
 }

@@ -17,20 +17,21 @@ public static class GameComponentsLookup {
     public const int Direction = 6;
     public const int EntityView = 7;
     public const int Health = 8;
-    public const int MovementSpeed = 9;
-    public const int Position = 10;
-    public const int Projectile = 11;
-    public const int Rotation = 12;
-    public const int RotationSpeed = 13;
-    public const int Target = 14;
-    public const int Team = 15;
-    public const int Unit = 16;
-    public const int DestroyedListener = 17;
-    public const int PositionListener = 18;
-    public const int RotationListener = 19;
-    public const int TeamListener = 20;
+    public const int LifeTime = 9;
+    public const int MovementSpeed = 10;
+    public const int Position = 11;
+    public const int Projectile = 12;
+    public const int Rotation = 13;
+    public const int RotationSpeed = 14;
+    public const int Target = 15;
+    public const int Team = 16;
+    public const int Unit = 17;
+    public const int DestroyedListener = 18;
+    public const int PositionListener = 19;
+    public const int RotationListener = 20;
+    public const int TeamListener = 21;
 
-    public const int TotalComponents = 21;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -42,6 +43,7 @@ public static class GameComponentsLookup {
         "Direction",
         "EntityView",
         "Health",
+        "LifeTime",
         "MovementSpeed",
         "Position",
         "Projectile",
@@ -66,6 +68,7 @@ public static class GameComponentsLookup {
         typeof(Core.Components.DirectionComponent),
         typeof(Core.Components.EntityViewComponent),
         typeof(Core.Components.HealthComponent),
+        typeof(Core.Components.LifeTimeComponent),
         typeof(Core.Components.MovementSpeedComponent),
         typeof(Core.Components.PositionComponent),
         typeof(Core.Components.ProjectileComponent),

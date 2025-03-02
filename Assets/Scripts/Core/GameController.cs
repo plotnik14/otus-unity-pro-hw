@@ -39,6 +39,7 @@ namespace Core
                 .Add(new LookAtTargetSystem(contexts.game))
                 .Add(new SpawnProjectileSystem(contexts.game, _projectileConfig))
                 .Add(new AddAttackCooldownSystem(contexts.game, _unitConfig))
+                .Add(new LifeTimeSystem(contexts.game, timeService))
 
                 // View
                 .Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory))
