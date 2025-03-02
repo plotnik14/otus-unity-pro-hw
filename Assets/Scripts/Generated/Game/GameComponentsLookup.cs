@@ -8,33 +8,31 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int CollisionsListener = 0;
-    public const int Asset = 1;
-    public const int AttackCooldown = 2;
-    public const int AttackRequest = 3;
-    public const int Collisions = 4;
-    public const int Damage = 5;
-    public const int Destroyed = 6;
-    public const int Direction = 7;
-    public const int EntityView = 8;
-    public const int Health = 9;
-    public const int MovementSpeed = 10;
-    public const int Position = 11;
-    public const int Projectile = 12;
-    public const int Rotation = 13;
-    public const int RotationSpeed = 14;
-    public const int Target = 15;
-    public const int Team = 16;
-    public const int Unit = 17;
-    public const int DestroyedListener = 18;
-    public const int PositionListener = 19;
-    public const int RotationListener = 20;
-    public const int TeamListener = 21;
+    public const int Asset = 0;
+    public const int AttackCooldown = 1;
+    public const int AttackRequest = 2;
+    public const int Collisions = 3;
+    public const int Damage = 4;
+    public const int Destroyed = 5;
+    public const int Direction = 6;
+    public const int EntityView = 7;
+    public const int Health = 8;
+    public const int MovementSpeed = 9;
+    public const int Position = 10;
+    public const int Projectile = 11;
+    public const int Rotation = 12;
+    public const int RotationSpeed = 13;
+    public const int Target = 14;
+    public const int Team = 15;
+    public const int Unit = 16;
+    public const int DestroyedListener = 17;
+    public const int PositionListener = 18;
+    public const int RotationListener = 19;
+    public const int TeamListener = 20;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 21;
 
     public static readonly string[] componentNames = {
-        "CollisionsListener",
         "Asset",
         "AttackCooldown",
         "AttackRequest",
@@ -59,7 +57,6 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(CollisionsListenerComponent),
         typeof(Core.Components.AssetComponent),
         typeof(Core.Components.AttackCooldownComponent),
         typeof(Core.Components.AttackRequestComponent),
