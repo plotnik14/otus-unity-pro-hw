@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7315215145211169380}
-  - component: {fileID: 4694683953747862441}
+  - component: {fileID: 8223831673134913514}
   - component: {fileID: 4810112869799914358}
   - component: {fileID: 674768787863334737}
   m_Layer: 10
@@ -120,7 +120,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4694683953747862441
+--- !u!114 &8223831673134913514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,13 +129,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7315215145211169381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be63531b0cc4fa38dc621bdaf204dd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b62f2aa7cc64fd1b0980a990bcb4266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
   - {fileID: 7315215146154731872}
   - {fileID: 7315215145035334045}
   _teamConfig: {fileID: 11400000, guid: bc18c70b246a6324e8e9d9e3969c0e4c, type: 2}
+  _firePoint: {fileID: 7315215145732250984}
 --- !u!65 &4810112869799914358
 BoxCollider:
   m_ObjectHideFlags: 0

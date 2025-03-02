@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Engine.Configs;
+using Engine.View;
 using Entitas;
 using UnityEngine;
 
@@ -39,13 +41,13 @@ namespace Core.Systems
 
         private void SpawnProjectile(GameEntity entity)
         {
+            UnitView unitView = entity.entityView.value as UnitView;
+
+            if (unitView is null)
+                throw new InvalidOperationException("Failed to create projectile. Entity is not a UnitView");
+
             ETeam ownTeam = entity.team.value;
-
-            Vector3 muzzlePosition = entity.position.value; //
-            Vector3 firePoint = muzzlePosition + entity.direction.value; //
-            // IEntityView entityViewValue = entity.entityView.value; // ToDo забрать точку выстрела из вью
-
-            Vector3 spawnPosition = firePoint;
+            Vector3 spawnPosition = unitView.FirePoint;
             GameEntity targetEntity = entity.target.value;
             Vector3 targetPosition = targetEntity.position.value;
             Vector3 direction = (targetPosition - spawnPosition).normalized;
