@@ -6,6 +6,8 @@ namespace Core.Systems
 {
     public class SpawnArmySystem : IInitializeSystem
     {
+        private const float INITIAL_ATTACK_COOLDOWN = 1f;
+
         private readonly GameContext _gameContext;
         private readonly UnitConfig _unitConfig;
         private readonly SpawnArmyConfig _spawnArmyConfig;
@@ -48,6 +50,7 @@ namespace Core.Systems
             entity.AddMovementSpeed(_unitConfig.MovementSpeed);
             entity.AddRotationSpeed(_unitConfig.RotationSpeed);
             entity.AddHealth(_unitConfig.Health);
+            entity.AddAttackCooldown(INITIAL_ATTACK_COOLDOWN);
             entity.isUnit = true;
         }
 
