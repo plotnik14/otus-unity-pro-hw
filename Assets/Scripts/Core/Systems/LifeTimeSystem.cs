@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using Services;
 
 namespace Core.Systems
@@ -7,6 +8,7 @@ namespace Core.Systems
     {
         private readonly ITimeService _timeService;
         private readonly IGroup<GameEntity> _lifeTimeGroup;
+        private readonly List<GameEntity> _buffer = new();
 
         public LifeTimeSystem(GameContext gameContext, ITimeService timeService)
         {
@@ -18,7 +20,7 @@ namespace Core.Systems
         {
             float deltaTime = _timeService.DeltaTime;
 
-            foreach (GameEntity entity in _lifeTimeGroup.GetEntities())
+            foreach (GameEntity entity in _lifeTimeGroup.GetEntities(_buffer))
             {
                 UpdateLifeTime(entity, deltaTime);
             }

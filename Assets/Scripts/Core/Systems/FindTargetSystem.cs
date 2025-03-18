@@ -1,4 +1,5 @@
-﻿using Configs;
+﻿using System.Collections.Generic;
+using Configs;
 using Entitas;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace Core.Systems
         private readonly UnitConfig _unitConfig;
         private readonly IGroup<GameEntity> _lookingForTargetGroup;
         private readonly IGroup<GameEntity> _possibleTargetGroup;
+        private readonly List<GameEntity> _unitBuffer = new();
+        private readonly List<GameEntity> _targetBuffer = new();
 
         public FindTargetSystem(GameContext gameContext, UnitConfig unitConfig)
         {
@@ -26,7 +29,7 @@ namespace Core.Systems
 
         public void Execute()
         {
-            foreach (GameEntity entity in _lookingForTargetGroup.GetEntities())
+            foreach (GameEntity entity in _lookingForTargetGroup.GetEntities(_unitBuffer))
             {
                 TrySetTarget(entity);
             }
@@ -48,7 +51,7 @@ namespace Core.Systems
             float minDistanceToEnemySqr = float.MaxValue;
             GameEntity closestEnemy = null;
 
-            foreach (GameEntity possibleEnemy in _possibleTargetGroup.GetEntities())
+            foreach (GameEntity possibleEnemy in _possibleTargetGroup.GetEntities(_targetBuffer))
             {
                 if (possibleEnemy.team.value == ownTeam)
                     continue;

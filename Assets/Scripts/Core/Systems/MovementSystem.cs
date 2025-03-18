@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using Services;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Core.Systems
     {
         private readonly ITimeService _timeService;
         private readonly IGroup<GameEntity> _movementGroup;
+        private readonly List<GameEntity> _buffer = new();
 
         public MovementSystem(GameContext gameContext, ITimeService timeService)
         {
@@ -22,7 +24,7 @@ namespace Core.Systems
         {
             float deltaTime = _timeService.DeltaTime;
 
-            foreach (GameEntity entity in _movementGroup.GetEntities())
+            foreach (GameEntity entity in _movementGroup.GetEntities(_buffer))
             {
                 ApplyMovement(entity, deltaTime);
             }

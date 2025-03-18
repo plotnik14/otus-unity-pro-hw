@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 
 namespace Core.Systems
@@ -6,6 +7,7 @@ namespace Core.Systems
     public class RotationSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _rotationGroup;
+        private readonly List<GameEntity> _buffer = new();
 
         public RotationSystem(GameContext gameContext)
         {
@@ -15,7 +17,7 @@ namespace Core.Systems
 
         public void Execute()
         {
-            foreach (GameEntity entity in _rotationGroup.GetEntities())
+            foreach (GameEntity entity in _rotationGroup.GetEntities(_buffer))
             {
                 ApplyRotationInstant(entity);
             }
