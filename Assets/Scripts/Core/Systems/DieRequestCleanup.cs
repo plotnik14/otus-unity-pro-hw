@@ -5,8 +5,6 @@ namespace Core.Systems
 {
     public class DieRequestCleanup : ICleanupSystem
     {
-        // ToDO мультисистема для чистки всех реквестов ??
-
         private readonly IGroup<GameEntity> _dieRequestsGroup;
         private readonly List<GameEntity> _buffer = new();
 

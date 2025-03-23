@@ -3,6 +3,9 @@ using Entitas.CodeGeneration.Attributes;
 
 namespace Core.Components
 {
-    [Event(EventTarget.Self), Cleanup(CleanupMode.DestroyEntity)]
+    [Game,
+     GameState,
+     Event(EventTarget.Self),
+     Cleanup(CleanupMode.DestroyEntity)]
     public sealed class DestroyedComponent : IComponent { }
 }

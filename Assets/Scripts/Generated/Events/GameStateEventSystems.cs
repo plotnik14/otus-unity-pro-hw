@@ -10,5 +10,6 @@ public sealed class GameStateEventSystems : Feature {
 
     public GameStateEventSystems(Contexts contexts) {
         Add(new ArmyCountEventSystem(contexts)); // priority: 0
+        Add(new GameStateDestroyedEventSystem(contexts)); // priority: 0
     }
 }

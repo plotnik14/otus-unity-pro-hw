@@ -6,12 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed class DestroyedEventSystem : Entitas.ReactiveSystem<GameEntity> {
+public sealed class GameDestroyedEventSystem : Entitas.ReactiveSystem<GameEntity> {
 
-    readonly System.Collections.Generic.List<IDestroyedListener> _listenerBuffer;
+    readonly System.Collections.Generic.List<IGameDestroyedListener> _listenerBuffer;
 
-    public DestroyedEventSystem(Contexts contexts) : base(contexts.game) {
-        _listenerBuffer = new System.Collections.Generic.List<IDestroyedListener>();
+    public GameDestroyedEventSystem(Contexts contexts) : base(contexts.game) {
+        _listenerBuffer = new System.Collections.Generic.List<IGameDestroyedListener>();
     }
 
     protected override Entitas.ICollector<GameEntity> GetTrigger(Entitas.IContext<GameEntity> context) {
@@ -21,14 +21,14 @@ public sealed class DestroyedEventSystem : Entitas.ReactiveSystem<GameEntity> {
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.isDestroyed && entity.hasDestroyedListener;
+        return entity.isDestroyed && entity.hasGameDestroyedListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
             
             _listenerBuffer.Clear();
-            _listenerBuffer.AddRange(e.destroyedListener.value);
+            _listenerBuffer.AddRange(e.gameDestroyedListener.value);
             foreach (var listener in _listenerBuffer) {
                 listener.OnDestroyed(e);
             }

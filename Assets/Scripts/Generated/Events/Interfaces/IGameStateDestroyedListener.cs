@@ -6,6 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IDestroyedListener {
-    void OnDestroyed(GameEntity entity);
+public interface IGameStateDestroyedListener {
+    void OnDestroyed(GameStateEntity entity);
 }

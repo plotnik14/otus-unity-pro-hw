@@ -27,7 +27,7 @@ public static class GameComponentsLookup {
     public const int Target = 16;
     public const int Team = 17;
     public const int Unit = 18;
-    public const int DestroyedListener = 19;
+    public const int GameDestroyedListener = 19;
     public const int PositionListener = 20;
     public const int RotationListener = 21;
     public const int TeamListener = 22;
@@ -54,7 +54,7 @@ public static class GameComponentsLookup {
         "Target",
         "Team",
         "Unit",
-        "DestroyedListener",
+        "GameDestroyedListener",
         "PositionListener",
         "RotationListener",
         "TeamListener"
@@ -80,7 +80,7 @@ public static class GameComponentsLookup {
         typeof(Core.Components.TargetComponent),
         typeof(Core.Components.TeamComponent),
         typeof(Core.Components.UnitComponent),
-        typeof(DestroyedListenerComponent),
+        typeof(GameDestroyedListenerComponent),
         typeof(PositionListenerComponent),
         typeof(RotationListenerComponent),
         typeof(TeamListenerComponent)

@@ -40,7 +40,7 @@ namespace Core
             Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory));
 
             // Events (Generated)
-            Add(new DestroyedEventSystem(contexts));
+            Add(new GameDestroyedEventSystem(contexts));
             Add(new PositionEventSystem(contexts));
             Add(new RotationEventSystem(contexts));
             Add(new TeamEventSystem(contexts));
@@ -48,7 +48,6 @@ namespace Core
             // Cleanup
             Add(new AttackRequestCleanup(contexts.game));
             Add(new DieRequestCleanup(contexts.game));
-            Add(new DestroyedCleanupSystem(contexts.game));
         }
     }
 }
