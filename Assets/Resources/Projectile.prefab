@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea54eb25587e43ff908d8c88b3b078c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unityView: {fileID: 1448610717814028477}
+  gameView: {fileID: 1448610717814028477}

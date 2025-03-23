@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace View
 {
     public class TriggerHandlerView : MonoBehaviour
     {
-        [FormerlySerializedAs("_unityView")] [SerializeField] private GameView gameView;
+        [SerializeField] private GameView gameView;
 
         [UsedImplicitly]
         private void OnTriggerEnter(Collider other)
