@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace View
 {
-    public class BattleView : UnityView, ITeamListener
+    public class BattleView : GameView, ITeamListener
     {
         [SerializeField] private List<Renderer> _renderers;
         [SerializeField] private TeamConfig _teamConfig;

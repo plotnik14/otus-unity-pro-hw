@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace View
 {
     public class TriggerHandlerView : MonoBehaviour
     {
-        [SerializeField] private UnityView _unityView;
+        [FormerlySerializedAs("_unityView")] [SerializeField] private GameView gameView;
 
         [UsedImplicitly]
         private void OnTriggerEnter(Collider other)
         {
-            UnityView otherUnityView = other.gameObject.GetComponent<UnityView>();
-            GameEntity collidedWith = otherUnityView.LinkedEntity;
+            GameView otherGameView = other.gameObject.GetComponent<GameView>();
+            GameEntity collidedWith = otherGameView.LinkedEntity;
             AddCollision(collidedWith);
         }
         
@@ -24,7 +25,7 @@ namespace View
 
         private List<GameEntity> GetOrCreateCollisionsList()
         {
-            GameEntity linkedEntity = _unityView.LinkedEntity;
+            GameEntity linkedEntity = gameView.LinkedEntity;
 
             if (linkedEntity.hasCollisions)
                 return linkedEntity.collisions.list;

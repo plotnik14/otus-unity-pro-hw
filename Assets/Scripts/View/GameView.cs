@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace View
 {
-    public class UnityView : MonoBehaviour, IEntityView, IPositionListener, IRotationListener, IDestroyedListener
+    public class GameView : MonoBehaviour, IEntityView, IPositionListener, IRotationListener, IDestroyedListener
     {
         public GameEntity LinkedEntity { get; private set; }
 
