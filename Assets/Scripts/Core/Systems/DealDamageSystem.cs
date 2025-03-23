@@ -35,7 +35,6 @@ namespace Core.Systems
                 {
                     entity.RemoveHealth();
                     entity.hasDieRequest = true;
-                    entity.isDestroyed = true; // ToDO удалить
                     return;
                 }
 

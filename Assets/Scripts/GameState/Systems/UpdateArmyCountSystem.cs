@@ -4,58 +4,54 @@ using Entitas;
 
 namespace GameState.Systems
 {
-    public class UpdateArmyCountSystem : ReactiveSystem<GameStateEntity>
+    public class UpdateArmyCountSystem : ReactiveSystem<GameEntity>
     {
-        private readonly IGroup<GameEntity> _aliveArmy;
-        private readonly List<GameEntity> _aliveArmyBuffer = new();
+        private readonly IGroup<GameStateEntity> _counterEntities;
+        private readonly List<GameStateEntity> _counterBuffer = new();
 
         public UpdateArmyCountSystem(
-            IContext<GameStateEntity> gameStateContext,
-            IContext<GameEntity> gameContext) : base(gameStateContext)
+            IContext<GameEntity> gameContext,
+            IContext<GameStateEntity> gameStateContext) : base(gameContext)
         {
-            _aliveArmy = gameContext.GetGroup(GameMatcher
-                .AllOf(GameMatcher.Unit)
-                .NoneOf(GameMatcher.DieRequest, GameMatcher.Destroyed)
-            );
+            _counterEntities = gameStateContext.GetGroup(GameStateMatcher
+                .AllOf(GameStateMatcher.ArmyCount, GameStateMatcher.StateTeam));
         }
 
-        protected override ICollector<GameStateEntity> GetTrigger(IContext<GameStateEntity> context)
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameStateMatcher.UpdateArmyCountRequest.Added());
+            return context.CreateCollector(GameMatcher.Unit.AddedOrRemoved());
         }
 
-        protected override bool Filter(GameStateEntity entity)
-        {
-            return entity.hasArmyCount && entity.hasUpdateArmyCountRequest;
-        }
+        protected override bool Filter(GameEntity entity) => true;
 
-        protected override void Execute(List<GameStateEntity> entities)
+        protected override void Execute(List<GameEntity> entities)
         {
-            foreach (GameStateEntity entity in entities)
+            if (entities.Count == 0)
+                return;
+
+            Dictionary<ETeam, GameStateEntity> teamStateDictionary = CreateTeamStateDictionary();
+
+            foreach (GameEntity entity in entities)
             {
-                // ToDo какая то херня. Надо подумать и почитать еще. Индексы?
-
-                ETeam stateTeam = entity.stateTeam.value;
-                int aliveCount = 0;
-
-
-                // TODO
-                // var gameEntities = _aliveArmy.GetEntities(_aliveArmyBuffer);
-                // var gameEntities = Contexts.sharedInstance.game.GetGroup(GameMatcher
-                //     .AllOf(GameMatcher.Unit)
-                //     .NoneOf(GameMatcher.DieRequest, GameMatcher.Destroyed)
-                // ).GetEntities(_aliveArmyBuffer);
-
-
-                foreach (GameEntity gameEntity in _aliveArmy.GetEntities(_aliveArmyBuffer))
-                {
-                    if (gameEntity.team.value == stateTeam)
-                        aliveCount++;
-                }
-
-                entity.ReplaceArmyCount(aliveCount);
-                entity.hasUpdateArmyCountRequest = false;
+                ETeam team = entity.team.value;
+                GameStateEntity counterEntity = teamStateDictionary[team];
+                int armyCountCurrent = counterEntity.armyCount.value;
+                bool hasUnitMark = entity.isUnit;
+                int armyCountNew = hasUnitMark
+                    ? ++armyCountCurrent
+                    : --armyCountCurrent;
+                counterEntity.ReplaceArmyCount(armyCountNew);
             }
+        }
+
+        private Dictionary<ETeam, GameStateEntity> CreateTeamStateDictionary()
+        {
+            Dictionary<ETeam, GameStateEntity> teamStateDictionary = new();
+
+            foreach (GameStateEntity stateEntity in _counterEntities.GetEntities(_counterBuffer))
+                teamStateDictionary.Add(stateEntity.stateTeam.value, stateEntity);
+
+            return teamStateDictionary;
         }
     }
 }

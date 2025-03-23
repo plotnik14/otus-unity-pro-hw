@@ -15,12 +15,12 @@ namespace Core.Systems
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
             return context.CreateCollector(GameMatcher
-                .AllOf(GameMatcher.Unit, GameMatcher.Destroyed));
+                .AllOf(GameMatcher.Unit, GameMatcher.DieRequest));
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.isUnit && entity.isDestroyed;
+            return entity.isUnit && entity.hasDieRequest;
         }
 
         protected override void Execute(List<GameEntity> diedUnitEntities)

@@ -9,7 +9,7 @@ namespace GameState
         public GameStateSystems(Contexts contexts, List<UiArmyCountView> uiArmyCountViews)
         {
             Add(new InitArmyCountersSystem(contexts.gameState, uiArmyCountViews));
-            Add(new UpdateArmyCountSystem(contexts.gameState, contexts.game));
+            Add(new UpdateArmyCountSystem(contexts.game, contexts.gameState));
 
             Add(new ArmyCountEventSystem(contexts)); // Generated
         }

@@ -27,6 +27,7 @@ namespace Core
             Add(new ProjectileCollisionSystem(contexts.game));
             Add(new DealDamageSystem(contexts.game));
             Add(new ReleaseTargetSystem(contexts.game));
+            Add(new UnitDieSystem(contexts.game));
             Add(new FindTargetSystem(contexts.game, unitConfig));
             Add(new AttackCooldownSystem(contexts.game, timeService));
             Add(new AttackSystem(contexts.game));
@@ -34,7 +35,6 @@ namespace Core
             Add(new SpawnProjectileSystem(contexts.game, projectileConfig));
             Add(new AddAttackCooldownSystem(contexts.game, unitConfig));
             Add(new LifeTimeSystem(contexts.game, timeService));
-            Add(new DieSystem(contexts.game, contexts.gameState));
 
             // View
             Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory));
