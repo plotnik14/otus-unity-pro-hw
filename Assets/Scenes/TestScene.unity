@@ -237,6 +237,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmyCounterBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 3461999815407807544, guid: 602673c4ab2f1fa4d8646950fe169a02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3461999815407807548, guid: 602673c4ab2f1fa4d8646950fe169a02,
         type: 3}
       propertyPath: _team
@@ -385,6 +390,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 902689829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &902689831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3461999815407807548, guid: 602673c4ab2f1fa4d8646950fe169a02,
+    type: 3}
+  m_PrefabInstance: {fileID: 902689829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9174f9866214bd9b2aa36aa993ca299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424000490
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +528,8 @@ MonoBehaviour:
   _unitConfig: {fileID: 11400000, guid: 4c1b9f98b9a91634d91c9c37218715f0, type: 2}
   _projectileConfig: {fileID: 11400000, guid: 860a4b94cb982ea4d96730426ebecd98, type: 2}
   _spawnArmyConfig: {fileID: 11400000, guid: 17834aaddbe0b094f9b6f2a963d02f8d, type: 2}
+  _redUiArmyCountView: {fileID: 3461999814942053644}
+  _blueUiArmyCountView: {fileID: 902689831}
 --- !u!4 &1700633413
 Transform:
   m_ObjectHideFlags: 0
@@ -729,6 +748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArmyCounterRed
       objectReference: {fileID: 0}
+    - target: {fileID: 3461999815407807544, guid: 602673c4ab2f1fa4d8646950fe169a02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3461999815407807550, guid: 602673c4ab2f1fa4d8646950fe169a02,
         type: 3}
       propertyPath: m_text
@@ -861,6 +885,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602673c4ab2f1fa4d8646950fe169a02, type: 3}
+--- !u!114 &3461999814942053644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3461999815407807548, guid: 602673c4ab2f1fa4d8646950fe169a02,
+    type: 3}
+  m_PrefabInstance: {fileID: 3461999814942053643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9174f9866214bd9b2aa36aa993ca299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8715453388706128829
 PrefabInstance:
   m_ObjectHideFlags: 0

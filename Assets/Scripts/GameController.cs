@@ -1,4 +1,6 @@
-﻿using Configs;
+﻿using System.Collections.Generic;
+using Configs;
+using UI;
 
 public class GameController
 {
@@ -8,9 +10,10 @@ public class GameController
         Contexts contexts,
         UnitConfig unitConfig,
         ProjectileConfig projectileConfig,
-        SpawnArmyConfig spawnArmyConfig)
+        SpawnArmyConfig spawnArmyConfig,
+        List<UiArmyCountView> uiArmyCountViews)
     {
-        _systems = new RootSystems(contexts, unitConfig, projectileConfig, spawnArmyConfig);
+        _systems = new RootSystems(contexts, unitConfig, projectileConfig, spawnArmyConfig, uiArmyCountViews);
     }
 
     public void Initialize() => _systems.Initialize();
