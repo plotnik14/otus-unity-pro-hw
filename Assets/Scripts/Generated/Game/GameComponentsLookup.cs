@@ -14,24 +14,25 @@ public static class GameComponentsLookup {
     public const int Collisions = 3;
     public const int Damage = 4;
     public const int Destroyed = 5;
-    public const int Direction = 6;
-    public const int EntityView = 7;
-    public const int Health = 8;
-    public const int LifeTime = 9;
-    public const int MovementSpeed = 10;
-    public const int Position = 11;
-    public const int Projectile = 12;
-    public const int Rotation = 13;
-    public const int RotationSpeed = 14;
-    public const int Target = 15;
-    public const int Team = 16;
-    public const int Unit = 17;
-    public const int DestroyedListener = 18;
-    public const int PositionListener = 19;
-    public const int RotationListener = 20;
-    public const int TeamListener = 21;
+    public const int DieRequest = 6;
+    public const int Direction = 7;
+    public const int EntityView = 8;
+    public const int Health = 9;
+    public const int LifeTime = 10;
+    public const int MovementSpeed = 11;
+    public const int Position = 12;
+    public const int Projectile = 13;
+    public const int Rotation = 14;
+    public const int RotationSpeed = 15;
+    public const int Target = 16;
+    public const int Team = 17;
+    public const int Unit = 18;
+    public const int DestroyedListener = 19;
+    public const int PositionListener = 20;
+    public const int RotationListener = 21;
+    public const int TeamListener = 22;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -40,6 +41,7 @@ public static class GameComponentsLookup {
         "Collisions",
         "Damage",
         "Destroyed",
+        "DieRequest",
         "Direction",
         "EntityView",
         "Health",
@@ -65,6 +67,7 @@ public static class GameComponentsLookup {
         typeof(Core.Components.CollisionsComponent),
         typeof(Core.Components.DamageComponent),
         typeof(Core.Components.DestroyedComponent),
+        typeof(Core.Components.DieRequestComponent),
         typeof(Core.Components.DirectionComponent),
         typeof(Core.Components.EntityViewComponent),
         typeof(Core.Components.HealthComponent),

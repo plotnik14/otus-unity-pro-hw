@@ -34,7 +34,8 @@ namespace Core.Systems
                 if (newHealth <= 0)
                 {
                     entity.RemoveHealth();
-                    entity.isDestroyed = true;
+                    entity.hasDieRequest = true;
+                    entity.isDestroyed = true; // ToDO удалить
                     return;
                 }
 

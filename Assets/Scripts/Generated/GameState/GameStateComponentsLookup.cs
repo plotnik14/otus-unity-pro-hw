@@ -8,15 +8,24 @@
 //------------------------------------------------------------------------------
 public static class GameStateComponentsLookup {
 
+    public const int ArmyCountListener = 0;
+    public const int ArmyCount = 1;
+    public const int StateTeam = 2;
+    public const int UpdateArmyCountRequest = 3;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
-
+        "ArmyCountListener",
+        "ArmyCount",
+        "StateTeam",
+        "UpdateArmyCountRequest"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(ArmyCountListenerComponent),
+        typeof(GameState.Components.ArmyCountComponent),
+        typeof(GameState.Components.StateTeamComponent),
+        typeof(GameState.Components.UpdateArmyCountRequestComponent)
     };
 }
