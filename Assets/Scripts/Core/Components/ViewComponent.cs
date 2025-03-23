@@ -3,7 +3,8 @@ using View;
 
 namespace Core.Components
 {
-    public class EntityViewComponent : IComponent
+    [Game, GameState]
+    public class ViewComponent : IComponent
     {
         public IEntityView value;
     }

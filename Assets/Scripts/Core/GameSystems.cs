@@ -37,7 +37,7 @@ namespace Core
             Add(new LifeTimeSystem(contexts.game, timeService));
 
             // View
-            Add(new CreateViewSystem(contexts.game, assetLoader, objectFactory));
+            Add(new MultiCreateViewSystem(contexts, assetLoader, objectFactory));
 
             // Events (Generated)
             Add(new GameDestroyedEventSystem(contexts));

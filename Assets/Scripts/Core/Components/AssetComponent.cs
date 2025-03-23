@@ -2,7 +2,7 @@
 
 namespace Core.Components
 {
-    [Game]
+    [Game, GameState]
     public class AssetComponent : IComponent
     {
         public string value;

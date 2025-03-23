@@ -16,17 +16,17 @@ public static class GameComponentsLookup {
     public const int Destroyed = 5;
     public const int DieRequest = 6;
     public const int Direction = 7;
-    public const int EntityView = 8;
-    public const int Health = 9;
-    public const int LifeTime = 10;
-    public const int MovementSpeed = 11;
-    public const int Position = 12;
-    public const int Projectile = 13;
-    public const int Rotation = 14;
-    public const int RotationSpeed = 15;
-    public const int Target = 16;
-    public const int Team = 17;
-    public const int Unit = 18;
+    public const int Health = 8;
+    public const int LifeTime = 9;
+    public const int MovementSpeed = 10;
+    public const int Position = 11;
+    public const int Projectile = 12;
+    public const int Rotation = 13;
+    public const int RotationSpeed = 14;
+    public const int Target = 15;
+    public const int Team = 16;
+    public const int Unit = 17;
+    public const int View = 18;
     public const int GameDestroyedListener = 19;
     public const int PositionListener = 20;
     public const int RotationListener = 21;
@@ -43,7 +43,6 @@ public static class GameComponentsLookup {
         "Destroyed",
         "DieRequest",
         "Direction",
-        "EntityView",
         "Health",
         "LifeTime",
         "MovementSpeed",
@@ -54,6 +53,7 @@ public static class GameComponentsLookup {
         "Target",
         "Team",
         "Unit",
+        "View",
         "GameDestroyedListener",
         "PositionListener",
         "RotationListener",
@@ -69,7 +69,6 @@ public static class GameComponentsLookup {
         typeof(Core.Components.DestroyedComponent),
         typeof(Core.Components.DieRequestComponent),
         typeof(Core.Components.DirectionComponent),
-        typeof(Core.Components.EntityViewComponent),
         typeof(Core.Components.HealthComponent),
         typeof(Core.Components.LifeTimeComponent),
         typeof(Core.Components.MovementSpeedComponent),
@@ -80,6 +79,7 @@ public static class GameComponentsLookup {
         typeof(Core.Components.TargetComponent),
         typeof(Core.Components.TeamComponent),
         typeof(Core.Components.UnitComponent),
+        typeof(Core.Components.ViewComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(PositionListenerComponent),
         typeof(RotationListenerComponent),

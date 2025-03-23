@@ -42,7 +42,7 @@ namespace Core.Systems
 
         private void SpawnProjectile(GameEntity entity)
         {
-            UnitView unitView = entity.entityView.value as UnitView;
+            UnitView unitView = entity.view.value as UnitView;
 
             if (unitView is null)
                 throw new InvalidOperationException("Failed to create projectile. Entity is not a UnitView");
