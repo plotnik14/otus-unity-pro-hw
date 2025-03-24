@@ -225,6 +225,88 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &409170019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409170022}
+  - component: {fileID: 409170021}
+  - component: {fileID: 409170020}
+  m_Layer: 0
+  m_Name: SceneContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &409170020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409170019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd70d2c0b0f43de811856902da4bff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitConfig: {fileID: 11400000, guid: 4c1b9f98b9a91634d91c9c37218715f0, type: 2}
+  _projectileConfig: {fileID: 11400000, guid: 860a4b94cb982ea4d96730426ebecd98, type: 2}
+  _spawnArmyConfig: {fileID: 11400000, guid: 17834aaddbe0b094f9b6f2a963d02f8d, type: 2}
+  _redUiArmyCountView: {fileID: 3461999814942053644}
+  _blueUiArmyCountView: {fileID: 902689831}
+--- !u!114 &409170021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409170019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 409170020}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &409170022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409170019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902689829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,7 +576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1700633411
 GameObject:
@@ -525,11 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117fb836cc7a47b994fc8990a2c00937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitConfig: {fileID: 11400000, guid: 4c1b9f98b9a91634d91c9c37218715f0, type: 2}
-  _projectileConfig: {fileID: 11400000, guid: 860a4b94cb982ea4d96730426ebecd98, type: 2}
-  _spawnArmyConfig: {fileID: 11400000, guid: 17834aaddbe0b094f9b6f2a963d02f8d, type: 2}
-  _redUiArmyCountView: {fileID: 3461999814942053644}
-  _blueUiArmyCountView: {fileID: 902689831}
 --- !u!4 &1700633413
 Transform:
   m_ObjectHideFlags: 0
@@ -543,7 +620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1741650228 stripped
 RectTransform:
@@ -633,7 +710,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.6, y: 115.3, z: 0}
 --- !u!1 &1790568751
 GameObject:
@@ -734,7 +811,7 @@ Transform:
   - {fileID: 370643784}
   - {fileID: 1790568752}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3461999814942053643
 PrefabInstance:
@@ -907,7 +984,7 @@ PrefabInstance:
     - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8715453387763209706, guid: 71b6ea628a3d1d24d961372f8fdd59ac,
         type: 3}

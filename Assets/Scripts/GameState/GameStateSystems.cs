@@ -1,17 +1,15 @@
-﻿using System.Collections.Generic;
-using GameState.Systems;
-using UI;
+﻿using GameState.Systems;
+using Infrastructure;
 
 namespace GameState
 {
-    public class GameStateSystems : Feature
+    public class GameStateSystems : ExtendedFeature
     {
-        public GameStateSystems(Contexts contexts, List<UiArmyCountView> uiArmyCountViews)
+        public GameStateSystems(SystemProvider provider) : base(provider)
         {
-            Add(new InitArmyCountersSystem(contexts.gameState, uiArmyCountViews));
-            Add(new UpdateArmyCountSystem(contexts.game, contexts.gameState));
-
-            Add(new ArmyCountEventSystem(contexts)); // Generated
+            Add<InitArmyCountersSystem>();
+            Add<UpdateArmyCountSystem>();
+            Add<ArmyCountEventSystem>(); // Generated
         }
     }
 }

@@ -1,34 +1,20 @@
-﻿using System.Collections.Generic;
-using Configs;
-using JetBrains.Annotations;
-using UI;
+﻿using JetBrains.Annotations;
 using UnityEngine;
+using Zenject;
 
 public class GameControllerBehaviour : MonoBehaviour
 {
-    [SerializeField] private UnitConfig _unitConfig;
-    [SerializeField] private ProjectileConfig _projectileConfig;
-    [SerializeField] private SpawnArmyConfig _spawnArmyConfig;
-
-    [SerializeField] private UiArmyCountView _redUiArmyCountView;
-    [SerializeField] private UiArmyCountView _blueUiArmyCountView;
-
     private GameController _gameController;
 
-    [UsedImplicitly]
-    private void Awake()
-    {
-        _gameController = new GameController(
-            Contexts.sharedInstance,
-            _unitConfig,
-            _projectileConfig,
-            _spawnArmyConfig,
-            new List<UiArmyCountView> { _redUiArmyCountView, _blueUiArmyCountView }); // ToDo временное решение. Переделать
-    }
+    [Inject]
+    private void Construct(GameController gameController) => _gameController = gameController;
 
     [UsedImplicitly]
     private void Start() => _gameController.Initialize();
 
     [UsedImplicitly]
     private void Update() => _gameController.Execute();
+
+    [UsedImplicitly]
+    private void OnDestroy() => _gameController.TearDown();
 }

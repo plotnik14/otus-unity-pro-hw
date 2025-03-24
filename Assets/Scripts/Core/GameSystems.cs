@@ -1,53 +1,43 @@
-﻿using Configs;
-using Core.Systems;
-using Services;
+﻿using Core.Systems;
+using Infrastructure;
 
 namespace Core
 {
-    public class GameSystems : Feature
+    public class GameSystems : ExtendedFeature
     {
-        public GameSystems(
-            Contexts contexts,
-            UnitConfig unitConfig,
-            ProjectileConfig projectileConfig,
-            SpawnArmyConfig spawnArmyConfig)
+        public GameSystems(SystemProvider provider) : base(provider)
         {
-            // ToDo DI
-            ITimeService timeService = new UnityTimeService();
-            IAssetLoader assetLoader = new AssetLoader();
-            IGameObjectFactory objectFactory = new GameObjectFactory();
-
             // Initialize
-            Add(new SpawnArmySystem(contexts.game, unitConfig, spawnArmyConfig));
+            Add<SpawnArmySystem>();
 
             // Execute
-            Add(new MovementSystem(contexts.game, timeService));
-            Add(new RotationSystem(contexts.game));
-            Add(new UnitCollisionSystem(contexts.game, projectileConfig));
-            Add(new ProjectileCollisionSystem(contexts.game));
-            Add(new DealDamageSystem(contexts.game));
-            Add(new ReleaseTargetSystem(contexts.game));
-            Add(new UnitDieSystem(contexts.game));
-            Add(new FindTargetSystem(contexts.game, unitConfig));
-            Add(new AttackCooldownSystem(contexts.game, timeService));
-            Add(new AttackSystem(contexts.game));
-            Add(new LookAtTargetSystem(contexts.game));
-            Add(new SpawnProjectileSystem(contexts.game, projectileConfig));
-            Add(new AddAttackCooldownSystem(contexts.game, unitConfig));
-            Add(new LifeTimeSystem(contexts.game, timeService));
+            Add<MovementSystem>();
+            Add<RotationSystem>();
+            Add<UnitCollisionSystem>();
+            Add<ProjectileCollisionSystem>();
+            Add<DealDamageSystem>();
+            Add<ReleaseTargetSystem>();
+            Add<UnitDieSystem>();
+            Add<FindTargetSystem>();
+            Add<AttackCooldownSystem>();
+            Add<AttackSystem>();
+            Add<LookAtTargetSystem>();
+            Add<SpawnProjectileSystem>();
+            Add<AddAttackCooldownSystem>();
+            Add<LifeTimeSystem>();
 
             // View
-            Add(new MultiCreateViewSystem(contexts, assetLoader, objectFactory));
+            Add<MultiCreateViewSystem>();
 
             // Events (Generated)
-            Add(new GameDestroyedEventSystem(contexts));
-            Add(new PositionEventSystem(contexts));
-            Add(new RotationEventSystem(contexts));
-            Add(new TeamEventSystem(contexts));
+            Add<GameDestroyedEventSystem>();
+            Add<PositionEventSystem>();
+            Add<RotationEventSystem>();
+            Add<TeamEventSystem>();
 
             // Cleanup
-            Add(new AttackRequestCleanup(contexts.game));
-            Add(new DieRequestCleanup(contexts.game));
+            Add<AttackRequestCleanup>();
+            Add<DieRequestCleanup>();
         }
     }
 }

@@ -1,20 +1,8 @@
-﻿using System.Collections.Generic;
-using Configs;
-using UI;
-
-public class GameController
+﻿public class GameController
 {
     private readonly Entitas.Systems _systems;
 
-    public GameController(
-        Contexts contexts,
-        UnitConfig unitConfig,
-        ProjectileConfig projectileConfig,
-        SpawnArmyConfig spawnArmyConfig,
-        List<UiArmyCountView> uiArmyCountViews)
-    {
-        _systems = new RootSystems(contexts, unitConfig, projectileConfig, spawnArmyConfig, uiArmyCountViews);
-    }
+    public GameController(RootSystems rootSystems) => _systems = rootSystems;
 
     public void Initialize() => _systems.Initialize();
 
@@ -23,4 +11,6 @@ public class GameController
         _systems.Execute();
         _systems.Cleanup();
     }
+
+    public void TearDown() => _systems.TearDown();
 }
