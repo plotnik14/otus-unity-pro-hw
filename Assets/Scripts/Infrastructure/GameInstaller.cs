@@ -58,6 +58,8 @@ namespace Infrastructure
             Container.BindInstance(contexts).AsSingle();
             Container.BindInterfacesAndSelfTo<GameContext>().FromInstance(contexts.game).AsSingle();
             Container.BindInterfacesAndSelfTo<GameStateContext>().FromInstance(contexts.gameState).AsSingle();
+            Container.BindInterfacesAndSelfTo<InputContext>().FromInstance(contexts.input).AsSingle();
+            Container.BindInterfacesAndSelfTo<UiContext>().FromInstance(contexts.ui).AsSingle();
         }
 
         private void BindSystems()
