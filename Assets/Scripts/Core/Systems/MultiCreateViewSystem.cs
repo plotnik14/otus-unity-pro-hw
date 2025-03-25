@@ -8,7 +8,7 @@ using View;
 public interface IViewableEntity : IViewEntity, IAssetEntity, IEntity { }
 
 public partial class GameEntity : IViewableEntity { }
-public partial class GameStateEntity : IViewableEntity { }
+public partial class UiEntity : IViewableEntity { }
 
 namespace Core.Systems
 {
@@ -16,23 +16,24 @@ namespace Core.Systems
     {
       private readonly IAssetLoader _assetLoader;
       private readonly IGameObjectFactory _objectFactory;
-      private readonly Transform _parent;
+      private readonly Dictionary<string, Transform> _parentByContextName;
 
       public MultiCreateViewSystem(
           Contexts contexts,
           IAssetLoader assetLoader,
-          IGameObjectFactory objectFactory) : base(contexts)
+          IGameObjectFactory objectFactory,
+          Dictionary<string, Transform> parentByContextName) : base(contexts)
       {
           _assetLoader = assetLoader;
           _objectFactory = objectFactory;
-          _parent = new GameObject("Views").transform;
+          _parentByContextName = parentByContextName;
       }
 
       protected override ICollector[] GetTrigger(Contexts contexts)
       {
           return new ICollector[] {
-              contexts.game.CreateCollector(GameMatcher.Asset),
-              contexts.gameState.CreateCollector(GameStateMatcher.Asset),
+              contexts.game.CreateCollector(GameMatcher.AllOf(GameMatcher.Asset).NoneOf(GameMatcher.View)),
+              contexts.ui.CreateCollector(UiMatcher.AllOf(UiMatcher.Asset).NoneOf(UiMatcher.View)),
           };
       }
 
@@ -53,9 +54,14 @@ namespace Core.Systems
 
       private IEntityView CreateView(IViewableEntity entity)
       {
+          string contextName = entity.contextInfo.name;
+
+          if (!_parentByContextName.TryGetValue(contextName, out Transform parent))
+              throw new InvalidOperationException($"Parent transform for context:{contextName} was not found");
+
           string assetName = entity.asset.value;
           GameObject prefab = _assetLoader.LoadAsset(assetName);
-          GameObject gameObject = _objectFactory.Instantiate(prefab, _parent);
+          GameObject gameObject = _objectFactory.Instantiate(prefab, parent);
 
           if (gameObject.TryGetComponent(out IEntityView entityView))
               return entityView;

@@ -8,15 +8,24 @@
 //------------------------------------------------------------------------------
 public static class UiComponentsLookup {
 
+    public const int Asset = 0;
+    public const int Destroyed = 1;
+    public const int View = 2;
+    public const int UiDestroyedListener = 3;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
-
+        "Asset",
+        "Destroyed",
+        "View",
+        "UiDestroyedListener"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Core.Components.AssetComponent),
+        typeof(Core.Components.DestroyedComponent),
+        typeof(Core.Components.ViewComponent),
+        typeof(UiDestroyedListenerComponent)
     };
 }

@@ -17,8 +17,13 @@ namespace Infrastructure
         [SerializeField] private ProjectileConfig _projectileConfig;
         [SerializeField] private SpawnArmyConfig _spawnArmyConfig;
 
+        [SerializeField] private Transform _gameEntitiesParent;
+        [SerializeField] private Transform _uiEntitiesParent;
+
         [SerializeField] private UiArmyCountView _redUiArmyCountView;
         [SerializeField] private UiArmyCountView _blueUiArmyCountView;
+
+        private Dictionary<string, Transform> _parentByContextName;
 
         public override void InstallBindings()
         {
@@ -60,6 +65,12 @@ namespace Infrastructure
             Container.BindInterfacesAndSelfTo<GameStateContext>().FromInstance(contexts.gameState).AsSingle();
             Container.BindInterfacesAndSelfTo<InputContext>().FromInstance(contexts.input).AsSingle();
             Container.BindInterfacesAndSelfTo<UiContext>().FromInstance(contexts.ui).AsSingle();
+
+            _parentByContextName = new Dictionary<string, Transform>
+            {
+                { contexts.game.contextInfo.name, _gameEntitiesParent },
+                { contexts.ui.contextInfo.name, _uiEntitiesParent },
+            };
         }
 
         private void BindSystems()
@@ -79,7 +90,7 @@ namespace Infrastructure
             Container.Bind<SpawnProjectileSystem>().AsSingle();
             Container.Bind<AddAttackCooldownSystem>().AsSingle();
             Container.Bind<LifeTimeSystem>().AsSingle();
-            Container.Bind<MultiCreateViewSystem>().AsSingle();
+            Container.Bind<MultiCreateViewSystem>().AsSingle().WithArguments(_parentByContextName);
             Container.Bind<GameDestroyedEventSystem>().AsSingle();
             Container.Bind<PositionEventSystem>().AsSingle();
             Container.Bind<RotationEventSystem>().AsSingle();

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 370643786}
   - component: {fileID: 370643785}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas [UiEntities Parent]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,6 +260,8 @@ MonoBehaviour:
   _unitConfig: {fileID: 11400000, guid: 4c1b9f98b9a91634d91c9c37218715f0, type: 2}
   _projectileConfig: {fileID: 11400000, guid: 860a4b94cb982ea4d96730426ebecd98, type: 2}
   _spawnArmyConfig: {fileID: 11400000, guid: 17834aaddbe0b094f9b6f2a963d02f8d, type: 2}
+  _gameEntitiesParent: {fileID: 2046544202}
+  _uiEntitiesParent: {fileID: 370643784}
   _redUiArmyCountView: {fileID: 3461999814942053644}
   _blueUiArmyCountView: {fileID: 902689831}
 --- !u!114 &409170021
@@ -794,6 +796,37 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &2046544201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046544202}
+  m_Layer: 0
+  m_Name: GameEntityViews
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2046544202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046544201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2147317939
 GameObject:
   m_ObjectHideFlags: 0

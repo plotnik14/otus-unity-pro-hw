@@ -4,6 +4,7 @@ using Entitas;
 public interface IDestroyableEntity : IEntity, IDestroyedEntity { }
 public partial class GameEntity : IDestroyableEntity { }
 public partial class GameStateEntity : IDestroyableEntity { }
+public partial class UiEntity : IDestroyableEntity { }
 
 namespace Core.Systems
 {
@@ -16,6 +17,7 @@ namespace Core.Systems
             return new ICollector[] {
                 contexts.game.CreateCollector(GameMatcher.Destroyed),
                 contexts.gameState.CreateCollector(GameStateMatcher.Destroyed),
+                contexts.ui.CreateCollector(UiMatcher.Destroyed),
             };
         }
 
