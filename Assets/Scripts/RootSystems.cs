@@ -2,6 +2,7 @@
 using Core.Systems;
 using GameState;
 using Infrastructure;
+using UI;
 
 public class RootSystems : ExtendedFeature
 {
@@ -9,6 +10,7 @@ public class RootSystems : ExtendedFeature
     {
         Add<GameSystems>();
         Add<GameStateSystems>();
+        Add<InitArmyStatisticsUiSystem>(); // ToDo move to UI feature?
         Add<MultiDestroySystem>();
     }
 }

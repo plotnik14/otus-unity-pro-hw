@@ -38,7 +38,6 @@ public static class GameStateComponentsLookup {
         typeof(Core.Components.DestroyedComponent),
         typeof(Core.Components.ViewComponent),
         typeof(GameState.Components.ArmyCountComponent),
-        typeof(GameState.Components.ArmyCountPresenterComponent),
         typeof(GameState.Components.StateTeamComponent),
         typeof(GameState.Components.UpdateArmyCountRequestComponent),
         typeof(GameStateDestroyedListenerComponent)

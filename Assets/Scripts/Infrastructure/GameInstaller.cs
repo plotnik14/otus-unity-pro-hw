@@ -98,6 +98,7 @@ namespace Infrastructure
             Container.Bind<AttackRequestCleanup>().AsSingle();
             Container.Bind<DieRequestCleanup>().AsSingle();
             Container.Bind<InitArmyCountersSystem>().AsSingle();
+            Container.Bind<InitArmyStatisticsUiSystem>().AsSingle();
             Container.Bind<UpdateArmyCountSystem>().AsSingle();
             Container.Bind<ArmyCountEventSystem>().AsSingle();
             Container.Bind<GameSystems>().AsSingle();

@@ -1,34 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using Configs;
 using Entitas;
-using UI;
 
 namespace GameState.Systems
 {
     public class InitArmyCountersSystem : IInitializeSystem
     {
         private readonly GameStateContext _gameStateContext;
-        private readonly List<UiArmyCountView> _armyCountViews;
 
-        public InitArmyCountersSystem(GameStateContext gameStateContext, List<UiArmyCountView> armyCountViews)
-        {
-            _gameStateContext = gameStateContext;
-            _armyCountViews = armyCountViews;
-        }
+        public InitArmyCountersSystem(GameStateContext gameStateContext) => _gameStateContext = gameStateContext;
 
         public void Initialize()
         {
-            foreach (UiArmyCountView view in _armyCountViews)
-                CreateArmyCounter(view);
+            foreach (ETeam team in Enum.GetValues(typeof(ETeam)))
+                CreateArmyCounter(team);
         }
 
-        private void CreateArmyCounter(UiArmyCountView view)
+        private void CreateArmyCounter(ETeam team)
         {
             GameStateEntity entity = _gameStateContext.CreateEntity();
-            entity.AddStateTeam(view.Team);
+            entity.AddStateTeam(team);
             entity.AddArmyCount(0);
-            var armyCountPresenter = new ArmyCountPresenter(view, entity);
-            entity.AddArmyCountPresenter(armyCountPresenter);
-            armyCountPresenter.Show();
         }
     }
 }
