@@ -2,7 +2,6 @@
 using Core;
 using Core.ArmyCount;
 using Core.ArmyCount.Systems;
-using Core.ArmyCount.Views;
 using Core.BattleInitialization;
 using Core.Collisions;
 using Core.Collisions.Systems;
@@ -29,16 +28,12 @@ namespace Infrastructure
         [SerializeField] private Transform _gameEntitiesParent;
         [SerializeField] private Transform _uiEntitiesParent;
 
-        [SerializeField] private UiArmyCountView _redUiArmyCountView;
-        [SerializeField] private UiArmyCountView _blueUiArmyCountView;
-
         private Dictionary<string, Transform> _parentByContextName;
 
         public override void InstallBindings()
         {
             BindConfiguration();
             BindServices();
-            BindViews();
             BindContexts();
             BindSystems();
             Container.Bind<SystemProvider>().AsSingle();
@@ -57,13 +52,6 @@ namespace Infrastructure
             Container.BindInterfacesTo<AssetLoader>().AsSingle();
             Container.BindInterfacesTo<UnityTimeService>().AsSingle();
             Container.BindInterfacesTo<GameObjectFactory>().AsSingle();
-        }
-
-        private void BindViews()
-        {
-            Container
-                .BindInstance(new List<UiArmyCountView> { _redUiArmyCountView, _blueUiArmyCountView })
-                .AsSingle();
         }
 
         private void BindContexts()
