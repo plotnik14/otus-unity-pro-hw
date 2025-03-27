@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.ArmyCount.Components;
+
 public partial class GameStateEntity {
 
-    static readonly GameState.Components.UpdateArmyCountRequestComponent updateArmyCountRequestComponent = new GameState.Components.UpdateArmyCountRequestComponent();
+    static readonly UpdateArmyCountRequestComponent updateArmyCountRequestComponent = new UpdateArmyCountRequestComponent();
 
     public bool hasUpdateArmyCountRequest {
         get { return HasComponent(GameStateComponentsLookup.UpdateArmyCountRequest); }

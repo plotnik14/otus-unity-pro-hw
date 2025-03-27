@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Views.Components;
+
 public partial class UiEntity {
 
-    public Core.Components.AssetComponent asset { get { return (Core.Components.AssetComponent)GetComponent(UiComponentsLookup.Asset); } }
+    public AssetComponent asset { get { return (AssetComponent)GetComponent(UiComponentsLookup.Asset); } }
     public bool hasAsset { get { return HasComponent(UiComponentsLookup.Asset); } }
 
     public void AddAsset(string newValue) {
         var index = UiComponentsLookup.Asset;
-        var component = (Core.Components.AssetComponent)CreateComponent(index, typeof(Core.Components.AssetComponent));
+        var component = (AssetComponent)CreateComponent(index, typeof(AssetComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAsset(string newValue) {
         var index = UiComponentsLookup.Asset;
-        var component = (Core.Components.AssetComponent)CreateComponent(index, typeof(Core.Components.AssetComponent));
+        var component = (AssetComponent)CreateComponent(index, typeof(AssetComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

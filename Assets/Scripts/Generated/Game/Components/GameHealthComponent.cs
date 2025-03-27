@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.HealthComponent health { get { return (Core.Components.HealthComponent)GetComponent(GameComponentsLookup.Health); } }
+    public HealthComponent health { get { return (HealthComponent)GetComponent(GameComponentsLookup.Health); } }
     public bool hasHealth { get { return HasComponent(GameComponentsLookup.Health); } }
 
     public void AddHealth(int newValue) {
         var index = GameComponentsLookup.Health;
-        var component = (Core.Components.HealthComponent)CreateComponent(index, typeof(Core.Components.HealthComponent));
+        var component = (HealthComponent)CreateComponent(index, typeof(HealthComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceHealth(int newValue) {
         var index = GameComponentsLookup.Health;
-        var component = (Core.Components.HealthComponent)CreateComponent(index, typeof(Core.Components.HealthComponent));
+        var component = (HealthComponent)CreateComponent(index, typeof(HealthComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

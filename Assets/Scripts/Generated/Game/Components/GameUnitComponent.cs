@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    static readonly Core.Components.UnitComponent unitComponent = new Core.Components.UnitComponent();
+    static readonly UnitComponent unitComponent = new UnitComponent();
 
     public bool isUnit {
         get { return HasComponent(GameComponentsLookup.Unit); }

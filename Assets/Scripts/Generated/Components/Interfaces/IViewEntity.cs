@@ -6,12 +6,16 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Views;
+using Core.Views.Components;
+
 public partial interface IViewEntity {
 
-    Core.Components.ViewComponent view { get; }
+    ViewComponent view { get; }
     bool hasView { get; }
 
-    void AddView(View.IEntityView newValue);
-    void ReplaceView(View.IEntityView newValue);
+    void AddView(IEntityView newValue);
+    void ReplaceView(IEntityView newValue);
     void RemoveView();
 }

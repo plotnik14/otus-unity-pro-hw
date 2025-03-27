@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.LifeTimeComponent lifeTime { get { return (Core.Components.LifeTimeComponent)GetComponent(GameComponentsLookup.LifeTime); } }
+    public LifeTimeComponent lifeTime { get { return (LifeTimeComponent)GetComponent(GameComponentsLookup.LifeTime); } }
     public bool hasLifeTime { get { return HasComponent(GameComponentsLookup.LifeTime); } }
 
     public void AddLifeTime(float newValue) {
         var index = GameComponentsLookup.LifeTime;
-        var component = (Core.Components.LifeTimeComponent)CreateComponent(index, typeof(Core.Components.LifeTimeComponent));
+        var component = (LifeTimeComponent)CreateComponent(index, typeof(LifeTimeComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceLifeTime(float newValue) {
         var index = GameComponentsLookup.LifeTime;
-        var component = (Core.Components.LifeTimeComponent)CreateComponent(index, typeof(Core.Components.LifeTimeComponent));
+        var component = (LifeTimeComponent)CreateComponent(index, typeof(LifeTimeComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

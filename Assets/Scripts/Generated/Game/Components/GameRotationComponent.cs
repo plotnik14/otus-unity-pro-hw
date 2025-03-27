@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Movement.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.RotationComponent rotation { get { return (Core.Components.RotationComponent)GetComponent(GameComponentsLookup.Rotation); } }
+    public RotationComponent rotation { get { return (RotationComponent)GetComponent(GameComponentsLookup.Rotation); } }
     public bool hasRotation { get { return HasComponent(GameComponentsLookup.Rotation); } }
 
     public void AddRotation(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.Rotation;
-        var component = (Core.Components.RotationComponent)CreateComponent(index, typeof(Core.Components.RotationComponent));
+        var component = (RotationComponent)CreateComponent(index, typeof(RotationComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceRotation(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.Rotation;
-        var component = (Core.Components.RotationComponent)CreateComponent(index, typeof(Core.Components.RotationComponent));
+        var component = (RotationComponent)CreateComponent(index, typeof(RotationComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

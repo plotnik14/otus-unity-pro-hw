@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.AttackCooldownComponent attackCooldown { get { return (Core.Components.AttackCooldownComponent)GetComponent(GameComponentsLookup.AttackCooldown); } }
+    public AttackCooldownComponent attackCooldown { get { return (AttackCooldownComponent)GetComponent(GameComponentsLookup.AttackCooldown); } }
     public bool hasAttackCooldown { get { return HasComponent(GameComponentsLookup.AttackCooldown); } }
 
     public void AddAttackCooldown(float newValue) {
         var index = GameComponentsLookup.AttackCooldown;
-        var component = (Core.Components.AttackCooldownComponent)CreateComponent(index, typeof(Core.Components.AttackCooldownComponent));
+        var component = (AttackCooldownComponent)CreateComponent(index, typeof(AttackCooldownComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceAttackCooldown(float newValue) {
         var index = GameComponentsLookup.AttackCooldown;
-        var component = (Core.Components.AttackCooldownComponent)CreateComponent(index, typeof(Core.Components.AttackCooldownComponent));
+        var component = (AttackCooldownComponent)CreateComponent(index, typeof(AttackCooldownComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

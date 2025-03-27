@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Collisions.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.CollisionsComponent collisions { get { return (Core.Components.CollisionsComponent)GetComponent(GameComponentsLookup.Collisions); } }
+    public CollisionsComponent collisions { get { return (CollisionsComponent)GetComponent(GameComponentsLookup.Collisions); } }
     public bool hasCollisions { get { return HasComponent(GameComponentsLookup.Collisions); } }
 
     public void AddCollisions(System.Collections.Generic.List<GameEntity> newList) {
         var index = GameComponentsLookup.Collisions;
-        var component = (Core.Components.CollisionsComponent)CreateComponent(index, typeof(Core.Components.CollisionsComponent));
+        var component = (CollisionsComponent)CreateComponent(index, typeof(CollisionsComponent));
         component.list = newList;
         AddComponent(index, component);
     }
 
     public void ReplaceCollisions(System.Collections.Generic.List<GameEntity> newList) {
         var index = GameComponentsLookup.Collisions;
-        var component = (Core.Components.CollisionsComponent)CreateComponent(index, typeof(Core.Components.CollisionsComponent));
+        var component = (CollisionsComponent)CreateComponent(index, typeof(CollisionsComponent));
         component.list = newList;
         ReplaceComponent(index, component);
     }

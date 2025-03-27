@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.ArmyCount.Components;
+
 public partial class GameStateEntity {
 
-    public GameState.Components.ArmyCountComponent armyCount { get { return (GameState.Components.ArmyCountComponent)GetComponent(GameStateComponentsLookup.ArmyCount); } }
+    public ArmyCountComponent armyCount { get { return (ArmyCountComponent)GetComponent(GameStateComponentsLookup.ArmyCount); } }
     public bool hasArmyCount { get { return HasComponent(GameStateComponentsLookup.ArmyCount); } }
 
     public void AddArmyCount(int newValue) {
         var index = GameStateComponentsLookup.ArmyCount;
-        var component = (GameState.Components.ArmyCountComponent)CreateComponent(index, typeof(GameState.Components.ArmyCountComponent));
+        var component = (ArmyCountComponent)CreateComponent(index, typeof(ArmyCountComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceArmyCount(int newValue) {
         var index = GameStateComponentsLookup.ArmyCount;
-        var component = (GameState.Components.ArmyCountComponent)CreateComponent(index, typeof(GameState.Components.ArmyCountComponent));
+        var component = (ArmyCountComponent)CreateComponent(index, typeof(ArmyCountComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

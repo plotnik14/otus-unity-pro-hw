@@ -6,6 +6,10 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Destroy;
+using Core.Views.Components;
+
 public static class UiComponentsLookup {
 
     public const int Asset = 0;
@@ -23,9 +27,9 @@ public static class UiComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Core.Components.AssetComponent),
-        typeof(Core.Components.DestroyedComponent),
-        typeof(Core.Components.ViewComponent),
+        typeof(AssetComponent),
+        typeof(DestroyedComponent),
+        typeof(ViewComponent),
         typeof(UiDestroyedListenerComponent)
     };
 }

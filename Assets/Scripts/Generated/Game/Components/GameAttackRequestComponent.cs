@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    static readonly Core.Components.AttackRequestComponent attackRequestComponent = new Core.Components.AttackRequestComponent();
+    static readonly AttackRequestComponent attackRequestComponent = new AttackRequestComponent();
 
     public bool hasAttackRequest {
         get { return HasComponent(GameComponentsLookup.AttackRequest); }

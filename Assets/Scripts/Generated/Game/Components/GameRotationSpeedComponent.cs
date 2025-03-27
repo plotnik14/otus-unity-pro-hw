@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Movement.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.RotationSpeedComponent rotationSpeed { get { return (Core.Components.RotationSpeedComponent)GetComponent(GameComponentsLookup.RotationSpeed); } }
+    public RotationSpeedComponent rotationSpeed { get { return (RotationSpeedComponent)GetComponent(GameComponentsLookup.RotationSpeed); } }
     public bool hasRotationSpeed { get { return HasComponent(GameComponentsLookup.RotationSpeed); } }
 
     public void AddRotationSpeed(float newValue) {
         var index = GameComponentsLookup.RotationSpeed;
-        var component = (Core.Components.RotationSpeedComponent)CreateComponent(index, typeof(Core.Components.RotationSpeedComponent));
+        var component = (RotationSpeedComponent)CreateComponent(index, typeof(RotationSpeedComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceRotationSpeed(float newValue) {
         var index = GameComponentsLookup.RotationSpeed;
-        var component = (Core.Components.RotationSpeedComponent)CreateComponent(index, typeof(Core.Components.RotationSpeedComponent));
+        var component = (RotationSpeedComponent)CreateComponent(index, typeof(RotationSpeedComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

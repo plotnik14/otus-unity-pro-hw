@@ -6,6 +6,11 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.ArmyCount.Components;
+using Core.Destroy;
+using Core.Views.Components;
+
 public static class GameStateComponentsLookup {
 
     public const int ArmyCountListener = 0;
@@ -34,12 +39,12 @@ public static class GameStateComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(ArmyCountListenerComponent),
-        typeof(Core.Components.AssetComponent),
-        typeof(Core.Components.DestroyedComponent),
-        typeof(Core.Components.ViewComponent),
-        typeof(GameState.Components.ArmyCountComponent),
-        typeof(GameState.Components.StateTeamComponent),
-        typeof(GameState.Components.UpdateArmyCountRequestComponent),
+        typeof(AssetComponent),
+        typeof(DestroyedComponent),
+        typeof(ViewComponent),
+        typeof(ArmyCountComponent),
+        typeof(StateTeamComponent),
+        typeof(UpdateArmyCountRequestComponent),
         typeof(GameStateDestroyedListenerComponent)
     };
 }

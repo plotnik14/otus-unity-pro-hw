@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    static readonly Core.Components.DieRequestComponent dieRequestComponent = new Core.Components.DieRequestComponent();
+    static readonly DieRequestComponent dieRequestComponent = new DieRequestComponent();
 
     public bool hasDieRequest {
         get { return HasComponent(GameComponentsLookup.DieRequest); }

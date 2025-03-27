@@ -6,6 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Collisions.Components;
+using Core.Destroy;
+using Core.Fight.Components;
+using Core.Movement.Components;
+using Core.Views.Components;
+
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
@@ -61,25 +68,25 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Core.Components.AssetComponent),
-        typeof(Core.Components.AttackCooldownComponent),
-        typeof(Core.Components.AttackRequestComponent),
-        typeof(Core.Components.CollisionsComponent),
-        typeof(Core.Components.DamageComponent),
-        typeof(Core.Components.DestroyedComponent),
-        typeof(Core.Components.DieRequestComponent),
-        typeof(Core.Components.DirectionComponent),
-        typeof(Core.Components.HealthComponent),
-        typeof(Core.Components.LifeTimeComponent),
-        typeof(Core.Components.MovementSpeedComponent),
-        typeof(Core.Components.PositionComponent),
-        typeof(Core.Components.ProjectileComponent),
-        typeof(Core.Components.RotationComponent),
-        typeof(Core.Components.RotationSpeedComponent),
-        typeof(Core.Components.TargetComponent),
-        typeof(Core.Components.TeamComponent),
-        typeof(Core.Components.UnitComponent),
-        typeof(Core.Components.ViewComponent),
+        typeof(AssetComponent),
+        typeof(AttackCooldownComponent),
+        typeof(AttackRequestComponent),
+        typeof(CollisionsComponent),
+        typeof(DamageComponent),
+        typeof(DestroyedComponent),
+        typeof(DieRequestComponent),
+        typeof(DirectionComponent),
+        typeof(HealthComponent),
+        typeof(LifeTimeComponent),
+        typeof(MovementSpeedComponent),
+        typeof(PositionComponent),
+        typeof(ProjectileComponent),
+        typeof(RotationComponent),
+        typeof(RotationSpeedComponent),
+        typeof(TargetComponent),
+        typeof(TeamComponent),
+        typeof(UnitComponent),
+        typeof(ViewComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(PositionListenerComponent),
         typeof(RotationListenerComponent),

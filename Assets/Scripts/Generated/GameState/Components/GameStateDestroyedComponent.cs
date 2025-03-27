@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Destroy;
+
 public partial class GameStateEntity {
 
-    static readonly Core.Components.DestroyedComponent destroyedComponent = new Core.Components.DestroyedComponent();
+    static readonly DestroyedComponent destroyedComponent = new DestroyedComponent();
 
     public bool isDestroyed {
         get { return HasComponent(GameStateComponentsLookup.Destroyed); }

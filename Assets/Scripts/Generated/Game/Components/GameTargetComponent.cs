@@ -6,21 +6,24 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    public Core.Components.TargetComponent target { get { return (Core.Components.TargetComponent)GetComponent(GameComponentsLookup.Target); } }
+    public TargetComponent target { get { return (TargetComponent)GetComponent(GameComponentsLookup.Target); } }
     public bool hasTarget { get { return HasComponent(GameComponentsLookup.Target); } }
 
     public void AddTarget(GameEntity newValue) {
         var index = GameComponentsLookup.Target;
-        var component = (Core.Components.TargetComponent)CreateComponent(index, typeof(Core.Components.TargetComponent));
+        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTarget(GameEntity newValue) {
         var index = GameComponentsLookup.Target;
-        var component = (Core.Components.TargetComponent)CreateComponent(index, typeof(Core.Components.TargetComponent));
+        var component = (TargetComponent)CreateComponent(index, typeof(TargetComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

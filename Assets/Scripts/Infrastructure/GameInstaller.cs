@@ -1,12 +1,21 @@
 ﻿using System.Collections.Generic;
-using Configs;
-using Core.Systems;
-using DefaultNamespace;
-using GameState.Systems;
+using Core;
+using Core.ArmyCount;
+using Core.ArmyCount.Systems;
+using Core.ArmyCount.Views;
+using Core.BattleInitialization;
+using Core.Collisions;
+using Core.Collisions.Systems;
+using Core.Configs;
+using Core.Destroy;
+using Core.Fight;
+using Core.Fight.Systems;
+using Core.Movement;
+using Core.Movement.Systems;
+using Core.Views;
+using Core.Views.Systems;
 using Services;
-using UI;
 using UnityEngine;
-using View;
 using Zenject;
 
 namespace Infrastructure
@@ -76,6 +85,7 @@ namespace Infrastructure
         private void BindSystems()
         {
             Container.Bind<SpawnArmySystem>().AsSingle();
+            Container.Bind<BattleInitializationFeature>().AsSingle();
             Container.Bind<MovementSystem>().AsSingle();
             Container.Bind<RotationSystem>().AsSingle();
             Container.Bind<UnitCollisionSystem>().AsSingle();
@@ -104,7 +114,6 @@ namespace Infrastructure
             Container.Bind<UpdateArmyCountSystem>().AsSingle();
             Container.Bind<ArmyCountEventSystem>().AsSingle();
             Container.Bind<MultiDestroySystem>().AsSingle();
-            Container.Bind<BattleInitializationFeature>().AsSingle();
             Container.Bind<MovementFeature>().AsSingle();
             Container.Bind<CollisionProcessingFeature>().AsSingle();
             Container.Bind<FightFeature>().AsSingle();

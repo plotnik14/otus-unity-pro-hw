@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Fight.Components;
+
 public partial class GameEntity {
 
-    static readonly Core.Components.ProjectileComponent projectileComponent = new Core.Components.ProjectileComponent();
+    static readonly ProjectileComponent projectileComponent = new ProjectileComponent();
 
     public bool isProjectile {
         get { return HasComponent(GameComponentsLookup.Projectile); }

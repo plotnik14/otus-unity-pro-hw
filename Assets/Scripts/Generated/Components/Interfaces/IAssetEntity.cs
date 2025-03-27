@@ -6,9 +6,12 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.Views.Components;
+
 public partial interface IAssetEntity {
 
-    Core.Components.AssetComponent asset { get; }
+    AssetComponent asset { get; }
     bool hasAsset { get; }
 
     void AddAsset(string newValue);

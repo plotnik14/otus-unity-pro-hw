@@ -6,21 +6,25 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Core.ArmyCount.Components;
+using Core.Configs;
+
 public partial class GameStateEntity {
 
-    public GameState.Components.StateTeamComponent stateTeam { get { return (GameState.Components.StateTeamComponent)GetComponent(GameStateComponentsLookup.StateTeam); } }
+    public StateTeamComponent stateTeam { get { return (StateTeamComponent)GetComponent(GameStateComponentsLookup.StateTeam); } }
     public bool hasStateTeam { get { return HasComponent(GameStateComponentsLookup.StateTeam); } }
 
-    public void AddStateTeam(Configs.ETeam newValue) {
+    public void AddStateTeam(ETeam newValue) {
         var index = GameStateComponentsLookup.StateTeam;
-        var component = (GameState.Components.StateTeamComponent)CreateComponent(index, typeof(GameState.Components.StateTeamComponent));
+        var component = (StateTeamComponent)CreateComponent(index, typeof(StateTeamComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceStateTeam(Configs.ETeam newValue) {
+    public void ReplaceStateTeam(ETeam newValue) {
         var index = GameStateComponentsLookup.StateTeam;
-        var component = (GameState.Components.StateTeamComponent)CreateComponent(index, typeof(GameState.Components.StateTeamComponent));
+        var component = (StateTeamComponent)CreateComponent(index, typeof(StateTeamComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }
