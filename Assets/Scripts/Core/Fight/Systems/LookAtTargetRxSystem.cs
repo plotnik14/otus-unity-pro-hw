@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Core.Fight.Systems
 {
-    public class LookAtTargetSystem : ReactiveSystem<GameEntity>
+    public class LookAtTargetRxSystem : ReactiveSystem<GameEntity>
     {
-        public LookAtTargetSystem(IContext<GameEntity> context) : base(context) { }
+        public LookAtTargetRxSystem(IContext<GameEntity> context) : base(context) { }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {

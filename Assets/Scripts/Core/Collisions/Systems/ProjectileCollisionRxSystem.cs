@@ -3,9 +3,9 @@ using Entitas;
 
 namespace Core.Collisions.Systems
 {
-    public class ProjectileCollisionSystem : ReactiveSystem<GameEntity>
+    public class ProjectileCollisionRxSystem : ReactiveSystem<GameEntity>
     {
-        public ProjectileCollisionSystem(IContext<GameEntity> context) : base(context) { }
+        public ProjectileCollisionRxSystem(IContext<GameEntity> context) : base(context) { }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.BattleInitialization
 {
-    public class SpawnArmySystem : IInitializeSystem
+    public class SpawnArmyInitSystem : IInitializeSystem
     {
         private const float INITIAL_ATTACK_COOLDOWN = 1f;
 
@@ -12,7 +12,7 @@ namespace Core.BattleInitialization
         private readonly UnitConfig _unitConfig;
         private readonly SpawnArmyConfig _spawnArmyConfig;
 
-        public SpawnArmySystem(
+        public SpawnArmyInitSystem(
             GameContext gameContext,
             UnitConfig unitConfig,
             SpawnArmyConfig spawnArmyConfig)

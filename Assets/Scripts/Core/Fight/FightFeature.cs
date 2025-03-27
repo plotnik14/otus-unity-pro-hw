@@ -7,18 +7,18 @@ namespace Core.Fight
     {
         public FightFeature(SystemProvider provider) : base(provider)
         {
-            Add<DealDamageSystem>();
-            Add<ReleaseTargetSystem>();
-            Add<UnitDieSystem>();
-            Add<FindTargetSystem>();
-            Add<AttackCooldownSystem>();
-            Add<AttackSystem>();
-            Add<LookAtTargetSystem>();
-            Add<SpawnProjectileSystem>();
-            Add<AddAttackCooldownSystem>();
-            Add<LifeTimeSystem>();
-            Add<AttackRequestCleanup>();
-            Add<DieRequestCleanup>();
+            Add<DealDamageRxSystem>();
+            Add<ReleaseTargetRxSystem>();
+            Add<UnitDieRxSystem>();
+            Add<FindTargetExSystem>();
+            Add<AttackCooldownExSystem>();
+            Add<AttackRxSystem>();
+            Add<LookAtTargetRxSystem>();
+            Add<SpawnProjectileRxSystem>();
+            Add<AddAttackCooldownRxSystem>();
+            Add<LifeTimeExSystem>();
+            Add<AttackRequestCleanupSystem>();
+            Add<DieRequestCleanupSystem>();
         }
     }
 }

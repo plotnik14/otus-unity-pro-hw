@@ -7,8 +7,8 @@ namespace Core.Views
     {
         public ViewProcessingFeature(SystemProvider provider) : base(provider)
         {
-            Add<InitArmyStatisticsUiSystem>();
-            Add<MultiCreateViewSystem>();
+            Add<ArmyStatisticsUiInitSystem>();
+            Add<CreateViewMultiRxSystem>();
             Add<TeamEventSystem>();
         }
     }

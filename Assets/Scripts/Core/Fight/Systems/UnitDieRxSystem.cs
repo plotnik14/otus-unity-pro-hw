@@ -3,9 +3,9 @@ using Entitas;
 
 namespace Core.Fight.Systems
 {
-    public class UnitDieSystem : ReactiveSystem<GameEntity>
+    public class UnitDieRxSystem : ReactiveSystem<GameEntity>
     {
-        public UnitDieSystem(IContext<GameEntity> game) : base(game) { }
+        public UnitDieRxSystem(IContext<GameEntity> game) : base(game) { }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {

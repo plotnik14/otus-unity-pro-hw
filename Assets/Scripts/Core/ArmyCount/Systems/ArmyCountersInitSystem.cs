@@ -4,11 +4,11 @@ using Entitas;
 
 namespace Core.ArmyCount.Systems
 {
-    public class InitArmyCountersSystem : IInitializeSystem
+    public class ArmyCountersInitSystem : IInitializeSystem
     {
         private readonly GameStateContext _gameStateContext;
 
-        public InitArmyCountersSystem(GameStateContext gameStateContext) => _gameStateContext = gameStateContext;
+        public ArmyCountersInitSystem(GameStateContext gameStateContext) => _gameStateContext = gameStateContext;
 
         public void Initialize()
         {

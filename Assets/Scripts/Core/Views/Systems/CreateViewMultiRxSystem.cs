@@ -10,13 +10,13 @@ public partial class UiEntity : IViewableEntity { }
 
 namespace Core.Views.Systems
 {
-    public class MultiCreateViewSystem : MultiReactiveSystem<IViewableEntity, Contexts>
+    public class CreateViewMultiRxSystem : MultiReactiveSystem<IViewableEntity, Contexts>
     {
       private readonly IAssetLoader _assetLoader;
       private readonly IGameObjectFactory _objectFactory;
       private readonly Dictionary<string, Transform> _parentByContextName;
 
-      public MultiCreateViewSystem(
+      public CreateViewMultiRxSystem(
           Contexts contexts,
           IAssetLoader assetLoader,
           IGameObjectFactory objectFactory,

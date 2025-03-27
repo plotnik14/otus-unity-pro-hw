@@ -2,13 +2,13 @@
 
 namespace Core.Views.Systems
 {
-    public class InitArmyStatisticsUiSystem : IInitializeSystem
+    public class ArmyStatisticsUiInitSystem : IInitializeSystem
     {
         private const string ASSET_NAME = "ArmyStatistics";
 
         private readonly UiContext _uiContext;
 
-        public InitArmyStatisticsUiSystem(UiContext uiContext) => _uiContext = uiContext;
+        public ArmyStatisticsUiInitSystem(UiContext uiContext) => _uiContext = uiContext;
 
         public void Initialize()
         {

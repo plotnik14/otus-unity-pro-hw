@@ -7,8 +7,8 @@ namespace Core.Movement
     {
         public MovementFeature(SystemProvider provider) : base(provider)
         {
-            Add<MovementSystem>();
-            Add<RotationSystem>();
+            Add<MovementExSystem>();
+            Add<RotationExSystem>();
             Add<PositionEventSystem>();
             Add<RotationEventSystem>();
         }

@@ -4,12 +4,12 @@ using Entitas;
 
 namespace Core.ArmyCount.Systems
 {
-    public class UpdateArmyCountSystem : ReactiveSystem<GameEntity>
+    public class UpdateArmyCountRxSystem : ReactiveSystem<GameEntity>
     {
         private readonly IGroup<GameStateEntity> _counterEntities;
         private readonly List<GameStateEntity> _counterBuffer = new();
 
-        public UpdateArmyCountSystem(
+        public UpdateArmyCountRxSystem(
             IContext<GameEntity> gameContext,
             IContext<GameStateEntity> gameStateContext) : base(gameContext)
         {

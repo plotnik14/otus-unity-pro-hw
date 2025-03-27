@@ -9,7 +9,7 @@ namespace Core.Destroy
             Add<GameDestroyedEventSystem>();
             Add<GameStateDestroyedEventSystem>();
             Add<UiDestroyedEventSystem>();
-            Add<MultiDestroySystem>();
+            Add<DestroyMultiRxSystem>();
         }
     }
 }

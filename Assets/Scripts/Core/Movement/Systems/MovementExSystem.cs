@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Core.Movement.Systems
 {
-    public class MovementSystem : IExecuteSystem
+    public class MovementExSystem : IExecuteSystem
     {
         private readonly ITimeService _timeService;
         private readonly IGroup<GameEntity> _movementGroup;
         private readonly List<GameEntity> _buffer = new();
 
-        public MovementSystem(GameContext gameContext, ITimeService timeService)
+        public MovementExSystem(GameContext gameContext, ITimeService timeService)
         {
             _movementGroup = gameContext.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Position, GameMatcher.Direction, GameMatcher.MovementSpeed)

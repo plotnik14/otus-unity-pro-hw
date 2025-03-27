@@ -3,11 +3,11 @@ using Entitas;
 
 namespace Core.Fight.Systems
 {
-    public class ReleaseTargetSystem : ReactiveSystem<GameEntity>
+    public class ReleaseTargetRxSystem : ReactiveSystem<GameEntity>
     {
         private readonly IGroup<GameEntity> _hasTargetGroup;
 
-        public ReleaseTargetSystem(IContext<GameEntity> context) : base(context)
+        public ReleaseTargetRxSystem(IContext<GameEntity> context) : base(context)
         {
             _hasTargetGroup = context.GetGroup(GameMatcher.AllOf(GameMatcher.Target));
         }

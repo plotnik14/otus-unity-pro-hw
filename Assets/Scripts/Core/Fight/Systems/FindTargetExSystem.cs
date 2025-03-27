@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core.Fight.Systems
 {
-    public class FindTargetSystem : IExecuteSystem
+    public class FindTargetExSystem : IExecuteSystem
     {
         private readonly UnitConfig _unitConfig;
         private readonly IGroup<GameEntity> _lookingForTargetGroup;
@@ -13,7 +13,7 @@ namespace Core.Fight.Systems
         private readonly List<GameEntity> _unitBuffer = new();
         private readonly List<GameEntity> _targetBuffer = new();
 
-        public FindTargetSystem(GameContext gameContext, UnitConfig unitConfig)
+        public FindTargetExSystem(GameContext gameContext, UnitConfig unitConfig)
         {
             _unitConfig = unitConfig;
 

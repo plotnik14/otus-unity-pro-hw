@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace Core.Fight.Systems
 {
-    public class SpawnProjectileSystem : ReactiveSystem<GameEntity>
+    public class SpawnProjectileRxSystem : ReactiveSystem<GameEntity>
     {
         private readonly IContext<GameEntity> _context;
         private readonly ProjectileConfig _projectileConfig;
 
-        public SpawnProjectileSystem(IContext<GameEntity> context, ProjectileConfig projectileConfig) : base(context)
+        public SpawnProjectileRxSystem(IContext<GameEntity> context, ProjectileConfig projectileConfig) : base(context)
         {
             _context = context;
             _projectileConfig = projectileConfig;

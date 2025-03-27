@@ -4,13 +4,13 @@ using Services;
 
 namespace Core.Fight.Systems
 {
-    public class AttackCooldownSystem : IExecuteSystem
+    public class AttackCooldownExSystem : IExecuteSystem
     {
         private readonly ITimeService _timeService;
         private readonly IGroup<GameEntity> _cooldownGroup;
         private readonly List<GameEntity> _buffer = new();
 
-        public AttackCooldownSystem(GameContext gameContext, ITimeService timeService)
+        public AttackCooldownExSystem(GameContext gameContext, ITimeService timeService)
         {
             _cooldownGroup = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.AttackCooldown));
             _timeService = timeService;

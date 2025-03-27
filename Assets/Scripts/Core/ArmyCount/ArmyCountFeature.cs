@@ -7,8 +7,8 @@ namespace Core.ArmyCount
     {
         public ArmyCountFeature(SystemProvider provider) : base(provider)
         {
-            Add<InitArmyCountersSystem>();
-            Add<UpdateArmyCountSystem>();
+            Add<ArmyCountersInitSystem>();
+            Add<UpdateArmyCountRxSystem>();
             Add<ArmyCountEventSystem>();
         }
     }

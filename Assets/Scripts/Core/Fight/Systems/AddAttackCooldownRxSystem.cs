@@ -4,11 +4,11 @@ using Entitas;
 
 namespace Core.Fight.Systems
 {
-    public class AddAttackCooldownSystem : ReactiveSystem<GameEntity>
+    public class AddAttackCooldownRxSystem : ReactiveSystem<GameEntity>
     {
         private readonly UnitConfig _unitConfig;
 
-        public AddAttackCooldownSystem(IContext<GameEntity> context, UnitConfig unitConfig) : base(context)
+        public AddAttackCooldownRxSystem(IContext<GameEntity> context, UnitConfig unitConfig) : base(context)
         {
             _unitConfig = unitConfig;
         }

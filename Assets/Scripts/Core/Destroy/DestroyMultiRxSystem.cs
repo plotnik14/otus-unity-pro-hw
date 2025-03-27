@@ -8,9 +8,9 @@ public partial class UiEntity : IDestroyableEntity { }
 
 namespace Core.Destroy
 {
-    public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contexts>
+    public class DestroyMultiRxSystem : MultiReactiveSystem<IDestroyableEntity, Contexts>
     {
-        public MultiDestroySystem(Contexts contexts) : base(contexts) { }
+        public DestroyMultiRxSystem(Contexts contexts) : base(contexts) { }
 
         protected override ICollector[] GetTrigger(Contexts contexts)
         {

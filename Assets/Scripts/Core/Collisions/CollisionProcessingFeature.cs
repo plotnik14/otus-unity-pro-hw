@@ -7,8 +7,8 @@ namespace Core.Collisions
     {
         public CollisionProcessingFeature(SystemProvider provider) : base(provider)
         {
-            Add<UnitCollisionSystem>();
-            Add<ProjectileCollisionSystem>();
+            Add<UnitCollisionRxSystem>();
+            Add<ProjectileCollisionRxSystem>();
         }
     }
 }

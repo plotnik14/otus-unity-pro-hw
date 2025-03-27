@@ -4,10 +4,10 @@ using Entitas;
 
 namespace Core.Collisions.Systems
 {
-    public class UnitCollisionSystem : ReactiveSystem<GameEntity>
+    public class UnitCollisionRxSystem : ReactiveSystem<GameEntity>
     {
         private readonly ProjectileConfig _projectileConfig;
-        public UnitCollisionSystem(IContext<GameEntity> context, ProjectileConfig projectileConfig) : base(context)
+        public UnitCollisionRxSystem(IContext<GameEntity> context, ProjectileConfig projectileConfig) : base(context)
         {
             _projectileConfig = projectileConfig;
         }

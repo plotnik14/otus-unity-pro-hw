@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Core.Movement.Systems
 {
-    public class RotationSystem : IExecuteSystem
+    public class RotationExSystem : IExecuteSystem
     {
         private readonly IGroup<GameEntity> _rotationGroup;
         private readonly List<GameEntity> _buffer = new();
 
-        public RotationSystem(GameContext gameContext)
+        public RotationExSystem(GameContext gameContext)
         {
             _rotationGroup = gameContext.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Rotation, GameMatcher.Direction, GameMatcher.RotationSpeed));

@@ -4,13 +4,13 @@ using Services;
 
 namespace Core.Fight.Systems
 {
-    public class LifeTimeSystem : IExecuteSystem
+    public class LifeTimeExSystem : IExecuteSystem
     {
         private readonly ITimeService _timeService;
         private readonly IGroup<GameEntity> _lifeTimeGroup;
         private readonly List<GameEntity> _buffer = new();
 
-        public LifeTimeSystem(GameContext gameContext, ITimeService timeService)
+        public LifeTimeExSystem(GameContext gameContext, ITimeService timeService)
         {
             _lifeTimeGroup = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.LifeTime));
             _timeService = timeService;

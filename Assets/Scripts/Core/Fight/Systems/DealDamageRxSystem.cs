@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Core.Fight.Systems
 {
-    public class DealDamageSystem : ReactiveSystem<GameEntity>
+    public class DealDamageRxSystem : ReactiveSystem<GameEntity>
     {
-        public DealDamageSystem(IContext<GameEntity> context) : base(context) { }
+        public DealDamageRxSystem(IContext<GameEntity> context) : base(context) { }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {

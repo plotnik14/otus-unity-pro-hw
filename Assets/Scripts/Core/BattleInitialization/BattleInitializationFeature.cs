@@ -6,7 +6,7 @@ namespace Core.BattleInitialization
     {
         public BattleInitializationFeature(SystemProvider provider) : base(provider)
         {
-            Add<SpawnArmySystem>();
+            Add<SpawnArmyInitSystem>();
         }
     }
 }
