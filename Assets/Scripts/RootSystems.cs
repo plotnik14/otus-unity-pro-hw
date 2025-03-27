@@ -1,16 +1,19 @@
-﻿using Core;
-using Core.Systems;
-using GameState;
+﻿using Core.Systems;
+using DefaultNamespace;
 using Infrastructure;
-using UI;
+using View;
 
 public class RootSystems : ExtendedFeature
 {
     public RootSystems(SystemProvider provider) : base(provider)
     {
-        Add<GameSystems>();
-        Add<GameStateSystems>();
-        Add<InitArmyStatisticsUiSystem>(); // ToDo move to UI feature?
+        Add<BattleInitializationFeature>();
+        Add<MovementFeature>();
+        Add<CollisionProcessingFeature>();
+        Add<FightFeature>();
+        Add<ArmyCountFeature>();
+        Add<ViewProcessingFeature>();
+        Add<DestroyFeature>();
         Add<MultiDestroySystem>();
     }
 }

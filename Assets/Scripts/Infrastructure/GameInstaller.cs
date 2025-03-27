@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Configs;
-using Core;
 using Core.Systems;
-using GameState;
+using DefaultNamespace;
 using GameState.Systems;
 using Services;
 using UI;
 using UnityEngine;
+using View;
 using Zenject;
 
 namespace Infrastructure
@@ -92,6 +92,8 @@ namespace Infrastructure
             Container.Bind<LifeTimeSystem>().AsSingle();
             Container.Bind<MultiCreateViewSystem>().AsSingle().WithArguments(_parentByContextName);
             Container.Bind<GameDestroyedEventSystem>().AsSingle();
+            Container.Bind<GameStateDestroyedEventSystem>().AsSingle();
+            Container.Bind<UiDestroyedEventSystem>().AsSingle();
             Container.Bind<PositionEventSystem>().AsSingle();
             Container.Bind<RotationEventSystem>().AsSingle();
             Container.Bind<TeamEventSystem>().AsSingle();
@@ -101,9 +103,14 @@ namespace Infrastructure
             Container.Bind<InitArmyStatisticsUiSystem>().AsSingle();
             Container.Bind<UpdateArmyCountSystem>().AsSingle();
             Container.Bind<ArmyCountEventSystem>().AsSingle();
-            Container.Bind<GameSystems>().AsSingle();
-            Container.Bind<GameStateSystems>().AsSingle();
             Container.Bind<MultiDestroySystem>().AsSingle();
+            Container.Bind<BattleInitializationFeature>().AsSingle();
+            Container.Bind<MovementFeature>().AsSingle();
+            Container.Bind<CollisionProcessingFeature>().AsSingle();
+            Container.Bind<FightFeature>().AsSingle();
+            Container.Bind<ArmyCountFeature>().AsSingle();
+            Container.Bind<ViewProcessingFeature>().AsSingle();
+            Container.Bind<DestroyFeature>().AsSingle();
             Container.Bind<RootSystems>().AsSingle();
         }
     }
